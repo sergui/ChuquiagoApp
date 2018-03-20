@@ -6,5 +6,5 @@
 	define('DB_USER', 'root');//Usuario de tu base de datos
 	//define('DB_PASS', 'ejsfejglme_612519105@30');//Contraseña del usuario de la base de datos
 	define('DB_PASS', '');//Contraseña del usuario de la base de datos
-	define('DB_NAME', 'marketbd');//Nombre de la base de datos
+	define('DB_NAME', 'sergui');//Nombre de la base de datos
 ?>
