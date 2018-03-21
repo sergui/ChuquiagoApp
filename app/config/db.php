@@ -1,10 +1,13 @@
 <?php
-/*Datos de conexion a la base de datos*/
-	//define('DB_HOST', '50.50.50.5');//DB_HOST:  generalmente suele ser "127.0.0.1"
+	/*para la base de datos remota*/
+	define('DB_HOST', '208.91.199.124');
+	define('DB_USER', 'hakiajfa_central');
+	define('DB_PASS', 'colegiocentral');
+	define('DB_NAME', 'hakiajfa_colegio');
+
+	/*para la base de datos local*/
 	define('DB_HOST', 'localhost');
-	//define('DB_USER', 'hakiari');//Usuario de tu base de datos
-	define('DB_USER', 'root');//Usuario de tu base de datos
-	//define('DB_PASS', 'ejsfejglme_612519105@30');//Contraseña del usuario de la base de datos
-	define('DB_PASS', '');//Contraseña del usuario de la base de datos
-	define('DB_NAME', 'sergui');//Nombre de la base de datos
+	define('DB_USER', 'root');
+	define('DB_PASS', '');
+	define('DB_NAME', 'bd_colegio');
 ?>
