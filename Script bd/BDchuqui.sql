@@ -1,6 +1,6 @@
 /*
-SQLyog Enterprise v12.09 (64 bit)
-MySQL - 10.1.9-MariaDB : Database - bdchuquiago
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 10.1.8-MariaDB : Database - bdchuquiago
 *********************************************************************
 */
 
@@ -30,6 +30,24 @@ CREATE TABLE `asignatura` (
 
 /*Data for the table `asignatura` */
 
+/*Table structure for table `citacion` */
+
+DROP TABLE IF EXISTS `citacion`;
+
+CREATE TABLE `citacion` (
+  `id_citacion` int(11) NOT NULL,
+  `tipo` varchar(10) NOT NULL,
+  `citacion` varchar(20) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `estado` int(3) NOT NULL,
+  `id_kar` int(11) NOT NULL,
+  PRIMARY KEY (`id_citacion`),
+  KEY `id_kar` (`id_kar`),
+  CONSTRAINT `id_kar` FOREIGN KEY (`id_kar`) REFERENCES `kardex` (`id_kardex`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `citacion` */
+
 /*Table structure for table `comete` */
 
 DROP TABLE IF EXISTS `comete`;
@@ -40,7 +58,7 @@ CREATE TABLE `comete` (
   PRIMARY KEY (`id_asignatura`,`id_falta`),
   KEY `id_falta1` (`id_falta`),
   CONSTRAINT `id_asignatura3` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `id_falta1` FOREIGN KEY (`id_falta`) REFERENCES `faltas` (`id_falta`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `id_falta1` FOREIGN KEY (`id_falta`) REFERENCES `faltas_cometidas` (`id_falcom`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `comete` */
@@ -120,7 +138,10 @@ CREATE TABLE `estudiante` (
   `domicilio` varchar(200) CHARACTER SET latin1 NOT NULL DEFAULT 's/dir',
   `id_estado` tinyint(4) NOT NULL DEFAULT '1',
   `id_user` bigint(4) DEFAULT NULL,
-  PRIMARY KEY (`id_rude`)
+  `id_curso` int(11) NOT NULL,
+  PRIMARY KEY (`id_rude`),
+  KEY `id_curso` (`id_curso`),
+  CONSTRAINT `id_curso` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `estudiante` */
@@ -130,30 +151,74 @@ CREATE TABLE `estudiante` (
 DROP TABLE IF EXISTS `faltas`;
 
 CREATE TABLE `faltas` (
-  `id_falta` int(11) NOT NULL AUTO_INCREMENT,
-  `tipoFalta` varchar(200) NOT NULL,
-  `observacion` varchar(200) DEFAULT NULL,
-  `fecha` date NOT NULL,
-  `id_estado` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id_falta`)
+  `id_falta` int(11) DEFAULT NULL,
+  `tipoFalta` varchar(200) DEFAULT NULL,
+  `observaciones` varchar(200) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `estado` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
 
-/*Table structure for table `pertenece` */
+/*Table structure for table `faltas_cometidas` */
 
-DROP TABLE IF EXISTS `pertenece`;
+DROP TABLE IF EXISTS `faltas_cometidas`;
 
-CREATE TABLE `pertenece` (
-  `id_rude` int(20) NOT NULL,
-  `id_curso` int(11) NOT NULL,
-  PRIMARY KEY (`id_rude`,`id_curso`),
-  KEY `id_curso1` (`id_curso`),
-  CONSTRAINT `id_curso1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `id_rude2` FOREIGN KEY (`id_rude`) REFERENCES `estudiante` (`id_rude`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `faltas_cometidas` (
+  `id_falcom` int(11) NOT NULL AUTO_INCREMENT,
+  `obseracion` varchar(200) NOT NULL,
+  `contador` int(10) NOT NULL,
+  `fecha` date NOT NULL,
+  `id_estado` tinyint(4) NOT NULL,
+  `id_kardex` int(11) NOT NULL,
+  PRIMARY KEY (`id_falcom`),
+  KEY `id_kardex` (`id_kardex`),
+  CONSTRAINT `id_kardex` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `pertenece` */
+/*Data for the table `faltas_cometidas` */
+
+/*Table structure for table `kardex` */
+
+DROP TABLE IF EXISTS `kardex`;
+
+CREATE TABLE `kardex` (
+  `id_kardex` int(11) NOT NULL,
+  `reset` tinyint(1) NOT NULL,
+  `gestion` varchar(5) NOT NULL,
+  `id_rude` int(11) NOT NULL,
+  PRIMARY KEY (`id_kardex`),
+  KEY `id_rude` (`id_rude`),
+  CONSTRAINT `id_rude` FOREIGN KEY (`id_rude`) REFERENCES `estudiante` (`id_rude`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `kardex` */
+
+/*Table structure for table `modelo_citacion` */
+
+DROP TABLE IF EXISTS `modelo_citacion`;
+
+CREATE TABLE `modelo_citacion` (
+  `id_citacion` int(11) NOT NULL,
+  `formato` varchar(20) NOT NULL,
+  `estado` int(1) NOT NULL,
+  PRIMARY KEY (`id_citacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `modelo_citacion` */
+
+/*Table structure for table `pfaltas` */
+
+DROP TABLE IF EXISTS `pfaltas`;
+
+CREATE TABLE `pfaltas` (
+  `id_pfalta` int(11) NOT NULL,
+  `descripcion` varchar(20) NOT NULL,
+  `max_faltas` int(10) NOT NULL,
+  PRIMARY KEY (`id_pfalta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `pfaltas` */
 
 /*Table structure for table `roles` */
 
