@@ -5,5 +5,5 @@
         header("location: ".ROOT_CONTROLLER.'login/');
 		exit;
 	}*/
-	header("location: ".ROOT.'app/controller/home');
+	header("location: ".ROOT_CONTROLLER.'home');
 ?>

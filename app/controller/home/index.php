@@ -5,7 +5,7 @@
         header("location: ".ROOT_CONTROLLER.'login/');
 		exit;
 	}*/
-	//Variables para enviar a la plantilla
+	//Variables para enviar a la plantilla son necesarias
 	$titulo="Bienvenido";
 	$contenido="inicio.php";
 	$sub_directory="";
