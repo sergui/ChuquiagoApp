@@ -36,7 +36,7 @@
             <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
                 <ul class="sub-menu-list">
                     <li class="<?php echo $menu_a['configuracion_s']; ?>">
-                        <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Asigntura</a>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Asignatura</a>
                     </li>
                     <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>curso/"> Cursos</a>
