@@ -9,15 +9,15 @@
 	require_once ("../../config/db.php");
 	require_once ("../../config/conexion.php");
 	//Variables para enviar a la plantilla
-	$titulo="Asignatura";
-	$contenido="asignatura/index.php";
+	$titulo="Faltas";
+	$contenido="falta/index.php";
 	$menu_a= $menus['C_SECCION'];
-	$subTitulo="ASIGNATURA";
+	$subTitulo="FALTAS";
 	
-	if (!($asignaturas = $con->query("SELECT * FROM ASIGNATURA where estado=1"))) {
+	if (!($asignaturas = $con->query("SELECT * FROM faltas where estado=1"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 
-	$pie_class="si";
+	//$pie_class="si";
 	require_once ('../../../public/views/plantilla.php');
 ?>

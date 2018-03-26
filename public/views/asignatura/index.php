@@ -13,7 +13,7 @@
             </header>
             <div class="panel-body">
                 <div class="adv-table" >
-                    <table  class="display table table-bordered table-striped" id="tbSeccion">
+                    <table  class="display table table-bordered table-striped" id="tbAsignatura">
                         <thead>
                             <tr>
                                 <th>NOMBRE DE LA ASIGNATURA</th>
@@ -22,7 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($asignatura as $asignatura): ?>
+                            <?php foreach ($asignaturas as $asignatura): ?>
                                 <tr class="gradeX">
                                     <td><?php echo $asignatura['nombre_asignatura']; ?></td>
                                     <td><?php echo $asignatura['sigla']; ?></td>
@@ -65,7 +65,7 @@
     }
 
     $(document).ready(function() {
-        $('#tbSeccion').dataTable();
+        $('#tbAsignatura').dataTable();
         $("#btnEliminar").click(function(event) {
             $.ajax({
                 url: '../../models/seccion/eliminar_model.php',

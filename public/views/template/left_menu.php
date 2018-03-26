@@ -41,6 +41,9 @@
                     <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>curso/"> Cursos</a>
                     </li>
+                    <li>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>falta/"> Faltas</a>
+                    </li>
                 </ul>
             </li>
             <li><a href="<?php echo ROOT_CONTROLLER; ?>login/index.php?logout"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
