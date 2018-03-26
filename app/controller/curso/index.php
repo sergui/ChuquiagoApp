@@ -13,10 +13,10 @@
 	$contenido="curso/index.php";
 	$menu_a= $menus['C_SECCION'];
 	$subTitulo="CURSO";
-	if (!($cursos = $con->query("SELECT * FROM curso where estado=1"))) {
+	if (!($cursos = $con->query("SELECT * FROM curso"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 
-	$pie_class="si";
+	//$pie_class="si";
 	require_once ('../../../public/views/plantilla.php');
 ?>

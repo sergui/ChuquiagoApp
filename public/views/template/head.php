@@ -17,7 +17,7 @@
 
 <link href="<?php echo ROOT; ?>resources/assets/css/style-responsive.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo ROOT; ?>resources/assets/css/toastr.min.css">
-<script src="<?php echo ROOT; ?>resources/assets/js/jquery-1.10.2.min.js"></script>
+
 <!-- estilo reloj -->
 <link rel="stylesheet" href="<?php echo ROOT; ?>resources/assets/css/estilo.css">
 <link rel="stylesheet" href="<?php echo ROOT; ?>resources/assets/css/estilo1.css">
@@ -27,3 +27,4 @@
 
 <!--pickers css-->
 <link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>resources/assets/js/bootstrap-datepicker/css/datepicker-custom.css" />
+<script src="<?php echo ROOT; ?>resources/assets/js/jquery-1.10.2.min.js"></script>

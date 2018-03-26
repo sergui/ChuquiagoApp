@@ -22,12 +22,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
-                                <tr class="gradeX">
-                                    <td><?php echo $curso['id_seccion']; ?></td>
-                                    <td><?php echo $curso['nombre']; ?></td>
-                                    <td >
-                                       <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $curso['id_curso'] ?>)">
+                            <?php foreach ($cursos as $curso): ?>
+                            <tr class="gradeX">
+                                <td><?php echo $curso['grado']; ?></td>
+                                <td><?php echo $curso['paralelo']; ?></td>
+                                <td >
+                                    <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $curso['id_curso'] ?>)">
                                         <span class="fa fa-edit" ></span>
                                     </a>
                                     <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $curso['id_curso'] ?>)">
@@ -35,7 +35,7 @@
                                     </a>
                                 </td>
                             </tr>
-                        
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -47,10 +47,8 @@
 </div>
 </div>
 <script>
-  
-            
+    $(document).ready(function() {
         $("#frmRegistrar").validate({
-            
             debug:true,
             rules:
             {
@@ -59,7 +57,7 @@
                     minlength: 3,
                     maxlength:15,
                 },
-                 paralelo:{
+                paralelo:{
                     required:true,
                     minlength: 1,
                     maxlength:5,
@@ -81,7 +79,7 @@
                     beforeSend: function() {
                         transicion("Procesando Espere....");
                     },
-                    success: function(response) {
+                    success: function(response) {alert("ok");
                         if(response==1){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
@@ -100,5 +98,7 @@
                 });
             }
         });
+    });
+        
     
 </script>
