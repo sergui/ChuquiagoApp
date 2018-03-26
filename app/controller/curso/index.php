@@ -13,10 +13,9 @@
 	$contenido="curso/index.php";
 	$menu_a= $menus['C_SECCION'];
 	$subTitulo="CURSO";
-	#call listar_seccion
-	/*if (!($secciones = $con->query("SELECT * FROM seccion where estado=1"))) {
+	if (!($cursos = $con->query("SELECT * FROM curso where estado=1"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
-	}*/
+	}
 
 	$pie_class="si";
 	require_once ('../../../public/views/plantilla.php');
