@@ -3,6 +3,7 @@
 	require_once ("../../config/conexion.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
+	$id                = trim($_POST["id_asignatura"]);
 	$nombre_asignatura = trim($_POST["nombre_asignatura"]);
 	$sigla             = trim($_POST["sigla"]);
 	
