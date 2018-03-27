@@ -31,6 +31,7 @@
             <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-users"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
                     <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/"> Lista de docentes</a></li>
+                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/"> Lista de asignaturas</a></li>
                 </ul>
             </li>
             <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-users"></i> <span>Gestionar Usuarios</span></a>
