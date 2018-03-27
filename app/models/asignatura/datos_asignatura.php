@@ -7,11 +7,13 @@
 		if($result->num_rows > 0){
 			$jsondata['estado']="correcto";
 			while ($row = $result->fetch_array() ) {
-				$jsondata['cliente'] = $row;
+				$jsondata['asignatura'] = $row;
 			}
 		}
 	}else{
 		$jsondata['estado']="Error en la consulta";
 	}
-	echo json_encode($jsondata);
+    echo json_encode($jsondata);
+    
+    $con->close();
 ?>
