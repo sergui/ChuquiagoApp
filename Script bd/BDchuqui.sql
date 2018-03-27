@@ -166,13 +166,11 @@ CREATE TABLE `faltas` (
   `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_falta`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
 
 LOCK TABLES `faltas` WRITE;
-
-insert  into `faltas`(`id_falta`,`tipoFalta`,`descripcion`,`estado`) values (1,'asdasd','',1);
 
 UNLOCK TABLES;
 
