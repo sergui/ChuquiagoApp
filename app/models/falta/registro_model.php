@@ -4,10 +4,11 @@
 	require_once ("../../config/route.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
-	$grado     = trim($_POST["grado"]);
-	$paralelo  = trim($_POST["paralelo"]);
-	
-	$sql = "INSERT INTO curso(grado, paralelo) VALUES('{$grado}', '{$paralelo}')";
+	$tipo        = trim($_POST["tipoFalta"]);
+	$descripcion = trim($_POST["descripcion"]);
+		
+
+	$sql = "INSERT INTO faltas(tipoFalta, descripcion) VALUES('{$tipo}', '{$descripcion}')";
 
 	if (!$con->query($sql)) {
 		echo "Falló la insercion: (" . $con->errno . ") " . $con->error;

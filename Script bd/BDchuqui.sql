@@ -21,7 +21,7 @@ USE `bdchuquiago`;
 DROP TABLE IF EXISTS `asignatura`;
 
 CREATE TABLE `asignatura` (
-  `id_asignatura` int(11) NOT NULL AUTO_INCREMENT,
+  `id_asignatura` bigint(11) NOT NULL AUTO_INCREMENT,
   `nombre_asignatura` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `sigla` varchar(7) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `estado` bigint(1) NOT NULL DEFAULT '1',
@@ -39,7 +39,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `citacion`;
 
 CREATE TABLE `citacion` (
-  `id_citacion` int(11) NOT NULL,
+  `id_citacion` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `citacion` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` datetime NOT NULL,
@@ -63,16 +63,14 @@ DROP TABLE IF EXISTS `curso`;
 CREATE TABLE `curso` (
   `id_curso` int(11) NOT NULL AUTO_INCREMENT,
   `grado` varchar(20) NOT NULL,
-  `paralelo` varbinary(8) NOT NULL,
+  `paralelo` varchar(8) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `curso` */
 
 LOCK TABLES `curso` WRITE;
-
-insert  into `curso`(`id_curso`,`grado`,`paralelo`,`estado`) values (1,'1ro','A',1);
 
 UNLOCK TABLES;
 
@@ -82,10 +80,10 @@ DROP TABLE IF EXISTS `dicta`;
 
 CREATE TABLE `dicta` (
   `id_docente` int(11) NOT NULL,
-  `id_asignatura` int(11) NOT NULL,
+  `id_asignatura` bigint(11) NOT NULL,
   PRIMARY KEY (`id_docente`,`id_asignatura`),
   KEY `id_asignatura2` (`id_asignatura`),
-  CONSTRAINT `id_asignatura2` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `dicta_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `id_docente1` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -105,7 +103,7 @@ CREATE TABLE `docente` (
   `paterno` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `materno` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `celular` varchar(12) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `id_estado` tinyint(1) NOT NULL DEFAULT '1',
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
   `id_user` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_docente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -147,7 +145,7 @@ CREATE TABLE `estudiante` (
   `sexo` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha_nac` date NOT NULL,
   `domicilio` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL DEFAULT 's/dir',
-  `id_estado` tinyint(4) NOT NULL DEFAULT '1',
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
   `id_user` bigint(4) DEFAULT NULL,
   PRIMARY KEY (`id_rude`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -163,11 +161,11 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `faltas`;
 
 CREATE TABLE `faltas` (
-  `id_falta` int(11) DEFAULT NULL,
-  `tipoFalta` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `observaciones` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
-  `estado` tinyint(4) DEFAULT '1'
+  `id_falta` int(11) NOT NULL AUTO_INCREMENT,
+  `tipoFalta` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id_falta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
@@ -181,12 +179,13 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `faltas_cometidas`;
 
 CREATE TABLE `faltas_cometidas` (
-  `id_fal_com` int(11) NOT NULL AUTO_INCREMENT,
+  `id_fal_com` bigint(20) NOT NULL AUTO_INCREMENT,
   `obseracion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `contador` int(10) NOT NULL,
   `fecha` date NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT '1',
   `id_kardex` int(11) NOT NULL,
+  `id_user` bigint(20) NOT NULL,
   PRIMARY KEY (`id_fal_com`),
   KEY `id_kardex` (`id_kardex`),
   CONSTRAINT `id_kardex` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
@@ -207,6 +206,7 @@ CREATE TABLE `kardes_curso` (
   `id_curso` int(11) NOT NULL,
   `gestion` year(4) NOT NULL,
   `estado` char(1) COLLATE utf8_spanish2_ci DEFAULT 'a' COMMENT 'se registrara al cambiar la gestion si esta aprobado a si esta reprobado r',
+  `id_asesor` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_kardex`,`id_curso`),
   KEY `id_curso` (`id_curso`),
   CONSTRAINT `kardes_curso_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -244,7 +244,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `modelo_citacion`;
 
 CREATE TABLE `modelo_citacion` (
-  `id_citacion` int(11) NOT NULL,
+  `id_citacion` int(11) NOT NULL AUTO_INCREMENT,
   `formato` varchar(400) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_citacion`)
@@ -261,7 +261,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `pfaltas`;
 
 CREATE TABLE `pfaltas` (
-  `id_pfalta` int(11) NOT NULL,
+  `id_pfalta` int(11) NOT NULL AUTO_INCREMENT,
   `max_faltas` int(10) NOT NULL,
   PRIMARY KEY (`id_pfalta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -277,9 +277,9 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `roles`;
 
 CREATE TABLE `roles` (
-  `id_rol` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -295,11 +295,11 @@ DROP TABLE IF EXISTS `tiene`;
 
 CREATE TABLE `tiene` (
   `id_curso` int(11) NOT NULL,
-  `id_asignatura` int(11) NOT NULL,
+  `id_asignatura` bigint(20) NOT NULL,
   PRIMARY KEY (`id_curso`,`id_asignatura`),
   KEY `id_asignatura1` (`id_asignatura`),
-  CONSTRAINT `id_asignatura1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `id_curso2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `id_curso2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tiene_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiene` */
@@ -343,7 +343,7 @@ CREATE TABLE `usuario` (
   `id_rol` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`,`id_rol`),
   KEY `id_rol` (`id_rol`),
-  CONSTRAINT `id_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuario` */
