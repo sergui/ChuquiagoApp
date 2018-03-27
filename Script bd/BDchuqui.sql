@@ -296,10 +296,13 @@ DROP TABLE IF EXISTS `tiene`;
 CREATE TABLE `tiene` (
   `id_curso` int(11) NOT NULL,
   `id_asignatura` bigint(20) NOT NULL,
-  PRIMARY KEY (`id_curso`,`id_asignatura`),
+  `id_docente` int(11) NOT NULL,
+  PRIMARY KEY (`id_curso`,`id_asignatura`,`id_docente`),
   KEY `id_asignatura1` (`id_asignatura`),
+  KEY `id_docente` (`id_docente`),
   CONSTRAINT `id_curso2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tiene_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `tiene_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tiene_ibfk_2` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiene` */
