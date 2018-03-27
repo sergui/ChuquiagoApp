@@ -5,12 +5,12 @@
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
 	$id = trim($_REQUEST["id_eliminar"]);
 
-	$sql = "UPDATE curso set id_estado=0 where id_curso={$id}";
+	$sql = "UPDATE tutor set estado=0 where id_tutor={$id}";
 
 	if (!$con->query($sql)) {
 		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
 	}
 	else
 		echo 1;
-		$con->close();
+	$con->close();
 ?>
