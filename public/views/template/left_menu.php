@@ -30,26 +30,45 @@
             Inicio</span></a></li>
             <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-users"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/"> Lista de docentes</a></li>
-                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/"> Lista de asignaturas</a></li>
+                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/listar_docente.php"> Lista de docentes</a></li>
                 </ul>
             </li>
             <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-users"></i> <span>Gestionar Usuarios</span></a>
                 <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/"> Lista de usuarios</a></li>
-                    <li class="<?php echo $menu_a['registro_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/registro.php"> Registro de usuarios</a></li>
+                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/lista_usuarios.php"> Lista de usuarios</a></li>
+                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/"> Lista de padres de familia</a></li>
+                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/listar_padres.php"> Lista de estudiantes</a></li>
                 </ul>
             </li>
             <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
                 <ul class="sub-menu-list">
                     <li class="<?php echo $menu_a['configuracion_s']; ?>">
-                        <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Asignatura</a>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Asignaturas</a>
                     </li>
                     <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>curso/"> Cursos</a>
                     </li>
                     <li>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>curso/">Roles usuarios</a>
+                    </li>
+                    <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>falta/"> Faltas</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>citacion/"> Modelo Citaciones</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Kardex diciplinario</span></a>
+                <ul class="sub-menu-list">
+                    <li class="<?php echo $menu_a['configuracion_s']; ?>">
+                        <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Registro falta</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>curso/">Listar faltas</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>curso/">Citaciones</a>
                     </li>
                 </ul>
             </li>

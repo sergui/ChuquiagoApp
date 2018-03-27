@@ -8,9 +8,9 @@
 	require_once ("../../config/db.php");
 	require_once ("../../config/conexion.php");
 	//Variables para enviar a la plantilla
-	$titulo="Usuarios";
-	$contenido="user/index.php";
-	$subTitulo="Usuario";
+	$titulo="Lista de los padres de familia";
+	$contenido="user/listar_padre.php";
+	$subTitulo="Lista de padres de familia";
 	$menu_a= $menus['U_LISTA'];
 
 	if (!($usuarios = $con->query("SELECT * FROM usuario_login where estado = 1 and id_usuario<>{$_SESSION['id_user']} and tipo<>0"))) {
