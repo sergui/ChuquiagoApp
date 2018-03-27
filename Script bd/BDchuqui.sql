@@ -163,10 +163,11 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `faltas`;
 
 CREATE TABLE `faltas` (
-  `id_falta` int(11) DEFAULT NULL,
+  `id_falta` int(11) NOT NULL,
   `tipoFalta` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT '1'
+  `estado` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id_falta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
