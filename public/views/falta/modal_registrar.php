@@ -11,13 +11,10 @@
                         <label for="Nombre">TIPO FALTA:</label>
                         <input class=" form-control" id="tipoFalta" name="tipoFalta" type="text" />
                     </div>
-                     <div class="form-group">
-                        <label for="Nombre">FECHA:</label>
-                        <input class=" form-control" id="fecha" name="fecha" type="text" />
-                    </div>
+                     
 					<div class="form-group">
-                        <label for="Nombre">observaciones:</label>
-                        <input class=" form-control" id="observaciones" name="observaciones" type="text" />
+                        <label for="Nombre">Descripcion:</label>
+                        <input class=" form-control" id="descripcion" name="descripcion" type="text" />
                     </div>
                     <div class=" modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

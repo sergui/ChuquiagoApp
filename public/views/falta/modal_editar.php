@@ -13,13 +13,10 @@
                         <input class=" form-control" id="tipoFalta" name="tipoFalta" minlength="7 " type="text" required autofocus="true" />
                     </div><br>
 
-                     <div class="form-group">
-                        <label for="Nombre">CAMBIAR FECHA</label>
-                        <input class=" form-control" id="fecha" name="fecha" minlength="7 " type="text" required autofocus="true" />
-                    </div><br>
+                     
 					<div class="form-group">
-                        <label for="Nombre">CAMBIAR LA OBSERVACION</label>
-                        <input class=" form-control" id="observaciones" name="observaciones" minlength="7 " type="text" required autofocus="true" />
+                        <label for="Nombre">CAMBIAR LA DESCRIPCION</label>
+                        <input class=" form-control" id="descripcion" name="descripcion" minlength="7 " type="text" required autofocus="true" />
                     </div><br>
                  
                     <div class=" modal-footer">
