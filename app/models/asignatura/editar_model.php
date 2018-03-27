@@ -3,16 +3,17 @@
 	require_once ("../../config/conexion.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
-	$grado   = trim($_POST["grado"]);
-	$paralelo = trim($_POST["paralelo"]);
+	$nombre_asignatura = trim($_POST["nombre_asignatura"]);
+	$sigla             = trim($_POST["sigla"]);
 	
 	#call modificarcurso
-	$sql = "UPDATE curso set grado='{$grado}', paralelo='{$paralelo}' where id_curso={$id}";
+	$sql = "UPDATE asignatura set nombre_asignatura='{$nombre_asignatura}', sigla='{$sigla}' where id_asignatura={$id}";
 
 	if (!$con->query($sql)) {
 		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
 	}
 	else
 		echo 1;
-		$con->close();
+	
+	$con->close();
 ?>
