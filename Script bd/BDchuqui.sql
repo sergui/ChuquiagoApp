@@ -163,7 +163,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `faltas`;
 
 CREATE TABLE `faltas` (
-  `id_falta` int(11) NOT NULL,
+  `id_falta` int(11) NOT NULL AUTO_INCREMENT,
   `tipoFalta` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estado` tinyint(1) DEFAULT '1',
