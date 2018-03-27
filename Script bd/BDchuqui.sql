@@ -39,7 +39,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `citacion`;
 
 CREATE TABLE `citacion` (
-  `id_citacion` int(11) NOT NULL,
+  `id_citacion` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `citacion` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` datetime NOT NULL,
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `curso`;
 CREATE TABLE `curso` (
   `id_curso` int(11) NOT NULL AUTO_INCREMENT,
   `grado` varchar(20) NOT NULL,
-  `paralelo` varbinary(8) NOT NULL,
+  `paralelo` varchar(8) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_curso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -183,7 +183,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `faltas_cometidas`;
 
 CREATE TABLE `faltas_cometidas` (
-  `id_fal_com` int(11) NOT NULL AUTO_INCREMENT,
+  `id_fal_com` bigint(20) NOT NULL AUTO_INCREMENT,
   `obseracion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `contador` int(10) NOT NULL,
   `fecha` date NOT NULL,
@@ -248,7 +248,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `modelo_citacion`;
 
 CREATE TABLE `modelo_citacion` (
-  `id_citacion` int(11) NOT NULL,
+  `id_citacion` int(11) NOT NULL AUTO_INCREMENT,
   `formato` varchar(400) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_citacion`)
@@ -265,7 +265,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `pfaltas`;
 
 CREATE TABLE `pfaltas` (
-  `id_pfalta` int(11) NOT NULL,
+  `id_pfalta` int(11) NOT NULL AUTO_INCREMENT,
   `max_faltas` int(10) NOT NULL,
   PRIMARY KEY (`id_pfalta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -281,9 +281,9 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `roles`;
 
 CREATE TABLE `roles` (
-  `id_rol` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -347,7 +347,7 @@ CREATE TABLE `usuario` (
   `id_rol` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`,`id_rol`),
   KEY `id_rol` (`id_rol`),
-  CONSTRAINT `id_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuario` */
