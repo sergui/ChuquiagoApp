@@ -5,7 +5,7 @@
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
 	$id = trim($_REQUEST["id_eliminar"]);
 
-	$sql = "UPDATE asignatura set id_estado=0 where id_asignatura={$id}";
+	$sql = "UPDATE asignatura set estado=0 where id_asignatura={$id}";
 
 	if (!$con->query($sql)) {
 		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
