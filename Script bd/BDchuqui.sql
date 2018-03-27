@@ -66,13 +66,11 @@ CREATE TABLE `curso` (
   `paralelo` varchar(8) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `curso` */
 
 LOCK TABLES `curso` WRITE;
-
-insert  into `curso`(`id_curso`,`grado`,`paralelo`,`estado`) values (1,'1ro','A',1);
 
 UNLOCK TABLES;
 
@@ -105,7 +103,7 @@ CREATE TABLE `docente` (
   `paterno` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `materno` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `celular` varchar(12) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `id_estado` tinyint(1) NOT NULL DEFAULT '1',
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
   `id_user` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_docente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -147,7 +145,7 @@ CREATE TABLE `estudiante` (
   `sexo` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha_nac` date NOT NULL,
   `domicilio` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL DEFAULT 's/dir',
-  `id_estado` tinyint(4) NOT NULL DEFAULT '1',
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
   `id_user` bigint(4) DEFAULT NULL,
   PRIMARY KEY (`id_rude`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
