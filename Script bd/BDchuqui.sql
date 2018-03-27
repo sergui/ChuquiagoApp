@@ -164,10 +164,9 @@ DROP TABLE IF EXISTS `faltas`;
 
 CREATE TABLE `faltas` (
   `id_falta` int(11) DEFAULT NULL,
-  `tipoFalta` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `observaciones` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
-  `estado` tinyint(4) DEFAULT '1'
+  `tipoFalta` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
