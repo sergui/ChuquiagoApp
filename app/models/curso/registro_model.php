@@ -7,7 +7,7 @@
 	$grado     = trim($_POST["grado"]);
 	$paralelo  = trim($_POST["paralelo"]);
 	
-	$sql = "INSERT INTO curso(grado, paralelo, id_asesor) VALUES('{$grado}', '{$paralelo}')";
+	$sql = "INSERT INTO curso(grado, paralelo) VALUES('{$grado}', '{$paralelo}')";
 
 	if (!$con->query($sql)) {
 		echo "Falló la insercion: (" . $con->errno . ") " . $con->error;
