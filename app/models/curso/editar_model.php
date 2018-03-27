@@ -1,0 +1,17 @@
+<?php 
+	require_once ("../../config/db.php");
+	require_once ("../../config/conexion.php");
+
+	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
+	$grado   = trim($_POST["grado"]);
+	$paraleo = trim($_POST["paralelo"]);
+	
+	#call modificarcurso
+	$sql = "UPDATE curso set grado='{$grado}', paraleo='{$paralelo}' where id_curso={$id}";
+
+	if (!$con->query($sql)) {
+		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
+	}
+	else
+		echo 1;
+?>
