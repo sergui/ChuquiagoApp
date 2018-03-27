@@ -4,10 +4,10 @@
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
 	$grado   = trim($_POST["grado"]);
-	$paraleo = trim($_POST["paralelo"]);
+	$paralelo = trim($_POST["paralelo"]);
 	
 	#call modificarcurso
-	$sql = "UPDATE curso set grado='{$grado}', paraleo='{$paralelo}' where id_curso={$id}";
+	$sql = "UPDATE curso set grado='{$grado}', paralelo='{$paralelo}' where id_curso={$id}";
 
 	if (!$con->query($sql)) {
 		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
