@@ -206,7 +206,7 @@ CREATE TABLE `kardes_curso` (
   `id_kardex` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL,
   `gestion` year(4) NOT NULL,
-  `estado` char(1) COLLATE utf8_spanish2_ci DEFAULT 'a',
+  `estado` char(1) COLLATE utf8_spanish2_ci DEFAULT 'a' COMMENT 'se registrara al cambiar la gestion si esta aprobado a si esta reprobado r',
   PRIMARY KEY (`id_kardex`,`id_curso`),
   KEY `id_curso` (`id_curso`),
   CONSTRAINT `kardes_curso_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`) ON DELETE CASCADE ON UPDATE CASCADE,
