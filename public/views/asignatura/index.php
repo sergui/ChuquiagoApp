@@ -80,7 +80,7 @@
     ////////////////////JQUERY/////////////////////
     $(document).ready(function() 
     {
-         
+         $('#tbAsignatura').dataTable(); 
         /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
             debug:true,
@@ -193,7 +193,8 @@
                     transicion("Procesando Espere....");
                 },
                 success: function(response){
-                    if(response==1){
+                    if(response==1)
+                    {
                         $('#modalEliminar').modal('hide');
                         $('#btnEliminar').attr({disabled: 'true'});
                         transicionSalir();
@@ -201,9 +202,10 @@
                         setTimeout(function(){
                             window.location.href='<?php echo ROOT_CONTROLLER ?>asignatura/index.php';
                         }, 3000);
-                    }else{
+                    }else
+                    {
                         transicionSalir();
-                        mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                        mensajes_alerta('ERROR AL ELIMINAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
                     }
                 }
             });

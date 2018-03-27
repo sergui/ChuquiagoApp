@@ -13,7 +13,7 @@
             </header>
             <div class="panel-body">
                 <div class="adv-table" >
-                    <table  class="display table table-bordered table-striped" id="tbSeccion">
+                    <table  class="display table table-bordered table-striped" id="tbCurso">
                         <thead>
                             <tr>
                                 <th>GRADO</th>
@@ -79,7 +79,7 @@
      ////////////////////////JQUERYYYYYYYYY//////////////////////////////////////
     $(document).ready(function() 
     {
-         
+        $('#tbCurso').dataTable(); 
         /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
             debug:true,
