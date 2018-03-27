@@ -21,7 +21,7 @@ USE `bdchuquiago`;
 DROP TABLE IF EXISTS `asignatura`;
 
 CREATE TABLE `asignatura` (
-  `id_asignatura` int(11) NOT NULL AUTO_INCREMENT,
+  `id_asignatura` bigint(11) NOT NULL AUTO_INCREMENT,
   `nombre_asignatura` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `sigla` varchar(7) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `estado` bigint(1) NOT NULL DEFAULT '1',
@@ -82,10 +82,10 @@ DROP TABLE IF EXISTS `dicta`;
 
 CREATE TABLE `dicta` (
   `id_docente` int(11) NOT NULL,
-  `id_asignatura` int(11) NOT NULL,
+  `id_asignatura` bigint(11) NOT NULL,
   PRIMARY KEY (`id_docente`,`id_asignatura`),
   KEY `id_asignatura2` (`id_asignatura`),
-  CONSTRAINT `id_asignatura2` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `dicta_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `id_docente1` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -168,11 +168,13 @@ CREATE TABLE `faltas` (
   `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_falta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
 
 LOCK TABLES `faltas` WRITE;
+
+insert  into `faltas`(`id_falta`,`tipoFalta`,`descripcion`,`estado`) values (1,'asdasd','',1);
 
 UNLOCK TABLES;
 
@@ -187,6 +189,7 @@ CREATE TABLE `faltas_cometidas` (
   `fecha` date NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT '1',
   `id_kardex` int(11) NOT NULL,
+  `id_user` bigint(20) NOT NULL,
   PRIMARY KEY (`id_fal_com`),
   KEY `id_kardex` (`id_kardex`),
   CONSTRAINT `id_kardex` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
@@ -207,6 +210,7 @@ CREATE TABLE `kardes_curso` (
   `id_curso` int(11) NOT NULL,
   `gestion` year(4) NOT NULL,
   `estado` char(1) COLLATE utf8_spanish2_ci DEFAULT 'a' COMMENT 'se registrara al cambiar la gestion si esta aprobado a si esta reprobado r',
+  `id_asesor` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_kardex`,`id_curso`),
   KEY `id_curso` (`id_curso`),
   CONSTRAINT `kardes_curso_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -295,11 +299,11 @@ DROP TABLE IF EXISTS `tiene`;
 
 CREATE TABLE `tiene` (
   `id_curso` int(11) NOT NULL,
-  `id_asignatura` int(11) NOT NULL,
+  `id_asignatura` bigint(20) NOT NULL,
   PRIMARY KEY (`id_curso`,`id_asignatura`),
   KEY `id_asignatura1` (`id_asignatura`),
-  CONSTRAINT `id_asignatura1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `id_curso2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `id_curso2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tiene_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiene` */
