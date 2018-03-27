@@ -3,6 +3,7 @@
 	require_once ("../../config/conexion.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
+	$id          = trim($_POST["id_falta"]);
 	$tipoFalta   = trim($_POST["tipoFalta"]);
 	$descripcion = trim($_POST["descripcion"]);
 	

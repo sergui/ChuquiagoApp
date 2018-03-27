@@ -3,6 +3,7 @@
 	require_once ("../../config/conexion.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
+	$id      = trim($_POST["id_curso"]);
 	$grado   = trim($_POST["grado"]);
 	$paralelo = trim($_POST["paralelo"]);
 	
