@@ -53,14 +53,13 @@
             debug:true,
             rules:
             {
-                tipoFalta:{
+              /*  tipoFalta:{
                     required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
+                    
+                },*/
               
 				descripcion:{
-                    
+                    required:true,
                     minlength: 1,
                     maxlength:25,
                 },
