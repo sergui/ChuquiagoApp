@@ -3,7 +3,7 @@
         <section class="panel">
             <header class="panel-heading">
                 <div class="row panel-heading">
-                    LISTA DE CURSOS
+                    LISTA DE FALTAS
                     <span class="pull-right">
                         <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
                             <span class="fa fa-pencil"></span> NUEVA FALTA
@@ -17,8 +17,7 @@
                         <thead>
                             <tr>
                                 <th>Tipo FALTA</th>
-                                <th>FECHA</th>
-								<th>OBSERVACIONES</th>
+                                <th>DESCRIPCION</th>
                                 <th class="text-center">ACCIONES</th>
                             </tr>
                         </thead>
@@ -26,8 +25,8 @@
                             <?php foreach ($faltas as $falta): ?>
                             <tr class="gradeX">
                                 <td><?php echo $falta['tipoFalta']; ?></td>
-                                <td><?php echo $falta['fecha']; ?></td>
-								<td><?php echo $falta['observaciones']; ?></td>
+                               
+								<td><?php echo $falta['descripcion']; ?></td>
                                 <td >
                                     <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $falta['id_falta'] ?>)">
                                         <span class="fa fa-edit" ></span>
@@ -59,11 +58,8 @@
                     minlength: 3,
                     maxlength:15,
                 },
-                fecha:{
-                    required:true,
-                    date:true,
-                },
-				observaciones:{
+              
+				descripcion:{
                     
                     minlength: 1,
                     maxlength:25,
@@ -73,10 +69,8 @@
                 tipoFalta:{
                     required:"Este es Campo Obligatorioooo.",
                 },
-                fecha:{
-                    required:"La fecha es obligatorio.",
-                },
-				observaciones:{
+               
+				descripcion:{
                     maxlength:"debe tener un maximo de 25 caracteres.",
                 },
             },

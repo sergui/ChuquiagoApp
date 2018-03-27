@@ -43,11 +43,44 @@
         <?php require_once 'modal_registrar.php'; ?>
         <?php require_once 'modal_eliminar.php'; ?>
         <?php require_once 'modal_editar.php'; ?>
+
     </section>
 </div>
 </div>
 <script>
-    $(document).ready(function() {
+    ///////////////////OBTENER DATOS////////
+    function obtener_datos(id)
+         {
+            
+            $.ajax({
+            url: '../../models/curso/datos_curso.php',
+            type: 'POST',
+            dataType: "json",
+            data: {id_curso: id},
+            success: function(datos){ 
+               
+                $("#frmEditar [id=grado]").val(datos['curso']['grado']);
+                
+                $("#frmEditar [id=paralelo]").val(datos['curso']['paralelo']);
+
+                $("#id_curso").val(datos['curso']['id_curso']);//enviando id para el modelo
+
+                
+                
+                
+            }
+            });
+        }
+    ///////////////////ELIMINAR DATOS////////
+    function eliminar_datos(id)
+    {
+        $("#id_eliminar").val(id);
+    }    
+     ////////////////////////JQUERYYYYYYYYY//////////////////////////////////////
+    $(document).ready(function() 
+    {
+         
+        /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
             debug:true,
             rules:
@@ -61,7 +94,7 @@
                     required:true,
                     minlength: 1,
                     maxlength:5,
-                },
+                }
             },
             messages:{
                 grado:{
@@ -79,7 +112,7 @@
                     beforeSend: function() {
                         transicion("Procesando Espere....");
                     },
-                    success: function(response) {alert("ok");
+                    success: function(response) {
                         if(response==1){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
@@ -98,6 +131,89 @@
                 });
             }
         });
+
+        
+       
+       //////////////EDITAR DATOS//////////////////////////////////////////////////////////
+        $('#frmEditar').validate({
+            debug:true,
+          rules:
+            {
+                grado:{
+                    required:true,
+                    minlength: 3,
+                    maxlength:15,
+                },
+                paralelo:{
+                    required:true,
+                    minlength: 1,
+                    maxlength:2,
+                }
+            },
+            messages:{
+                grado:{
+                    required:"Este es Campo Obligatorioooo.",
+                },
+                paralelo:{
+                    required:"Este es Campo Obligatorioooo.",
+                },
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    url: '../../models/curso/editar_model.php',
+                    type: 'post',
+                    data: $("#frmEditar").serialize(),
+                    beforeSend: function() {
+                        transicion("Procesando Espere....");
+                    },
+                    success: function(response) {
+                        if(response==1){
+                            $('#modalEditar').modal('hide');
+                            $('#btnEditar').attr({
+                                disabled: 'true'
+                            });
+                            transicionSalir();
+                            mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
+                            setTimeout(function(){
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>curso/index.php';
+                            }, 3000);
+                        }else{
+                            transicionSalir();
+                            mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                        }
+                    }
+                });
+            }
+        });
+
+        ////////////ELIMINAR DATOS////////////////////////////////////////////////////////////
+         $("#btnEliminar").click(function(event) {
+            $.ajax({
+                url: '../../models/curso/eliminar_model.php',
+                type: 'POST',
+                data: $("#frmEliminar").serialize(),
+                beforeSend: function() {
+                    transicion("Procesando Espere....");
+                },
+                success: function(response){
+                    if(response==1){
+                        $('#modalEliminar').modal('hide');
+                        $('#btnEliminar').attr({disabled: 'true'});
+                        transicionSalir();
+                        mensajes_alerta('DATOS ELIMINADOS ELIMINADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
+                        setTimeout(function(){
+                            window.location.href='<?php echo ROOT_CONTROLLER ?>curso/index.php';
+                        }, 3000);
+                    }else{
+                        transicionSalir();
+                        mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                    }
+                }
+            });
+        });
+
+
+
     });
         
     
