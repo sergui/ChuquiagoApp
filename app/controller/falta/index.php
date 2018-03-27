@@ -14,7 +14,7 @@
 	$menu_a= $menus['C_SECCION'];
 	$subTitulo="FALTAS";
 	
-	if (!($asignaturas = $con->query("SELECT * FROM faltas where estado=1"))) {
+	if (!($faltas = $con->query("SELECT * FROM faltas where estado=1"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 
