@@ -28,7 +28,7 @@
         <ul class="nav nav-pills nav-stacked custom-nav">
             <li class="<?php echo $menu_a['inicio']; ?>"><a href="<?php echo ROOT; ?>"><i class="fa fa-home"></i> <span>
             Inicio</span></a></li>
-            <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-bell"></i> <span>Datos Unidad Educativa</span></a>
+            <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-book"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
                     <li class="">
                         <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Asignaturas</a>
