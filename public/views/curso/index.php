@@ -13,7 +13,7 @@
             </header>
             <div class="panel-body">
                 <div class="adv-table" >
-                    <table  class="display table table-bordered table-striped" id="tbSeccion">
+                    <table  class="display table table-bordered table-striped" id="tbCurso">
                         <thead>
                             <tr>
                                 <th>GRADO</th>
@@ -53,22 +53,18 @@
          {
             
             $.ajax({
-            url: '../../models/curso/datos_curso.php',
-            type: 'POST',
-            dataType: "json",
-            data: {id_curso: id},
-            success: function(datos){ 
-               
-                $("#frmEditar [id=grado]").val(datos['curso']['grado']);
-                
-                $("#frmEditar [id=paralelo]").val(datos['curso']['paralelo']);
+                url: '../../models/curso/datos_curso.php',
+                type: 'POST',
+                dataType: "json",
+                data: {id_curso: id},
+                success: function(datos){ 
+                   
+                    $("#frmEditar [id=grado]").val(datos['curso']['grado']);
+                    
+                    $("#frmEditar [id=paralelo]").val(datos['curso']['paralelo']);
 
-                $("#id_curso").val(datos['curso']['id_curso']);//enviando id para el modelo
-
-                
-                
-                
-            }
+                    $("#id_curso").val(datos['curso']['id_curso']);//enviando id para el modelo
+                }
             });
         }
     ///////////////////ELIMINAR DATOS////////
@@ -79,7 +75,7 @@
      ////////////////////////JQUERYYYYYYYYY//////////////////////////////////////
     $(document).ready(function() 
     {
-         
+        $("#tbCurso").dataTable();
         /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
             debug:true,

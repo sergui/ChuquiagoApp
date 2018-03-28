@@ -28,7 +28,7 @@
         <ul class="nav nav-pills nav-stacked custom-nav">
             <li class=""><a href="<?php echo ROOT; ?>"><i class="fa fa-home"></i> <span>
             Inicio</span></a></li>
-            <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-book"></i> <span>Datos Unidad Educativa</span></a>
+            <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
                     <li class="">
                         <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Asignaturas</a>
@@ -41,7 +41,7 @@
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>padres/">Padres de familia</a></li>
                 </ul>
             </li>
-            <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
+            <li class="menu-list"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
                 <ul class="sub-menu-list">
                     <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>user/roles_usuario.php">Roles usuarios</a>

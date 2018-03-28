@@ -13,7 +13,7 @@
 	$contenido="curso/index.php";
 	$menu_a= $menus['C_SECCION'];
 	$subTitulo="CURSO";
-	if (!($cursos = $con->query("SELECT * FROM curso"))) {
+	if (!($cursos = $con->query("SELECT * FROM curso where estado=1"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 
