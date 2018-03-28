@@ -28,28 +28,23 @@
         <ul class="nav nav-pills nav-stacked custom-nav">
             <li class="<?php echo $menu_a['inicio']; ?>"><a href="<?php echo ROOT; ?>"><i class="fa fa-home"></i> <span>
             Inicio</span></a></li>
-            <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-users"></i> <span>Datos Unidad Educativa</span></a>
+            <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-bell"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/listar_docente.php"> Lista de docentes</a></li>
-                </ul>
-            </li>
-            <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-users"></i> <span>Gestionar Usuarios</span></a>
-                <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/lista_usuarios.php"> Lista de usuarios</a></li>
-                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/"> Lista de padres de familia</a></li>
-                    <li class="<?php echo $menu_a['lista_u']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>user/listar_padres.php"> Lista de estudiantes</a></li>
-                </ul>
-            </li>
-            <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
-                <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['configuracion_s']; ?>">
+                    <li class="">
                         <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Asignaturas</a>
                     </li>
                     <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>curso/"> Cursos</a>
                     </li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>docente/">Docentes</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>estudiante/">Estudiantes</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>padres/">Padres de familia</a></li>
+                </ul>
+            </li>
+            <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
+                <ul class="sub-menu-list">
                     <li>
-                        <a href="<?php echo ROOT_CONTROLLER; ?>curso/">Roles usuarios</a>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>user/roles_usuario.php">Roles usuarios</a>
                     </li>
                     <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>falta/"> Faltas</a>
@@ -59,18 +54,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-list <?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-cog"></i> <span>Kardex diciplinario</span></a>
-                <ul class="sub-menu-list">
-                    <li class="<?php echo $menu_a['configuracion_s']; ?>">
-                        <a href="<?php echo ROOT_CONTROLLER; ?>asignatura/"> Registro falta</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo ROOT_CONTROLLER; ?>curso/">Listar faltas</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo ROOT_CONTROLLER; ?>curso/">Citaciones</a>
-                    </li>
-                </ul>
+            <li class="<?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
             </li>
             <li><a href="<?php echo ROOT_CONTROLLER; ?>login/index.php?logout"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
         </ul>
