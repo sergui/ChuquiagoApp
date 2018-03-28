@@ -3,14 +3,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                <h4 class="modal-title">EDITAR FLATAS</h4>
+                <h4 class="modal-title">EDITAR FALTAS</h4>
             </div>
             <div class="modal-body">
                 <form role="form" id="frmEditar" name="frmEditar">
                     <input type="hidden" name="id_falta" id="id_falta" class="form-control" value="">
                     <div class="form-group">
                         <label for="nombre" >nueva falta </label>
-                      <select  name="tipo_falta" id="tipo_falta" name="tipo_falta" class="form-control">
+                      <select  name="tipoFalta" id="tipoFalta" name="tipoFalta" class="form-control">
                       </select>
                     </div><br>
 
@@ -28,4 +28,4 @@
             </div>
         </div>
     </div>
-</div>observaciones
+</div>
