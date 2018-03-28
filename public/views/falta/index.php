@@ -68,9 +68,6 @@
 
                 $("#id_falta").val(datos['falta']['id_falta']);//enviando id para el modelo
 
-                
-                
-                
             }
             });
         }
@@ -186,7 +183,7 @@
                     beforeSend: function() {
                         transicion("Procesando Espere....");
                     },
-                    success: function(response) {alert("ok");
+                    success: function(response) {
                         if(response==1){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
