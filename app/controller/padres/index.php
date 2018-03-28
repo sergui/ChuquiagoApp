@@ -8,9 +8,9 @@
 	require_once ("../../config/db.php");
 	require_once ("../../config/conexion.php");
 	//Variables para enviar a la plantilla
-	$titulo="Usuarios";
-	$contenido="user/index.php";
-	$subTitulo="Usuario";
+	$titulo="Padres de familia";
+	$contenido="padres/index.php";
+	$subTitulo="Padre de familia";
 	$menu_a= $menus['U_LISTA'];
 
 	if (!($usuarios = $con->query("SELECT * FROM usuario where estado = 1 "))) {
