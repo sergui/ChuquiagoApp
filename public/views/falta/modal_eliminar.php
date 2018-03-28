@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form role="form" id="frmEliminar" name="frmEliminar">
                     <label class="alert-warning">¿ESTA SEGURO QUE DESEA ELIMINAR ESTA FALTA?</label>
-                    <input type="hidden" name="id_falta" id="id_falta" class="form-control" value="">
+                    <input type="hidden" name="id_eliminar" id="id_eliminar" class="form-control" value="">
                     <div class=" modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-primary" id="btnEliminar" id="btnEliminar">Aceptar</button>
