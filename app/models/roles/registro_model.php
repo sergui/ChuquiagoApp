@@ -4,10 +4,10 @@
 	require_once ("../../config/route.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
-	$grado     = trim($_POST["grado"]);
-	$paralelo  = trim($_POST["paralelo"]);
+	$nombre = trim($_POST["nombre"]);
 	
-	$sql = "INSERT INTO curso(grado, paralelo) VALUES('{$grado}', '{$paralelo}')";
+	
+	$sql = "INSERT INTO roles(nombre) VALUES('{$nombre}')";
 
 	if (!$con->query($sql)) {
 		echo "Falló la insercion: (" . $con->errno . ") " . $con->error;

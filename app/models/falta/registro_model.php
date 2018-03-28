@@ -4,8 +4,9 @@
 	require_once ("../../config/route.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
-	$tipo = trim($_POST["tipoFalta"]);
-	$descripcion = trim($_POST["descripcion"]);	
+	$tipo        = trim($_POST["tipoFalta"]);
+	$descripcion = trim($_POST["descripcion"]);
+		
 
 	$sql = "INSERT INTO faltas(tipoFalta, descripcion) VALUES('{$tipo}', '{$descripcion}')";
 
@@ -14,4 +15,5 @@
 	}
 	else
 		echo 1;
+		$con->close();
 ?>

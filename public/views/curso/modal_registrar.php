@@ -9,7 +9,7 @@
                 <form role="form" id="frmRegistrar" name="frmRegistrar">
                     <div class="form-group">
                         <label for="Nombre">GRADO:</label>
-                        <input class=" form-control" id="tipoFalta" name="tipoFalta" type="text" />
+                        <input class=" form-control" id="grado" name="grado" type="text" />
                     </div>
                      <div class="form-group">
                         <label for="Nombre">PARALELO:</label>
