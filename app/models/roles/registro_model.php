@@ -1,14 +1,16 @@
 <?php 
 	require_once ("../../config/db.php");
 	require_once ("../../config/conexion.php");
+	require_once ("../../config/route.php");
 
 	//echo "<pre>";print_r ($_REQUEST);echo "</pre>";
-	$id = trim($_REQUEST["id_falta"]);
-
-	$sql = "UPDATE faltas set estado=0 where id_falta={$id}";
+	$nombre = trim($_POST["nombre"]);
+	
+	
+	$sql = "INSERT INTO roles(nombre) VALUES('{$nombre}')";
 
 	if (!$con->query($sql)) {
-		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
+		echo "Falló la insercion: (" . $con->errno . ") " . $con->error;
 	}
 	else
 		echo 1;

@@ -8,12 +8,12 @@
 	require_once ("../../config/db.php");
 	require_once ("../../config/conexion.php");
 	//Variables para enviar a la plantilla
-	$titulo="Lista de todos los usuarios";
-	$contenido="user/lista_usuarios.php";
-	$subTitulo="Lista de usuarios";
+	$titulo="Roles de usuarios";
+	$contenido="user/roles_usuario.php";
+	$subTitulo="Roles de usuario";
 	$menu_a= $menus['U_LISTA'];
-	
-	if (!($usuarios = $con->query("SELECT * FROM usuario_login where estado = 1 and id_usuario<>{$_SESSION['id_user']} and tipo<>0"))) {
+
+	if (!($usuarios = $con->query("SELECT * FROM roles where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	//var_dump($usuarios->fetch_assoc());
