@@ -54,7 +54,7 @@
                     </li>
                 </ul>
             </li>
-            <li class=""><a href=""><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
+            <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>kardex/"><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
             </li>
             <li><a href="<?php echo ROOT_CONTROLLER; ?>login/index.php?logout"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
         </ul>
