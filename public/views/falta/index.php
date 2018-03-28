@@ -59,9 +59,9 @@
             success: function(datos){ 
 				
 				if(datos['falta']['tipoFalta']==1){
-                    $("#frmEditar [id=tipoFalta]").html('<option value=1 selected>leve</option><option value=2>Peso</option>');
+                    $("#frmEditar [id=tipoFalta]").html('<option value=1 selected>Leves</option><option value=2>Graves</option>');
                 }else{
-                    $("#frmEditar [id=tipoFalta]").html('<option value=1>grabe</option><option value=2 selected>Grabe</option>');
+                    $("#frmEditar [id=tipoFalta]").html('<option value=1>Leves</option><option value=2 selected>Graves</option>');
                 }
                 
                 $("#frmEditar [id=descripcion]").val(datos['falta']['descripcion']);
@@ -76,7 +76,7 @@
     {
         $("#id_eliminar").val(id);
     } 
-	 $("#btnEliminar").click(function(event) {
+     $("#btnEliminar").click(function(event) {
             $.ajax({
                 url: '../../models/falta/eliminar_model.php',
                 type: 'POST',
@@ -101,14 +101,15 @@
             });
         });
     $(document).ready(function() {
+        $('#tbFalta').dataTable();
+
 		$('#frmEditar').validate({
             debug:true,
           rules:
             {
               	tipoFalta:{
-                    required:true,                    
+                    required:true,
                 },
-              
 				descripcion:{
                     required:true,
                     minlength: 1,
@@ -157,9 +158,8 @@
             rules:
             {
               	tipoFalta:{
-                    required:true,                    
+                    required:true,
                 },
-              
 				descripcion:{
                     required:true,
                     minlength: 1,
@@ -170,7 +170,6 @@
                 tipoFalta:{
                     required:' <div class="alert alert-danger" role="alert">campo obligatorio</div>',
                 },
-               
 				descripcion:{
                     maxlength:"debe tener un maximo de 25 caracteres.",
                 },
@@ -203,6 +202,5 @@
             }
         });
     });
-        
-    
+
 </script>
