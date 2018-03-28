@@ -59,9 +59,9 @@
             success: function(datos){ 
 				
 				if(datos['falta']['tipoFalta']==1){
-                    $("#tipo_falta").html('<option value=1 selected>leve</option><option value=2>Peso</option>');
+                    $("#frmEditar [id=tipoFalta]").html('<option value=1 selected>leve</option><option value=2>Peso</option>');
                 }else{
-                    $("#tipo_falta").html('<option value=1>grabe</option><option value=2 selected>Grabe</option>');
+                    $("#frmEditar [id=tipoFalta]").html('<option value=1>grabe</option><option value=2 selected>Grabe</option>');
                 }
                 
                 $("#frmEditar [id=descripcion]").val(datos['falta']['descripcion']);
@@ -74,6 +74,7 @@
             }
             });
         }
+	
 	function eliminar_datos(id)
     {
         $("#id_eliminar").val(id);
@@ -103,6 +104,57 @@
             });
         });
     $(document).ready(function() {
+		$('#frmEditar').validate({
+            debug:true,
+          rules:
+            {
+              	tipoFalta:{
+                    required:true,                    
+                },
+              
+				descripcion:{
+                    required:true,
+                    minlength: 1,
+                    maxlength:25,
+                },
+            },
+            messages:{
+                tipoFalta:{
+                    required:' <div class="alert alert-danger" role="alert">campo obligatorio</div>',
+                },
+               
+				descripcion:{
+                    maxlength:"debe tener un maximo de 25 caracteres.",
+                },
+            },
+            submitHandler: function (form) {
+				
+                $.ajax({
+                    url: '../../models/falta/editar_model.php',
+                    type: 'post',
+                    data: $("#frmEditar").serialize(),
+                    beforeSend: function() {
+                        transicion("Procesando Espere....");
+                    },
+                    success: function(response) {
+                        if(response==1){
+                            $('#modalEditar').modal('hide');
+                            $('#btnEditar').attr({
+                                disabled: 'true'
+                            });
+                            transicionSalir();
+                            mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
+                            setTimeout(function(){
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>falta/index.php';
+                            }, 3000);
+                        }else{
+                            transicionSalir();
+                            mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                        }
+                    }
+                });
+            }
+        });
         $("#frmRegistrar").validate({
             debug:true,
             rules:

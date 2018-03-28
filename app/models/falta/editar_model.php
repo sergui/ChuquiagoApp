@@ -8,7 +8,7 @@
 	$descripcion = trim($_POST["descripcion"]);
 	
 	#call modificarcurso
-	$sql = "UPDATE faltas set tipoFalta='{$tipoFalta}', decripcion='{$descripcion}' where id_falta={$id}";
+	$sql = "UPDATE faltas set tipoFalta='{$tipoFalta}', descripcion='{$descripcion}' where id_falta={$id}";
 
 	if (!$con->query($sql)) {
 		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
