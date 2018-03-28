@@ -26,7 +26,7 @@
             </ul>
         </div>
         <ul class="nav nav-pills nav-stacked custom-nav">
-            <li class="<?php echo $menu_a['inicio']; ?>"><a href="<?php echo ROOT; ?>"><i class="fa fa-home"></i> <span>
+            <li class=""><a href="<?php echo ROOT; ?>"><i class="fa fa-home"></i> <span>
             Inicio</span></a></li>
             <li class="menu-list <?php echo $menu_a['usuario']; ?>"><a href=""><i class="fa fa-book"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
@@ -54,7 +54,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="<?php echo $menu_a['configuracion']; ?>"><a href=""><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
+            <li class=""><a href=""><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
             </li>
             <li><a href="<?php echo ROOT_CONTROLLER; ?>login/index.php?logout"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
         </ul>
