@@ -11,6 +11,7 @@
 	define('DB_PASS', '');
 	define('DB_NAME', 'bdchuquiago');*/
 	
+	
 	// para la base de datos remota de desarrollo
 	define('DB_HOST', '192.168.1.8');
 	define('DB_USER', 'hakiari');
