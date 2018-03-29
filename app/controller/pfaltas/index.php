@@ -14,7 +14,7 @@
 	$menu_a= $menus['C_SECCION'];
 	$subTitulo="Configuracion de faltas maximas";
 	
-	if (!($asignaturas = $con->query("SELECT * FROM pfaltas"))) {
+	if (!($pfaltas = $con->query("SELECT * FROM pfaltas"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 
