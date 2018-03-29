@@ -13,7 +13,7 @@
 	$subTitulo="Roles de usuario";
 	$menu_a= $menus['U_LISTA'];
 
-	if (!($usuarios = $con->query("SELECT * FROM roles where estado = 1 "))) {
+	if (!($roles = $con->query("SELECT * FROM roles where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 
