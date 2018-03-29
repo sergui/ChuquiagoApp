@@ -13,10 +13,10 @@
 	$subTitulo="Docente";
 	$menu_a= $menus['U_LISTA'];
 
-	if (!($usuarios = $con->query("SELECT * FROM usuario where estado = 1 "))) {
+	if (!($docentes = $con->query("SELECT * FROM docente where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
-	//var_dump($usuarios->fetch_assoc());
+	
 	$pie_class="si";//Variable donde se poneun pie de pagina estatico	
 	require_once ('../../../public/views/plantilla.php');
 ?>
