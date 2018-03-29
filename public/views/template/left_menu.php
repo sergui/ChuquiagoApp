@@ -50,6 +50,9 @@
                         <a href="<?php echo ROOT_CONTROLLER; ?>falta/"> Faltas</a>
                     </li>
                     <li>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>pfaltas/"> Configurar maximo de faltas</a>
+                    </li>
+                    <li>
                         <a href="<?php echo ROOT_CONTROLLER; ?>citacion/"> Modelo Citaciones</a>
                     </li>
                 </ul>
