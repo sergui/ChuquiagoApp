@@ -13,7 +13,7 @@
             </header>
             <div class="panel-body">
                 <div class="adv-table" >
-                    <table  class="display table table-bordered table-striped" id="tbdocente">
+                    <table  class="display table table-bordered table-striped" id="tbDocente">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -70,32 +70,48 @@
         $("#id_eliminar").val(id);
     }
     $(document).ready(function(){
-        $("#tbdocente").dataTable();        
+        $("#tbDocente").dataTable();        
         $("#frmRegistrar").validate({
             debug:true,
             rules:{
-                grado:{
+                nombre_usuario:{
                     required:true,
                     minlength: 3,
-                    maxlength:15,
+                    remote: {
+                        url: "../../models/usuario/verifica.php",
+                        type: 'post',
+                        data: {
+                            nombre_usuario: function() {
+                                return $("#nombre_usuario").val();
+                            }                                                        
+                        }
+                    }
                 },
-                paralelo:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:5,
+                ci:{
+                	required:true,
+                	minlength:5,
+                	remote:{
+                		url: "../../models/usuario/verifica.php",
+                        type: 'post',
+                        data: {
+                            ci: function() {
+                                return $("#ci").val();
+                            }
+                        }
+                	}
                 }
             },
             messages:{
-                grado:{
-                    required:"Este es Campo Obligatorioooo.",
+                nombre_usuario:{
+                    remote:"Debe elegir otro nombre de usuario.",
                 },
-                paralelo:{
-                    required:"Este es Campo Obligatorioooo.",
+                ci:{
+                    remote:"El numero de C.I. ya esta registrado verifique",
                 },
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/curso/registro_model.php',
+                    url: '../../models/docente/registro_model.php',
                     type: 'post',
                     data: $("#frmRegistrar").serialize(),
                     beforeSend: function() {
@@ -114,7 +130,7 @@
                             }, 3000);
                         }else{
                             transicionSalir();
-                            mensajes_alerta('ERROR AL REGISTRAR ALA SECCION  verifique los datos!! '+response,'error','GUARDAR DATOS');
+                            mensajes_alerta('ERROR AL REGISTRAR verifique los datos!! '+response,'error','GUARDAR DATOS');
                         }
                     }
                 });

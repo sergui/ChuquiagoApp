@@ -28,7 +28,6 @@
                 }
                 if (!$this->db_connection->connect_errno) {
                     $user_name = $this->db_connection->real_escape_string($_POST['usuario']);
-                    #call buscar_usuario
                     $sql = "SELECT id_usuario,nombre, usuario, estado, contrasenia, tipo
                             FROM usuario_login
                             WHERE usuario = '{$user_name}' AND estado=1";

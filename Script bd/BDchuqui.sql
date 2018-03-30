@@ -99,13 +99,16 @@ DROP TABLE IF EXISTS `docente`;
 
 CREATE TABLE `docente` (
   `id_docente` int(11) NOT NULL AUTO_INCREMENT,
+  `ci` varchar(20) NOT NULL,
   `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `paterno` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `materno` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `celular` varchar(12) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   `id_user` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id_docente`)
+  PRIMARY KEY (`id_docente`),
+  UNIQUE KEY `ci_UNIQUE` (`ci`),
+  UNIQUE KEY `id_user_UNIQUE` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `docente` */
@@ -281,11 +284,13 @@ CREATE TABLE `roles` (
   `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `roles` */
 
 LOCK TABLES `roles` WRITE;
+
+insert  into `roles`(`id_rol`,`nombre`,`estado`) values (1,'Administrador',1),(2,'Docente',1),(3,'Responsable',1),(4,'Estudiante',1),(5,'Secretaria(o)',1),(6,'Director(a)',1);
 
 UNLOCK TABLES;
 
@@ -340,11 +345,12 @@ DROP TABLE IF EXISTS `usuario`;
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_usuario` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL,
+  `nombre_usuario` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
   `id_rol` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`,`id_rol`),
+  UNIQUE KEY `nombre_usuario_UNIQUE` (`nombre_usuario`),
   KEY `id_rol` (`id_rol`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

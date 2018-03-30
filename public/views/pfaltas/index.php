@@ -27,7 +27,7 @@
                                 <td><?php echo $pfalta['max_faltas']; ?></td>
                                 
                                 <td >
-                                    <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $pfalta['max_faltas'] ?>)">
+                                    <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $pfalta['id_pfalta'] ?>)">
                                         <span class="fa fa-edit" ></span>
                                     </a>
                                   
@@ -59,9 +59,6 @@
                     console.log(datos);
                    
                     $("#frmEditar [id=max_faltas]").val(datos['pfaltas']['max_faltas']);
-                    
-                    
-
                     $("#id_pfalta").val(datos['pfaltas']['id_pfalta']);//enviando id para el modelo
                 }
             });

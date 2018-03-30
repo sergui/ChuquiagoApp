@@ -13,7 +13,7 @@
 	$subTitulo="Padre de familia";
 	$menu_a= $menus['U_LISTA'];
 
-	if (!($usuarios = $con->query("SELECT * FROM tutor where estado = 1 "))) {
+	if (!($tutores = $con->query("SELECT * FROM tutor where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	//var_dump($usuarios->fetch_assoc());

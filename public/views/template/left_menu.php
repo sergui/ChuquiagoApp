@@ -38,7 +38,7 @@
                     </li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>docente/">Docentes</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>estudiante/">Estudiantes</a></li>
-                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>padres/">Padres de familia</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Padres de familia</a></li>
                 </ul>
             </li>
             <li class="menu-list"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
