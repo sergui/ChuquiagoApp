@@ -42,40 +42,32 @@
             </div>
         </div>
         <?php require_once 'modal_registrar.php'; ?>
-       <!--  <?php require_once 'modal_eliminar.php'; ?>
-        <?php require_once 'modal_editar.php'; ?> -->
+        <?php require_once 'modal_eliminar.php'; ?>
+        <?php require_once 'modal_editar.php'; ?>
     </section>
 </div>
 </div>
 <script>
-    
-     // function obtener_datos(id)
-     //     {
-            
-     //        $.ajax({
-     //            url: '../../models/asignatura/datos_asignatura.php',
-     //            type: 'POST',
-     //            dataType: "json",
-     //            data: {id_asignatura: id},
-     //            success: function(datos){ 
-                   
-     //                $("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
-                    
-     //                $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
-
-     //                $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo
-     //            }
-     //        });
-     //    }
+    function obtener_datos(id){
+        $.ajax({
+            url: '../../models/estudiante/datos_estudiante.php',
+            type: 'POST',
+            dataType: "json",
+            data: {id_asignatura: id},
+            success: function(datos){
+                $("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
+                $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
+                $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo
+            }
+        });
+    }
 
     ///////////////////ELIMINAR DATOS////////
-  /*  function eliminar_datos(id)
-    {
+    function eliminar_datos(id){
         $("#id_eliminar").val(id);
-    } */   
+    }
     ////////////////////JQUERY/////////////////////
-    $(document).ready(function() 
-    {
+    $(document).ready(function(){
     	/////////////////PLUGINS FECHA///////////////
     	$('.cFecha').datepicker({
 			format: 'dd/mm/yyyy'
@@ -85,13 +77,11 @@
 		});
 
 		////////////////busquea de datos/////////////////
-
         $("#tbEstudiante").dataTable();
         /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
             debug:true,
-            rules:
-            {
+            rules:{
                 nombre:{
                     required:true,
                     minlength: 3,
@@ -102,13 +92,11 @@
                     minlength: 1,
                     maxlength:15,
                 },
-
                 materno:{
                     required:true,
                     minlength: 1,
                     maxlength:15,
                 },
-
                 domicilio:{
                     required:true,
                     minlength: 1,
@@ -121,28 +109,27 @@
                 },
                 fecha_nac:{
                     required:true,
-                    
                 }
             },
             messages:{
-		                nombre:{
-		                    required:"Este es Campo Obligatorioooo.",
-		                },
-		                paterno:{
-		                    required:"Este es Campo Obligatorioooo.",
-		                },
-		                 materno:{
-		                    required:"Este es Campo Obligatorioooo.",
-		                },
-		                domicilio:{
-		                    required:"Este es Campo Obligatorioooo.",
-		                },
-		                 sexo:{
-		                    required:"Este es Campo Obligatorioooo.",
-		                },
-		                fecha_nac:{
-		                    required:"Este es Campo Obligatorioooo.",
-		                },
+                nombre:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                paterno:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                 materno:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                domicilio:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                 sexo:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                fecha_nac:{
+                    required:"Este es Campo Obligatorio.",
+                }
             },
             submitHandler: function (form) {
                 $.ajax({
@@ -172,7 +159,7 @@
             }
         });
         /////////////editar DATOS////////////////
-        /*$('#frmEditar').validate({
+        $('#frmEditar').validate({
             debug:true,
             rules:
             {
@@ -221,9 +208,9 @@
                     }
                 });
             }
-        });*/
+        });
         /////////////ELIMINAR DATOS////////////////
-        /* $("#btnEliminar").click(function(event) {
+        $("#btnEliminar").click(function(event) {
             $.ajax({
                 url: '../../models/asignatura/eliminar_model.php',
                 type: 'POST',
@@ -245,8 +232,7 @@
                         mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
                     }
                 }
-            });*/
+            });
         });
-     
     });
 </script>
