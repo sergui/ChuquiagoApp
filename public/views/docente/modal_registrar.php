@@ -31,6 +31,15 @@
                         <label for="Nombre">NOMBRE USUARIO:</label>
                         <input type="text" name="nombre_usuario" id="nombre_usuario" value="" placeholder="" maxlength="15" minlength="3" class="form-control" required="true">
                     </div>
+                    <div class="form-group">
+                        <label for="Nombre">ROL:</label>
+                        <select name="id_rol" class="form-control" id="id_rol">
+                            <option value="">Seleccione un rol</option>
+                            <?php foreach ($roles as $rol): ?>
+                            <option value="<?php echo $rol['id_rol']?>"><?php echo $rol['nombre']?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
                     <div class=" modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary" id="btnRegistrar" >Crear</button>

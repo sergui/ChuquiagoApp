@@ -17,6 +17,10 @@
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
-	$pie_class="si";//Variable donde se poneun pie de pagina estatico	
+	$con=conectar();
+	if (!($roles = $con->query("SELECT * FROM roles where estado = 1 "))) {
+    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+	}
+	$con->close();
 	require_once ('../../../public/views/plantilla.php');
 ?>

@@ -26,31 +26,30 @@
                         </thead>
                         <tbody>
                             <?php foreach ($docentes as $docente): ?>
-                            <tr class="gradeX">
-                                <td><?php echo $docente['nombre']; ?></td>
-                                <td><?php echo $docente['paterno']; ?></td>
-                                <td><?php echo $docente['materno']; ?></td>
-                                <td><?php echo $docente['celular']; ?></td>
-                                <td >
-                                    <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $docente['id_docente'] ?>)">
-                                        <span class="fa fa-edit" ></span>
-                                    </a>
-                                    <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $docente['id_docente'] ?>)">
-                                        <span class="fa fa-trash-o"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                                <tr class="gradeX">
+                                    <td><?php echo $docente['nombre']; ?></td>
+                                    <td><?php echo $docente['paterno']; ?></td>
+                                    <td><?php echo $docente['materno']; ?></td>
+                                    <td><?php echo $docente['celular']; ?></td>
+                                    <td >
+                                        <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $docente['id_docente'] ?>)">
+                                            <span class="fa fa-edit" ></span>
+                                        </a>
+                                        <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $docente['id_docente'] ?>)">
+                                            <span class="fa fa-trash-o"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <?php require_once 'modal_registrar.php'; ?>
-        <?php require_once 'modal_eliminar.php'; ?>
-        <?php require_once 'modal_editar.php'; ?>
-
-    </section>
-</div>
+            <?php require_once 'modal_registrar.php'; ?>
+            <?php require_once 'modal_eliminar.php'; ?>
+            <?php require_once 'modal_editar.php'; ?>
+        </section>
+    </div>
 </div>
 <script>
     function obtener_datos(id){
