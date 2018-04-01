@@ -69,7 +69,7 @@
         $("#id_eliminar").val(id);
     }
     $(document).ready(function(){
-        $("#tbDocente").dataTable();        
+        $("#tbDocente").dataTable();
         $("#frmRegistrar").validate({
             debug:true,
             rules:{
@@ -82,7 +82,7 @@
                         data: {
                             nombre_usuario: function() {
                                 return $("#nombre_usuario").val();
-                            }                                                        
+                            }
                         }
                     }
                 },
