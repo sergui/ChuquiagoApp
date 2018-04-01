@@ -16,7 +16,7 @@
 	if (!($tutores = $con->query("SELECT * FROM tutor where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
-	//var_dump($usuarios->fetch_assoc());
+	$con->close();
 	$pie_class="si";//Variable donde se poneun pie de pagina estatico	
 	require_once ('../../../public/views/plantilla.php');
 ?>

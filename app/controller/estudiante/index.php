@@ -16,6 +16,6 @@
 	if (!($estudiantes = $con->query("SELECT * FROM estudiante where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
-
+	$con->close();
 	require_once ('../../../public/views/plantilla.php');
 ?>

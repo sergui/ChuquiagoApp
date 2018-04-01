@@ -16,7 +16,7 @@
 	if (!($cursos = $con->query("SELECT * FROM curso where estado=1"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
-
+	$con->close();
 	//$pie_class="si";
 	require_once ('../../../public/views/plantilla.php');
 ?>
