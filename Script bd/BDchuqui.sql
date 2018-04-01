@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.09 (64 bit)
-MySQL - 5.7.19 : Database - bdchuquiago
+MySQL - 10.1.8-MariaDB : Database - bdchuquiago
 *********************************************************************
 */
 
@@ -30,10 +30,6 @@ CREATE TABLE `asignatura` (
 
 /*Data for the table `asignatura` */
 
-LOCK TABLES `asignatura` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `citacion` */
 
 DROP TABLE IF EXISTS `citacion`;
@@ -52,10 +48,6 @@ CREATE TABLE `citacion` (
 
 /*Data for the table `citacion` */
 
-LOCK TABLES `citacion` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `curso` */
 
 DROP TABLE IF EXISTS `curso`;
@@ -69,10 +61,6 @@ CREATE TABLE `curso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `curso` */
-
-LOCK TABLES `curso` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `dicta` */
 
@@ -88,10 +76,6 @@ CREATE TABLE `dicta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `dicta` */
-
-LOCK TABLES `dicta` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `docente` */
 
@@ -113,10 +97,6 @@ CREATE TABLE `docente` (
 
 /*Data for the table `docente` */
 
-LOCK TABLES `docente` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `encargado` */
 
 DROP TABLE IF EXISTS `encargado`;
@@ -131,10 +111,6 @@ CREATE TABLE `encargado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `encargado` */
-
-LOCK TABLES `encargado` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `estudiante` */
 
@@ -155,10 +131,6 @@ CREATE TABLE `estudiante` (
 
 /*Data for the table `estudiante` */
 
-LOCK TABLES `estudiante` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `faltas` */
 
 DROP TABLE IF EXISTS `faltas`;
@@ -172,10 +144,6 @@ CREATE TABLE `faltas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
-
-LOCK TABLES `faltas` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `faltas_cometidas` */
 
@@ -196,10 +164,6 @@ CREATE TABLE `faltas_cometidas` (
 
 /*Data for the table `faltas_cometidas` */
 
-LOCK TABLES `faltas_cometidas` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `kardes_curso` */
 
 DROP TABLE IF EXISTS `kardes_curso`;
@@ -218,10 +182,6 @@ CREATE TABLE `kardes_curso` (
 
 /*Data for the table `kardes_curso` */
 
-LOCK TABLES `kardes_curso` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `kardex` */
 
 DROP TABLE IF EXISTS `kardex`;
@@ -238,10 +198,6 @@ CREATE TABLE `kardex` (
 
 /*Data for the table `kardex` */
 
-LOCK TABLES `kardex` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `modelo_citacion` */
 
 DROP TABLE IF EXISTS `modelo_citacion`;
@@ -255,10 +211,6 @@ CREATE TABLE `modelo_citacion` (
 
 /*Data for the table `modelo_citacion` */
 
-LOCK TABLES `modelo_citacion` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `pfaltas` */
 
 DROP TABLE IF EXISTS `pfaltas`;
@@ -267,13 +219,11 @@ CREATE TABLE `pfaltas` (
   `id_pfalta` int(11) NOT NULL AUTO_INCREMENT,
   `max_faltas` int(10) NOT NULL,
   PRIMARY KEY (`id_pfalta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `pfaltas` */
 
-LOCK TABLES `pfaltas` WRITE;
-
-UNLOCK TABLES;
+insert  into `pfaltas`(`id_pfalta`,`max_faltas`) values (1,3);
 
 /*Table structure for table `roles` */
 
@@ -288,11 +238,7 @@ CREATE TABLE `roles` (
 
 /*Data for the table `roles` */
 
-LOCK TABLES `roles` WRITE;
-
 insert  into `roles`(`id_rol`,`nombre`,`estado`) values (1,'Administrador',1),(2,'Docente',1),(3,'Responsable',1),(4,'Estudiante',1),(5,'Secretaria(o)',1),(6,'Director(a)',1);
-
-UNLOCK TABLES;
 
 /*Table structure for table `tiene` */
 
@@ -311,10 +257,6 @@ CREATE TABLE `tiene` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiene` */
-
-LOCK TABLES `tiene` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `tutor` */
 
@@ -335,10 +277,6 @@ CREATE TABLE `tutor` (
 
 /*Data for the table `tutor` */
 
-LOCK TABLES `tutor` WRITE;
-
-UNLOCK TABLES;
-
 /*Table structure for table `usuario` */
 
 DROP TABLE IF EXISTS `usuario`;
@@ -356,10 +294,6 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuario` */
-
-LOCK TABLES `usuario` WRITE;
-
-UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -4,11 +4,11 @@
             <header class="panel-heading">
                 <div class="row panel-heading">
                     MAXIMO DE FALTAS
-                    <span class="pull-right">
+                    <!-- <span class="pull-right">
                         <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
                             <span class="fa fa-pencil"></span> NUEVO DE MAXIMO DEFALTAS 
                         </a>
-                    </span>
+                    </span> -->
                 </div>
             </header>
             <div class="panel-body">
@@ -17,7 +17,6 @@
                         <thead>
                             <tr>
                                 <th>MAXIMO DE FALTAS</th>
-                                
                                 <th class="text-center">ACCIONES</th>
                             </tr>
                         </thead>
@@ -25,12 +24,10 @@
                             <?php foreach ($pfaltas as $pfalta): ?>
                             <tr class="gradeX">
                                 <td><?php echo $pfalta['max_faltas']; ?></td>
-                                
                                 <td >
                                     <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $pfalta['id_pfalta'] ?>)">
                                         <span class="fa fa-edit" ></span>
                                     </a>
-                                  
                                 </td>
                             </tr>
                         <?php endforeach ?>
