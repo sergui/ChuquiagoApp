@@ -62,21 +62,6 @@ CREATE TABLE `curso` (
 
 /*Data for the table `curso` */
 
-/*Table structure for table `dicta` */
-
-DROP TABLE IF EXISTS `dicta`;
-
-CREATE TABLE `dicta` (
-  `id_docente` int(11) NOT NULL,
-  `id_asignatura` bigint(11) NOT NULL,
-  PRIMARY KEY (`id_docente`,`id_asignatura`),
-  KEY `id_asignatura2` (`id_asignatura`),
-  CONSTRAINT `dicta_ibfk_1` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `id_docente1` FOREIGN KEY (`id_docente`) REFERENCES `docente` (`id_docente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `dicta` */
-
 /*Table structure for table `docente` */
 
 DROP TABLE IF EXISTS `docente`;
