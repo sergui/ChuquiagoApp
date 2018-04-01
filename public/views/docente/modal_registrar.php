@@ -34,9 +34,13 @@
                     <div class="form-group">
                         <label for="Nombre">ROL:</label>
                         <select name="id_rol" class="form-control" id="id_rol">
-                            <option value="">Seleccione un rol</option>
+                            <option value="">SELECCIONE UN ROL</option>
                             <?php foreach ($roles as $rol): ?>
-                            <option value="<?php echo $rol['id_rol']?>"><?php echo $rol['nombre']?></option>
+                                <?php if($rol['id_rol']==2):?>
+                                <option value="<?php echo $rol['id_rol']?>" selected="true"><?php echo $rol['nombre']?></option>
+                                <?php else:?>
+                                <option value="<?php echo $rol['id_rol']?>"><?php echo $rol['nombre']?></option>
+                                <?php endif;?>
                             <?php endforeach ?>
                         </select>
                     </div>
