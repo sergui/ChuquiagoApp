@@ -27,7 +27,7 @@
                                     <td><?php echo $estudiante['nombre']; ?></td>
                                     <td><?php echo $estudiante['paterno']; ?></td>
                                     <td >
-                                       <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="<obtener_datos(<?php echo $estudiante['id_rude'] ?>)">
+                                       <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $estudiante['id_rude'] ?>)">
                                         <span class="fa fa-edit" ></span>
                                     </a>
                                     <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $estudiante['id_rude'] ?>)">
@@ -53,11 +53,12 @@
             url: '../../models/estudiante/datos_estudiante.php',
             type: 'POST',
             dataType: "json",
-            data: {id_asignatura: id},
+            data: {id_rude: id},
             success: function(datos){
-                $("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
+                console.log(datos);
+                /*$("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
                 $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
-                $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo
+                $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo*/
             }
         });
     }
