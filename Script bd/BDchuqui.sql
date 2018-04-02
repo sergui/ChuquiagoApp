@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.09 (64 bit)
-MySQL - 10.1.8-MariaDB : Database - bdchuquiago
+SQLyog Enterprise v12.09 (64 bit)
+MySQL - 10.1.9-MariaDB : Database - bdchuquiago
 *********************************************************************
 */
 
@@ -26,9 +26,11 @@ CREATE TABLE `asignatura` (
   `sigla` varchar(7) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `estado` bigint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_asignatura`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 /*Data for the table `asignatura` */
+
+insert  into `asignatura`(`id_asignatura`,`nombre_asignatura`,`sigla`,`estado`) values (1,'MATEMATICAS','MAT',1),(2,'QUIMICA','QMC',1),(3,'BIOLOGIA','BIO',1),(4,'PSICOLOGIA','PSC',1),(5,'FISICA','FIS',1),(6,'LITERATURA','LIT',1),(7,'ARTES PLASTICAS','ART',1),(8,'MUSICA','MUS',1),(9,'FILISOFIA','FIL',1),(10,'EDUCACION CIVIC','CIV',1),(11,'HISTORIA','HIS',1),(12,'CIENCIAS NATURA','CNT',1),(13,'GEOGRAFIA','GEO',1),(14,'TECNICA VOCACIO','TEC',1),(15,'EDUCACION FISIC','EDU',1),(16,'IDIOMAS','IDI',1),(17,'RELIGION','REL',1),(18,'CIENCIAS SOCIAL','CSO',1);
 
 /*Table structure for table `citacion` */
 
@@ -58,9 +60,11 @@ CREATE TABLE `curso` (
   `paralelo` varchar(8) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 /*Data for the table `curso` */
+
+insert  into `curso`(`id_curso`,`grado`,`paralelo`,`estado`) values (1,'1RO','A',1),(2,'1RO','B',1),(3,'1RO','C',1),(4,'1RO','D',1),(5,'1RO','E',1),(6,'2DO','A',1),(7,'2DO','B',1),(8,'2DO','C',1),(9,'2DO','D',1),(10,'2DO','E',1),(11,'3RO','A',1),(12,'3RO','B',1),(13,'3RO','C',1),(14,'3RO','D',1),(15,'3RO','E',1),(16,'4TO','A',1),(17,'4TO','B',1),(18,'4TO','C',1),(19,'4TO','D',1),(20,'4TO','E',1),(21,'5TO','A',1),(22,'5TO','B',1),(23,'5TO','C',1),(24,'5TO','D',1),(25,'5TO','E',1),(26,'6TO','A',1),(27,'6TO','B',1),(28,'6TO','C',1),(29,'6TO','D',1),(30,'6TO','E',1);
 
 /*Table structure for table `docente` */
 
