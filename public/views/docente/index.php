@@ -21,6 +21,7 @@
                                 <th>Ap. Materno</th>
                                 <th>Celular</th>
                                 <th>Nombre de usuario</th>
+                                <th>Rol</th>
                                 <th class="text-center">ACCIONES</th>
                             </tr>
                         </thead>
@@ -31,6 +32,8 @@
                                     <td><?php echo $docente['paterno']; ?></td>
                                     <td><?php echo $docente['materno']; ?></td>
                                     <td><?php echo $docente['celular']; ?></td>
+                                    <td><?php echo $docente['nombre_usuario']; ?></td>
+                                    <td><?php echo $docente['nombre_rol']; ?></td>
                                     <td >
                                         <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $docente['id_docente'] ?>)">
                                             <span class="fa fa-edit" ></span>
@@ -125,7 +128,7 @@
                             transicionSalir();
                             mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
                             setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>curso/index.php';
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>docente/index.php';
                             }, 3000);
                         }else{
                             transicionSalir();

@@ -6,7 +6,7 @@
 	if(isset($_REQUEST['ci'])){
 		$tabla="docente";
 		$columna="ci";
-		$comparar=$_REQUEST['ci']
+		$comparar=$_REQUEST['ci'];
 	}else{
 		$tabla="usuario";
 		$columna="nombre_usuario";
@@ -14,7 +14,7 @@
 	}
 	if(isset($_REQUEST['tipo'])){
 
-		$sql="SELECT * FROM '{$tabla}' WHERE '{$columna}' = '{$comparar}' and id_usuario != {$_REQUEST['id_usuario']}";
+		$sql="SELECT * FROM {$tabla} WHERE {$columna} = '{$comparar}' and id_usuario != {$_REQUEST['id_usuario']}";
 		if($resultado=$con->query($sql)){
 			$nrodefilas=$resultado->num_rows;
 			if($nrodefilas == 0)
@@ -23,15 +23,13 @@
 				echo "false";
 		}
 	}else{
-		$sql="SELECT * FROM '{$tabla}' WHERE '{$columna}' = '{$comparar}'";
+		$sql="SELECT * FROM {$tabla} WHERE {$columna} = '{$comparar}'";
 		if ($resultado=$con->query($sql)) {
 			$nrodefilas=$resultado->num_rows;
 			if($nrodefilas == 0)
 				echo "true";
 			else
 				echo "false";
-		}else{
-			echo "Falló la insercion: (" . $con->errno . ") " . $con->error;
 		}
 	}
 ?>
