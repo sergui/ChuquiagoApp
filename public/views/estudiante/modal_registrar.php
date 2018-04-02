@@ -37,14 +37,14 @@
                      <div class="form-group">
                         <label for="Nombre">Sexo</label>
                         <div class="radio">
-                        <label><input type="radio" name="sexo" id="sexom" value="m">Masculino</label><br>
-                        <label><input type="radio" name="sexo" id="sexof" value="f">Femenino</label>
+                        <label><input type="radio" name="sexo" id="sexom" value="masculino">Masculino</label><br>
+                        <label><input type="radio" name="sexo" id="sexof" value="femenino">Femenino</label>
                         </div>
                     </div>
 
                      <div class="form-group">
                         <label for="Nombre">Domicilio</label>
-                        <input class=" form-control" id="dimicilio" name="domicilio" type="text" />
+                        <input class=" form-control" id="domicilio" name="domicilio" type="text" />
                     </div>
                    
 
