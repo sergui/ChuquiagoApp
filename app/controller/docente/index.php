@@ -12,8 +12,18 @@
 	$contenido="docente/index.php";
 	$subTitulo="Docente";
 	$menu_a= $menus['U_LISTA'];
-
-	if (!($docentes = $con->query("SELECT * FROM docente where estado = 1 "))) {
+	$sql="SELECT d.id_docente,d.ci
+			,d.nombre
+			,d.paterno
+			,d.materno
+			,d.materno
+			,d.celular
+			,u.nombre_usuario,u.id_usuario
+			,r.nombre AS nombre_rol, r.id_rol
+			FROM docente d, usuario u, roles r
+			WHERE d.id_user=u.id_usuario AND u.id_rol=r.id_rol
+			AND d.estado=1;";
+	if (!($docentes = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
