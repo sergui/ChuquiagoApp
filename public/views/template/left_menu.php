@@ -39,6 +39,9 @@
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>docente/">Plantel Docente Admininstrativo</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>estudiante/">Estudiantes</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Padres de familia</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Asignar tutor Estudiante</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Asignar curso asignatura</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">asignar curso Estudiante</a></li>
                 </ul>
             </li>
             <li class="menu-list"><a href=""><i class="fa fa-cog"></i> <span>Configuraciónes</span></a>
