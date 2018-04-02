@@ -85,7 +85,7 @@
                 nombre_asignatura:{
                     required:true,
                     minlength: 3,
-                    maxlength:15,
+                    maxlength:20,
                 },
                 sigla:{
                     required:true,
@@ -136,7 +136,7 @@
                 nombre_asignatura:{
                     required:true,
                     minlength: 3,
-                    maxlength:15,
+                    maxlength:20,
                 },
                 sigla:{
                     required:true,
