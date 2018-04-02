@@ -59,9 +59,15 @@
             dataType: "json",
             data: {id_tutor: id},
             success: function(datos){
-                $("#frmEditar [id=grado]").val(datos['curso']['grado']);
-                $("#frmEditar [id=paralelo]").val(datos['curso']['paralelo']);
-                $("#id_curso").val(datos['curso']['id_curso']);
+                //console.log(datos);
+                $("#frmEditar [id=id_tutor]").val(datos['tutor']['id_tutor']);
+                $("#frmEditar [id=nombres]").val(datos['tutor']['nombres']);
+                $("#frmEditar [id=paterno]").val(datos['tutor']['paterno']);
+                $("#frmEditar [id=materno]").val(datos['tutor']['materno']);
+                $("#frmEditar [id=celular]").val(datos['tutor']['celular']);
+                $("#frmEditar [id=telefono]").val(datos['tutor']['telefono']);
+                $("#frmEditar [id=domicilio]").val(datos['tutor']['domicilio']);
+
             }
         });
     }
@@ -75,17 +81,17 @@
             rules:{
                 nombres:{
                     required:true,
-                    minlength: 5,
+                    minlength: 3,
                     maxlength:15,
                 },
                 paterno:{
                     required:true,
-                    minlength: 5,
+                    minlength: 3,
                     maxlength:15,
                 },
                 materno:{
                     required:true,
-                    minlength: 5,
+                    minlength: 3,
                     maxlength:15,
                 },
                 celular:{
@@ -93,15 +99,10 @@
                     minlength: 8,
                     maxlength:8,
                 },
-                telefono:{
-                    required:false,
-                    minlength: 5,
-                    maxlength:15,
-                },
                 domicilio:{
                     required:true,
                     minlength: 5,
-                    maxlength:15,
+                    maxlength:20,
                 }
             },
             messages:{
@@ -148,29 +149,29 @@
                 });
             }
         });
-        $('#frmTutor').validate({
+        $('#frmEditar').validate({
             debug:true,
         	rules:{
                 nombres:{
                     required:true,
-                    minlength: 5,
+                    minlength: 3,
                     maxlength:15,
                 },
                 paterno:{
                     required:true,
-                    minlength: 5,
-                    maxlength:2,
-                }
+                    minlength: 3,
+                    maxlength:15,
+                },
                 materno:{
                     required:true,
-                    minlength: 5,
-                    maxlength:2,
-                }
+                    minlength: 3,
+                    maxlength:15,
+                },
                 celular:{
                     required:true,
-                    minlength: 5,
-                    maxlength:2,
-                }
+                    minlength: 8,
+                    maxlength:8,
+                },
                 domicilio:{
                     required:true,
                     minlength: 5,
@@ -179,16 +180,24 @@
             },
             messages:{
                 nombres:{
-                  required:"Este es Campo Obligatorio escriba su nombre.",
+                    required:"Este es Campo es obligatorio escriba su nombre.",
                 },
                 paterno:{
-                   required:"Este es Campo Obligatorio escriba su apellido paterno.",
+                    required:"Este es Campo Obligatorio escriba su apellido paterno.",
                 },
-
+                materno:{
+                    required:"Este es Campo Obligatorio escriba su apellido materno.",
+                },
+                celular:{
+                    required:"Este es Campo Obligatorio escriba su nro. de celular",
+                },
+                domicilio:{
+                    required:"Este es Campo Obligatorio escriba su direccion de domicilio.",
+                },
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/curso/editar_model.php',
+                    url: '../../models/tutor/editar_model.php',
                     type: 'post',
                     data: $("#frmEditar").serialize(),
                     beforeSend: function() {
@@ -203,11 +212,11 @@
                             transicionSalir();
                             mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
                             setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>curso/index.php';
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>tutor/index.php';
                             }, 3000);
                         }else{
                             transicionSalir();
-                            mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                            mensajes_alerta('ERROR AL EDITAR DATOS DEL TUTOR verifique los datos!! '+response,'error','EDITAR DATOS');
                         }
                     }
                 });
@@ -215,7 +224,7 @@
         });
         $("#btnEliminar").click(function(event) {
             $.ajax({
-                url: '../../models/curso/eliminar_model.php',
+                url: '../../models/tutor/eliminar_model.php',
                 type: 'POST',
                 data: $("#frmEliminar").serialize(),
                 beforeSend: function() {
@@ -228,11 +237,11 @@
                         transicionSalir();
                         mensajes_alerta('DATOS ELIMINADOS ELIMINADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
                         setTimeout(function(){
-                            window.location.href='<?php echo ROOT_CONTROLLER ?>curso/index.php';
+                            window.location.href='<?php echo ROOT_CONTROLLER ?>tutor/index.php';
                         }, 3000);
                     }else{
                         transicionSalir();
-                        mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                        mensajes_alerta('ERROR AL ELIMINAR AL TUTOR verifique los datos!! '+response,'error','EDITAR DATOS');
                     }
                 }
             });
