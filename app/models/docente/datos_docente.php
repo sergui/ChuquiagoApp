@@ -12,7 +12,7 @@
 			,r.nombre AS nombre_rol, r.id_rol
 			FROM docente d, usuario u, roles r
 			WHERE d.id_user=u.id_usuario AND u.id_rol=r.id_rol
-			AND d.estado=1 and u.id_docente={$id};";
+			AND d.estado=1 and d.id_docente={$id};";
 	if($result = $con->query($sql)){
 		if($result->num_rows > 0){
 			$jsondata['estado']="correcto";

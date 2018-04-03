@@ -62,11 +62,20 @@
             dataType: "json",
             data: {id_docente: id},
             success: function(datos){
+                //console.log(datos);
                 $("#frmEditar [id=nombre]").val(datos['docente']['nombre']);
                 $("#frmEditar [id=paterno]").val(datos['docente']['paterno']);
                 $("#frmEditar [id=materno]").val(datos['docente']['materno']);
-                $("#frmEditar [id=celular]").val(datos['docente']['celular']);
+                $("#frmEditar [id=celular]").val(datos['docente']['celular']);                
+                $("#frmEditar [id=nombre_usuario]").val(datos['docente']['nombre_usuario']);
+                $("#id_role option").each(function(){
+                    if($(this).val()==datos['docente']['id_rol']){
+                        //console.log('ok: '+$(this).val());
+                        $(this).attr('selected', 'true');
+                    }
+                });
                 $("#id_docente").val(datos['docente']['id_docente']);
+                $("#id_usuario").val(datos['docente']['id_usuario']);
             }
         });
     }
@@ -151,21 +160,12 @@
                         type: 'post',
                         data: {
                             nombre_usuario: function() {
-                                return $("#nombre_usuario").val();
-                            }
-                        }
-                    }
-                },
-                ci:{
-                    required:true,
-                    minlength:5,
-                    remote:{
-                        url: "../../models/usuario/verifica.php",
-                        type: 'post',
-                        data: {
-                            ci: function() {
-                                return $("#ci").val();
-                            }
+                                return $("#frmEditar [id=nombre_usuario]").val();
+                            },
+                            id_usuario: function() {
+                                return $("#id_usuario").val();
+                            },
+                            tipo:"si",
                         }
                     }
                 }
@@ -173,10 +173,7 @@
             messages:{
                 nombre_usuario:{
                     remote:"Debe elegir otro nombre de usuario.",
-                },
-                ci:{
-                    remote:"El numero de C.I. ya esta registrado verifique",
-                },
+                }               
             },
             submitHandler: function (form) {
                 $.ajax({
