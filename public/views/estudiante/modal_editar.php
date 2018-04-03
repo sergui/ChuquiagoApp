@@ -3,20 +3,49 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                <h4 class="modal-title">Editar asignatura</h4>
+                <h4 class="modal-title">EDITAR DATOS DEL ESTUDIANTE</h4>
             </div>
             <div class="modal-body">
                 <form role="form" id="frmEditar" name="frmEditar">
-                    <input type="hidden" name="id_asignatura" id="id_asignatura" class="form-control" value="">
+                    <input type="hidden" name="id_rude  " id="id_rude" class="form-control" value="">
+                    
                     <div class="form-group">
-                        <label for="Nombre">Nuevo Nombre de la asignatura</label>
-                        <input class=" form-control" id="nombre_asignatura" name="nombre_asignatura" minlength="7 " type="text" required autofocus="true" />
-                    </div><br>
+                        <label for="Nombre">editar nombre</label>
+                        <input class=" form-control" id="nombre" name="nombre" minlength="7 " type="text" required autofocus="true" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Nombre">editar apellido paterno</label>
+                        <input class=" form-control" id="paterno" name="paterno" minlength="7 " type="text" required autofocus="true" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Nombre">editar apellido materno</label>
+                        <input class=" form-control" id="materno" name="materno" minlength="7 " type="text" required autofocus="true" />
+                    </div>
 
                     <div class="form-group">
-                        <label for="Nombre">Nuevo Nombre de la sigla</label>
-                        <input class=" form-control" id="sigla" name="sigla" minlength="7 " type="text" required autofocus="true" />
-                    </div><br>
+                        <label class="control-label">editar Fecha  de nacimiento:</label>
+                        <div data-date-viewmode="date" data-date="<?php echo date('d/m/Y'); ?>"  class="input-append date cFecha">
+                            <input type="text" readonly="" value="" size="16" class="form-control" name="fecha_nac" id="fecha_nac">
+                            <span class="input-group-lg add-on">
+                                <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="Nombre">editar sexo</label>
+                        <input class=" form-control" id="sexo" name="sexo" minlength="7 " type="text" required autofocus="true" />
+                    </div>
+
+                       <div class="form-group">
+                        <label for="Nombre">editar domicilio</label>
+                        <input class=" form-control" id="domicilio" name="domicilio" type="text" />
+                    </div>
+
+
+                
                  
                     <div class=" modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

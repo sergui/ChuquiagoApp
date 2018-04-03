@@ -57,14 +57,16 @@
 <script>
     function obtener_datos(id){
         $.ajax({
-            url: '../../models/curso/datos_curso.php',
+            url: '../../models/docente/datos_docente.php',
             type: 'POST',
             dataType: "json",
-            data: {id_curso: id},
+            data: {id_docente: id},
             success: function(datos){
-                $("#frmEditar [id=grado]").val(datos['curso']['grado']);
-                $("#frmEditar [id=paralelo]").val(datos['curso']['paralelo']);
-                $("#id_curso").val(datos['curso']['id_curso']);
+                $("#frmEditar [id=nombre]").val(datos['docente']['nombre']);
+                $("#frmEditar [id=paterno]").val(datos['docente']['paterno']);
+                $("#frmEditar [id=materno]").val(datos['docente']['materno']);
+                $("#frmEditar [id=celular]").val(datos['docente']['celular']);
+                $("#id_docente").val(datos['docente']['id_docente']);
             }
         });
     }
@@ -139,30 +141,46 @@
             }
         });
         $('#frmEditar').validate({
-            debug:true,
-        	rules:{
-                grado:{
+           debug:true,
+            rules:{
+                nombre_usuario:{
                     required:true,
                     minlength: 3,
-                    maxlength:15,
+                    remote: {
+                        url: "../../models/usuario/verifica.php",
+                        type: 'post',
+                        data: {
+                            nombre_usuario: function() {
+                                return $("#nombre_usuario").val();
+                            }
+                        }
+                    }
                 },
-                paralelo:{
+                ci:{
                     required:true,
-                    minlength: 1,
-                    maxlength:2,
+                    minlength:5,
+                    remote:{
+                        url: "../../models/usuario/verifica.php",
+                        type: 'post',
+                        data: {
+                            ci: function() {
+                                return $("#ci").val();
+                            }
+                        }
+                    }
                 }
             },
             messages:{
-                grado:{
-                    required:"Este es Campo Obligatorioooo.",
+                nombre_usuario:{
+                    remote:"Debe elegir otro nombre de usuario.",
                 },
-                paralelo:{
-                    required:"Este es Campo Obligatorioooo.",
+                ci:{
+                    remote:"El numero de C.I. ya esta registrado verifique",
                 },
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/curso/editar_model.php',
+                    url: '../../models/docente/editar_model.php',
                     type: 'post',
                     data: $("#frmEditar").serialize(),
                     beforeSend: function() {
@@ -177,7 +195,7 @@
                             transicionSalir();
                             mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
                             setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>curso/index.php';
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>docente/index.php';
                             }, 3000);
                         }else{
                             transicionSalir();
@@ -189,7 +207,7 @@
         });
         $("#btnEliminar").click(function(event) {
             $.ajax({
-                url: '../../models/curso/eliminar_model.php',
+                url: '../../models/docente/eliminar_model.php',
                 type: 'POST',
                 data: $("#frmEliminar").serialize(),
                 beforeSend: function() {
@@ -202,11 +220,11 @@
                         transicionSalir();
                         mensajes_alerta('DATOS ELIMINADOS ELIMINADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
                         setTimeout(function(){
-                            window.location.href='<?php echo ROOT_CONTROLLER ?>curso/index.php';
+                            window.location.href='<?php echo ROOT_CONTROLLER ?>docente/index.php';
                         }, 3000);
                     }else{
                         transicionSalir();
-                        mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                        mensajes_alerta('ERROR AL ELIMINAR AL DOCENTE verifique los datos!! '+response,'error','EDITAR DATOS');
                     }
                 }
             });

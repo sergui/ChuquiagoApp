@@ -18,6 +18,11 @@
                             <tr>
                                 <th>NOMBRES </th>
                                 <th>APELLIDO PATERNO</th>
+                                <th>APELLIDO MATERNO</th>
+                                <th>SEXO</th>
+                                <th>FEC. NACIMIENTO</th>
+                                <th>DOMICILIO</th>
+
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
@@ -26,6 +31,10 @@
                                 <tr class="gradeX">
                                     <td><?php echo $estudiante['nombre']; ?></td>
                                     <td><?php echo $estudiante['paterno']; ?></td>
+                                    <td><?php echo $estudiante['materno']; ?></td>
+                                    <td><?php echo $estudiante['sexo']; ?></td>
+                                    <td><?php echo $estudiante['fecha_nac']; ?></td>
+                                    <td><?php echo $estudiante['domicilio']; ?></td>
                                     <td >
                                        <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $estudiante['id_rude'] ?>)">
                                         <span class="fa fa-edit" ></span>
@@ -55,10 +64,14 @@
             dataType: "json",
             data: {id_rude: id},
             success: function(datos){
-                console.log(datos);
-                /*$("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
-                $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
-                $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo*/
+                //console.log(datos);
+                $("#frmEditar [id=nombre]").val(datos['estudiante']['nombre']);
+                $("#frmEditar [id=paterno]").val(datos['estudiante']['paterno']);
+                $("#frmEditar [id=materno]").val(datos['estudiante']['materno']);
+                $("#frmEditar [id=fecha_nac]").val(datos['estudiante']['fecha_nac']);
+                $("#frmEditar [id=sexo]").val(datos['estudiante']['sexo']);
+                $("#frmEditar [id=domicilio]").val(datos['estudiante']['domicilio']);
+                $("#id_rude").val(datos['estudiante']['id_rude']);//enviando id para el modelo
             }
         });
     }
@@ -106,7 +119,7 @@
                 sexo:{
                     required:true,
                     minlength: 1,
-                    maxlength:5,
+                    maxlength:15,
                 },
                 fecha_nac:{
                     required:true,
@@ -161,31 +174,60 @@
         });
         /////////////editar DATOS////////////////
         $('#frmEditar').validate({
-            debug:true,
-            rules:
-            {
-                nombre_asignatura:{
+           debug:true,
+            rules:{
+                nombre:{
                     required:true,
                     minlength: 3,
                     maxlength:15,
                 },
-                sigla:{
+                paterno:{
                     required:true,
                     minlength: 1,
-                    maxlength:5,
+                    maxlength:15,
+                },
+                materno:{
+                    required:true,
+                    minlength: 1,
+                    maxlength:15,
+                },
+                domicilio:{
+                    required:true,
+                    minlength: 1,
+                    maxlength:200,
+                },
+                sexo:{
+                    required:true,
+                    minlength: 1,
+                    maxlength:15,
+                },
+                fecha_nac:{
+                    required:true,
                 }
             },
             messages:{
-               nombre_asignatura:{
-                    required:"Este es Campo Obligatorioooo.",
+                nombre:{
+                    required:"Este es Campo Obligatorio.",
                 },
-                sigla:{
-                    required:"Este es Campo Obligatorioooo.",
+                paterno:{
+                    required:"Este es Campo Obligatorio.",
                 },
+                 materno:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                domicilio:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                 sexo:{
+                    required:"Este es Campo Obligatorio.",
+                },
+                fecha_nac:{
+                    required:"Este es Campo Obligatorio.",
+                }
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/asignatura/editar_model.php',
+                    url: '../../models/estudiante/editar_model.php',
                     type: 'post',
                     data: $("#frmEditar").serialize(),
                     beforeSend: function() {
@@ -200,11 +242,11 @@
                             transicionSalir();
                             mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
                             setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>asignatura/index.php';
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>estudiante/index.php';
                             }, 3000);
                         }else{
                             transicionSalir();
-                            mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                            mensajes_alerta('ERROR AL EDITAR EL ESTUDIANTE verifique los datos!! '+response,'error','EDITAR DATOS');
                         }
                     }
                 });
@@ -213,7 +255,7 @@
         /////////////ELIMINAR DATOS////////////////
         $("#btnEliminar").click(function(event) {
             $.ajax({
-                url: '../../models/asignatura/eliminar_model.php',
+                url: '../../models/estudiante/eliminar_model.php',
                 type: 'POST',
                 data: $("#frmEliminar").serialize(),
                 beforeSend: function() {
@@ -226,11 +268,11 @@
                         transicionSalir();
                         mensajes_alerta('DATOS ELIMINADOS ELIMINADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
                         setTimeout(function(){
-                            window.location.href='<?php echo ROOT_CONTROLLER ?>asignatura/index.php';
+                            window.location.href='<?php echo ROOT_CONTROLLER ?>estudiante/index.php';
                         }, 3000);
                     }else{
                         transicionSalir();
-                        mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
+                        mensajes_alerta('ERROR AL ELIMINAR AL ESTUDIANTE verifique los datos!! '+response,'error','EDITAR DATOS');
                     }
                 }
             });
