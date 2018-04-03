@@ -28,9 +28,9 @@
                 }
                 if (!$this->db_connection->connect_errno) {
                     $user_name = $this->db_connection->real_escape_string($_POST['usuario']);
-                    $sql = "SELECT u.id_usuario,u.nombre_usuario, u.password, r.nombre as nombre_rol, d.nombre,d.id_docente, d.paterno,d.materno,d.celular
+                    echo $sql = "SELECT u.id_usuario,u.nombre_usuario, u.password, r.nombre as nombre_rol, d.nombre,d.id_docente, d.paterno,d.materno,d.celular
                             FROM usuario u, roles r, docente d
-                            WHERE nombre_usuario = '{$user_name}' AND estado=1  AND u.id_rol= r.id_rol and d.id_user= u.id_usuario";
+                            WHERE nombre_usuario = '{$user_name}' AND u.estado=1  AND u.id_rol= r.id_rol and d.id_user= u.id_usuario";
                     $result_of_login_check = $this->db_connection->query($sql);
 
                     if ($result_of_login_check->num_rows == 1) {
