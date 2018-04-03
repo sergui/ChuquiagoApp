@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form role="form" id="frmEditar" name="frmEditar">
-                    <input type="hidden" name="id_rude  " id="id_rude" class="form-control" value="">
+                    <input type="hidden" name="id_rude" id="id_rude" class="form-control" value="">
                     
                     <div class="form-group">
                         <label for="Nombre">editar nombre</label>

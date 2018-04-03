@@ -64,7 +64,7 @@
             dataType: "json",
             data: {id_rude: id},
             success: function(datos){
-                //console.log(datos);
+                console.log(datos);
                 $("#frmEditar [id=nombre]").val(datos['estudiante']['nombre']);
                 $("#frmEditar [id=paterno]").val(datos['estudiante']['paterno']);
                 $("#frmEditar [id=materno]").val(datos['estudiante']['materno']);
