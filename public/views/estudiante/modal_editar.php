@@ -10,17 +10,17 @@
                     <input type="hidden" name="id_rude" id="id_rude" class="form-control" value="">
                     
                     <div class="form-group">
-                        <label for="Nombre">editar nombre</label>
+                        <label for="Nombre">Nombre</label>
                         <input class=" form-control" id="nombre" name="nombre" minlength="7 " type="text" required autofocus="true" />
                     </div>
                     
                     <div class="form-group">
-                        <label for="Nombre">editar apellido paterno</label>
+                        <label for="Nombre">Apellido paterno</label>
                         <input class=" form-control" id="paterno" name="paterno" minlength="7 " type="text" required autofocus="true" />
                     </div>
                     
                     <div class="form-group">
-                        <label for="Nombre">editar apellido materno</label>
+                        <label for="Nombre">Apellido materno</label>
                         <input class=" form-control" id="materno" name="materno" minlength="7 " type="text" required autofocus="true" />
                     </div>
 
