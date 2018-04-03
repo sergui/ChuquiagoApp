@@ -8,19 +8,19 @@
             <div class="modal-body">
                     <form class="cmxform form-horizontal adminex-form" id="frmTutor" name="frmTutor" method="post">
                         <div class="form-group ">
-                            <label for="cname" class="control-label col-lg-2">Nombres (obligatorio)</label>
+                            <label for="cname" class="control-label col-lg-2">Nombres</label>
                             <div class="col-lg-8">
                                 <input class=" form-control" id="nombres" name="nombres" minlength="3 " type="text" required autofocus="true" />
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="paterno" class="control-label col-lg-2">Ap. Paterno (Obligatorio)</label>
+                            <label for="paterno" class="control-label col-lg-2">Ap. Paterno</label>
                             <div class="col-lg-8">
                                 <input class="form-control " id="paterno" type="text" name="paterno" required  minlength="3" />
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="materno" class="control-label col-lg-2">Ap. Materno (Obligatorio)</label>
+                            <label for="materno" class="control-label col-lg-2">Ap. Materno</label>
                             <div class="col-lg-8">
                                 <input class="form-control " id="materno" type="text" name="materno" required  minlength="3" />
                             </div>
@@ -28,13 +28,13 @@
                         <div class="form-group ">
                             <label for="celular" class="control-label col-lg-2">Celular</label>
                             <div class="col-lg-8">
-                                <input class="form-control " id="celular" type="text" name="celular" required  minlength="8" />
+                                <input class="form-control " id="celular" type="number" name="celular" required  minlength="8" />
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="telefono" class="control-label col-lg-2">Telefono</label>
                             <div class="col-lg-8">
-                                <input class="form-control " id="telefono" type="text" name="telefono" required  minlength="8" />
+                                <input class="form-control " id="telefono" type="number" name="telefono" required  minlength="8" />
                             </div>
                         </div>
                         <div class="form-group ">
