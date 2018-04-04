@@ -37,13 +37,13 @@
 			}
 			
 	}else{
-		echo ("<h3>YA EXISTE USUARIO</h3>");
+		//echo ("<h3>YA EXISTE USUARIO</h3>");
 		$sqlIdUserLast = "SELECT id_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 1";
 		$resIdUserLast = $con->query($sqlIdUserLast);
 
 		if($resIdUserLast->num_rows == 1){
 			$fila = $resIdUserLast->fetch_array();
-			$nombreUser = $nombreUser+$fila[0]+1;
+			$nombreUser = $nombreUser.$fila[0]+1;
 			$contraseniaUser = password_hash($nombreUser, PASSWORD_DEFAULT);
 			$sqlInsertUser = "INSERT INTO usuario (id_usuario, nombre_usuario, password, estado, id_rol) VALUES (NULL, '{$nombreUser}', '{$contraseniaUser}', '1', '3')";
 			if(!$con->query($sqlInsertUser)){
