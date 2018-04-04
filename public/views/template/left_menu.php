@@ -15,8 +15,8 @@
             <div class="media logged-user">
                 <img alt="" src="<?php echo ROOT; ?>resources/assets/images/photos/user-avatar.png" class="media-object">
                 <div class="media-body">
-                    <h4><a href="#"> <?php //echo $_SESSION['nombre']; ?></a></h4>
-                    <span>"<?php //echo $_SESSION['user_name']; ?>"</span>
+                    <h4><a href="#"> <?php echo $_SESSION['nombre']; ?></a></h4>
+                    <span>"<?php echo $_SESSION['user_name']; ?>"</span>
                 </div>
             </div>
             <h5 class="left-nav-title">Información de cuenta</h5>

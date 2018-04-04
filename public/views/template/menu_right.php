@@ -3,7 +3,7 @@
         <li>
             <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                 <img src="<?php echo ROOT; ?>resources/assets/images/photos/user-avatar.png" alt="" />
-                nombre de usuario
+                <?php echo $_SESSION['nombre']; ?>
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
