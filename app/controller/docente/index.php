@@ -22,7 +22,7 @@
 			,r.nombre AS nombre_rol, r.id_rol
 			FROM docente d, usuario u, roles r
 			WHERE d.id_user=u.id_usuario AND u.id_rol=r.id_rol
-			AND d.estado=1;";
+			AND d.estado=1 AND d.id_user != {$_SESSION['id_user']};";
 	if (!($docentes = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
