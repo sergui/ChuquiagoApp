@@ -13,15 +13,14 @@
 	
 	//Obtenemos el usuario del tutor
 
-	$nombreUser = substr($nombres,0,1)."".substr($paterno,0,1)."".substr($materno,0,1);
-	$sqlSearchNomUser = "SELECT id_usuario FROM usuario WHERE nombre_usuario = '". $nombreUser."'";
+	$nombreUser = substr($nombres,0,1).".".$paterno;
+	$sqlSearchNomUser = "SELECT id_usuario FROM usuario WHERE nombre_usuario = '".$nombreUser."'";
 	$resSearchNomUser = $con->query($sqlSearchNomUser);
 	if($resSearchNomUser->num_rows == 0){			
 			$sqlInsertUser = "INSERT INTO usuario (id_usuario, nombre_usuario, password, estado, id_rol) VALUES (NULL, '{$nombreUser}', '{$nombreUser}', '1', '3')";
 			if(!$con->query($sqlInsertUser)){
 				echo ("<h1>ERROR AL INSERTAR EL USUARIO</h1>");
 			}else{
-				echo ("");
 				$sqlIdUser = "SELECT id_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 1";
 				$resIdUser = $con->query($sqlIdUser);
 				if($resIdUser->num_rows == 1){
