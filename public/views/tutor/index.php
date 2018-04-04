@@ -75,6 +75,11 @@
         $("#id_eliminar").val(id);
     }
     $(document).ready(function(){
+		 $("#id_curso").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "No se encontro resultados!",
+            width: "95%"
+        });
         $("#tbtutor").dataTable();
         $("#frmTutor").validate({
             debug:true,
