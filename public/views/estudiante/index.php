@@ -12,6 +12,19 @@
                 </div>
             </header>
             <div class="panel-body">
+                <!-- <form class="form-horizontal adminex-form"> -->
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label col-lg-2" for="inputSuccess">Seleccione curso</label>
+                        <div class="col-lg-7">
+                            <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">
+                                <option value=""></option>
+                                <?php foreach ($cursos as $curso): ?>
+                                    <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['grado'].' '.$curso['paralelo']; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    </div>
+                <!-- </form> -->
                 <div class="adv-table" >
                     <table  class="display table table-bordered table-striped" id="tbEstudiante"">
                         <thead>
@@ -93,6 +106,11 @@
 		////////////////busquea de datos/////////////////
         $("#tbEstudiante").dataTable();
         /////////////REGISTRAR DATOS////////////////
+        $("#id_curso").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "No se encontro resultados!",
+            width: "95%"
+        });
         $("#frmRegistrar").validate({
             debug:true,
             rules:{
