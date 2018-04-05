@@ -8,7 +8,7 @@
                         <i class="fa fa-gavel"></i>
                     </div>
                     <div class="state-value">
-                        <div class="title"><H3>VENTAS</H3></div>
+                        <div class="title"><H3>KARDEX</H3></div>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                         <i class="fa fa-tags"></i>
                     </div>
                     <div class="state-value">
-                        <div class="title"><H4>PRODUCTOS REGISTRADOS</H4></div>
+                        <div class="title"><H4>REGISTROS</H4></div>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <i class="fa fa-eye"></i>
                     </div>
                     <div class="state-value">
-                        <div class="title"> <H3>CLIENTES</H3></div>
+                        <div class="title"> <H3>OTROS</H3></div>
                     </div>
                 </div>
             </div>
