@@ -34,8 +34,7 @@
 						else
 							echo 1;
 				}
-			}
-			
+			}			
 	}else{
 		//echo ("<h3>YA EXISTE USUARIO</h3>");
 		$sqlIdUserLast = "SELECT id_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 1";
@@ -58,6 +57,7 @@
 							echo "Falló la insercion: (" . $con->errno . ") " . $con->error;
 						}
 						else
+						
 							echo 1;
 				}
 			}
