@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form role="form" id="frmRegistrar" name="frmRegistrar">
-                    
+                    <input type="hidden" name="id_curso" id="id_curso" class="form-control" value="">
                     <div class="form-group">
                         <label for="Nombre">Nombre(s)</label>
                         <input class=" form-control" id="nombre" name="nombre" type="text" />
@@ -32,9 +32,7 @@
                             </span>
                         </div>
                     </div>
-
-                    
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="Nombre">Sexo</label>
                         <div class="radio">
                         <label><input type="radio" name="sexo" id="sexom" value="masculino">Masculino</label><br>
@@ -42,18 +40,10 @@
                         </div>
                     </div>
 
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="Nombre">Domicilio</label>
                         <input class=" form-control" id="domicilio" name="domicilio" type="text" />
                     </div>
-                   
-
-
-                 
-<!-- 
-                           -->
-                  
-                        
                     <div class=" modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary" id="btnRegistrar" >Crear</button>

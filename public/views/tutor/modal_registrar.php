@@ -64,6 +64,7 @@
                                 <?php endforeach ?>
                             </select>
                         </div>
+
 						<div id="tabla_estudiante"> </div>
 					</div>
 				</div>
@@ -71,3 +72,4 @@
 		</div>
 	</div>
 </div>
+

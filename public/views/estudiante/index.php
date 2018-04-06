@@ -3,26 +3,26 @@
         <section class="panel">
             <header class="panel-heading">
                 <div class="row panel-heading">
-                    Lista de estudiantes
-                    <span class="pull-right">
-                        <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
-                            <span class="fa fa-pencil"></span> REGISTRAR ESTUDIANTE
-                        </a>
-                    </span>
+                    Lista de estudiantes                    
                 </div>
             </header>
             <div class="panel-body">
                 <!-- <form class="form-horizontal adminex-form"> -->
                     <div class="form-group">
-                        <label class="col-sm-3 control-label col-lg-2" for="inputSuccess">Seleccione curso</label>
+                        <label class="col-sm-3 control-label col-lg-2" for="inputSuccess"><strong>Seleccione curso</strong></label>
                         <div class="col-lg-7">
-                            <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">
+                            <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="">
                                 <option value=""></option>
                                 <?php foreach ($cursos as $curso): ?>
                                     <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['grado'].' '.$curso['paralelo']; ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
+                        <span class="pull-right hidden" id="btnr">
+                            <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
+                                <span class="fa fa-pencil"></span> REGISTRAR ESTUDIANTE
+                            </a>
+                        </span>
                     </div>
                 <!-- </form> -->
                 <div class="adv-table" >
@@ -88,28 +88,25 @@
             }
         });
     }
-
-    ///////////////////ELIMINAR DATOS////////
     function eliminar_datos(id){
         $("#id_eliminar").val(id);
     }
-    ////////////////////JQUERY/////////////////////
     $(document).ready(function(){
-    	/////////////////PLUGINS FECHA///////////////
     	$('.cFecha').datepicker({
 			format: 'dd/mm/yyyy'
 		})
 		.on('changeDate', function(ev){
 			$('.cFecha').datepicker('hide');
 		});
-
-		////////////////busquea de datos/////////////////
         $("#tbEstudiante").dataTable();
-        /////////////REGISTRAR DATOS////////////////
-        $("#id_curso").chosen({
+        $("#curso").chosen({
             disable_search_threshold: 10,
             no_results_text: "No se encontro resultados!",
             width: "95%"
+        });
+        $('#curso').change(function(){
+            $('#btnr').removeClass('hidden');
+            $('#id_curso').val($(this).val());
         });
         $("#frmRegistrar").validate({
             debug:true,
