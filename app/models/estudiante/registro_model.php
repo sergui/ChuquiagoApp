@@ -33,10 +33,24 @@
 					$sql = "INSERT INTO estudiante(nombre, paterno, materno, sexo, fecha_nac, domicilio, estado, id_user) VALUES('{$nombre}', '{$paterno}', '{$materno}', '{$sexo}', '{$fecha_nac}', '{$domicilio}', 1,'{$fila[0]}')";
 					
 						if (!$con->query($sql)) {
-							echo "Falló la insercion: (" . $con->errno . ") " . $con->error;
+							echo "Falló la insercion estudiante: (" . $con->errno . ") " . $con->error;
 						}
-						else
-							echo 1;
+						else{
+
+							$sqlIdEstudiante = "SELECT id_usuario FROM usuario ORDER BY id_usuario DESC LIMIT 1";
+							$resIdEstudiante = $con->query($sqlIdUser);
+
+							$sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso, id_asesor, estado) VALUES(0, ".date(y).", , '{$sexo}', '{$fecha_nac}', '{$domicilio}', 1,'{$fila[0]}')";
+							
+								if (!$con->query($sqlKardex)) {
+									echo "Falló la insercion a kardex: (" . $con->errno . ") " . $con->error;
+								}
+								else{
+									echo 1;		
+								}
+						}	
+
+							
 				}
 			}			
 	}else{
