@@ -15,8 +15,8 @@
             <div class="media logged-user">
                 <img alt="" src="<?php echo ROOT; ?>resources/assets/images/photos/user-avatar.png" class="media-object">
                 <div class="media-body">
-                    <h4><a href="#"> <?php //echo $_SESSION['nombre']; ?></a></h4>
-                    <span>"<?php //echo $_SESSION['user_name']; ?>"</span>
+                    <h4><a href="#"> <?php echo $_SESSION['nombre']; ?></a></h4>
+                    <span>"<?php echo $_SESSION['user_name']; ?>"</span>
                 </div>
             </div>
             <h5 class="left-nav-title">Información de cuenta</h5>
@@ -39,7 +39,7 @@
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>docente/">Plantel Docente Admininstrativo</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>estudiante/">Estudiantes</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Padres de familia</a></li>
-                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Asignar tutor Estudiante</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/asignar.php">Asignar tutor Estudiante</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Asignar curso asignatura</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">asignar curso Estudiante</a></li>
                 </ul>

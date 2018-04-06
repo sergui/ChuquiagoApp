@@ -8,29 +8,22 @@
 	require_once ("../../config/db.php");
 	require_once ("../../config/conexion.php");
 	//Variables para enviar a la plantilla
-	$titulo="Docentes";
-	$contenido="docente/index.php";
-	$subTitulo="Docente";
+	$titulo="Asignar Estudiante";
+	$contenido="tutor/asignar.php";
+	$subTitulo="Asignar Estudiante";
 	$menu_a= $menus['U_LISTA'];
-	$sql="SELECT d.id_docente,d.ci
-			,d.nombre
-			,d.paterno
-			,d.materno
-			,d.materno
-			,d.celular
-			,u.nombre_usuario,u.id_usuario
-			,r.nombre AS nombre_rol, r.id_rol
-			FROM docente d, usuario u, roles r
-			WHERE d.id_user=u.id_usuario AND u.id_rol=r.id_rol
-			AND d.estado=1 AND d.id_user != {$_SESSION['id_user']};";
-	if (!($docentes = $con->query($sql))) {
+
+	if (!($tutores = $con->query("SELECT * FROM tutor where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
+
 	$con=conectar();
-	if (!($roles = $con->query("SELECT * FROM roles where estado = 1 "))) {
+	if (!($estudiantes = $con->query("SELECT * FROM estudiante where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
+
+	//$pie_class="si";//Variable donde se poneun pie de pagina estatico	
 	require_once ('../../../public/views/plantilla.php');
 ?>
