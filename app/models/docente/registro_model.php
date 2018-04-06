@@ -10,7 +10,7 @@
     $materno  = trim($_POST["materno"]);
     $celular  = trim($_POST["celular"]);
     $nom_user = trim($_POST["nombre_usuario"]);
-    $contrasenia= password_hash($ci, PASSWORD_DEFAULT);
+    $contrasenia = password_hash($ci, PASSWORD_DEFAULT);
     $rol= trim($_POST["id_rol"]);
 	$sqluser="INSERT INTO usuario(nombre_usuario, password, id_rol) VALUES('{$nom_user}', '{$contrasenia}', {$rol})";
 	if (!$con->query($sqluser)) {
