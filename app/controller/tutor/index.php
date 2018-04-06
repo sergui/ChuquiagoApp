@@ -17,6 +17,11 @@
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
+	$con=conectar();
+	if (!($cursos = $con->query("SELECT * FROM curso where estado = 1 "))) {
+    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+	}
+	$con->close();
 	$pie_class="si";//Variable donde se poneun pie de pagina estatico	
 	require_once ('../../../public/views/plantilla.php');
 ?>

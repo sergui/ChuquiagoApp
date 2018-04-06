@@ -75,6 +75,17 @@
         $("#id_eliminar").val(id);
     }
     $(document).ready(function(){
+		 $("#id_curso").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "No se encontro resultados!",
+            width: "95%"
+        });
+		
+		$("#id_curso").change(function() {
+           // alert ("Funciona");
+			$("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php");
+        });
+		
         $("#tbtutor").dataTable();
         $("#frmTutor").validate({
             debug:true,
