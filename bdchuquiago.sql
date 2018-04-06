@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-04-2018 a las 18:08:59
+-- Tiempo de generación: 06-04-2018 a las 17:26:40
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -19,9 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bdchuquiago`
 --
-DROP DATABASE `bdchuquiago`;
-CREATE DATABASE IF NOT EXISTS `bdchuquiago` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `bdchuquiago`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +26,6 @@ USE `bdchuquiago`;
 -- Estructura de tabla para la tabla `asignatura`
 --
 
-DROP TABLE IF EXISTS `asignatura`;
 CREATE TABLE `asignatura` (
   `id_asignatura` bigint(11) NOT NULL,
   `nombre_asignatura` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
@@ -68,7 +64,6 @@ INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`, `sigla`, `estado
 -- Estructura de tabla para la tabla `citacion`
 --
 
-DROP TABLE IF EXISTS `citacion`;
 CREATE TABLE `citacion` (
   `id_citacion` int(11) NOT NULL,
   `tipo` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
@@ -84,7 +79,6 @@ CREATE TABLE `citacion` (
 -- Estructura de tabla para la tabla `curso`
 --
 
-DROP TABLE IF EXISTS `curso`;
 CREATE TABLE `curso` (
   `id_curso` int(11) NOT NULL,
   `grado` varchar(20) NOT NULL,
@@ -136,7 +130,6 @@ INSERT INTO `curso` (`id_curso`, `grado`, `paralelo`, `estado`) VALUES
 -- Estructura de tabla para la tabla `docente`
 --
 
-DROP TABLE IF EXISTS `docente`;
 CREATE TABLE `docente` (
   `id_docente` int(11) NOT NULL,
   `ci` varchar(20) NOT NULL,
@@ -161,7 +154,6 @@ INSERT INTO `docente` (`id_docente`, `ci`, `nombre`, `paterno`, `materno`, `celu
 -- Estructura de tabla para la tabla `encargado`
 --
 
-DROP TABLE IF EXISTS `encargado`;
 CREATE TABLE `encargado` (
   `id_tutor` int(11) NOT NULL,
   `id_rude` int(20) NOT NULL
@@ -173,7 +165,6 @@ CREATE TABLE `encargado` (
 -- Estructura de tabla para la tabla `estudiante`
 --
 
-DROP TABLE IF EXISTS `estudiante`;
 CREATE TABLE `estudiante` (
   `id_rude` int(20) NOT NULL,
   `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
@@ -199,7 +190,6 @@ INSERT INTO `estudiante` (`id_rude`, `nombre`, `paterno`, `materno`, `sexo`, `fe
 -- Estructura de tabla para la tabla `faltas`
 --
 
-DROP TABLE IF EXISTS `faltas`;
 CREATE TABLE `faltas` (
   `id_falta` int(11) NOT NULL,
   `tipoFalta` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -213,7 +203,6 @@ CREATE TABLE `faltas` (
 -- Estructura de tabla para la tabla `faltas_cometidas`
 --
 
-DROP TABLE IF EXISTS `faltas_cometidas`;
 CREATE TABLE `faltas_cometidas` (
   `id_fal_com` bigint(20) NOT NULL,
   `obseracion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
@@ -227,18 +216,28 @@ CREATE TABLE `faltas_cometidas` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `kardes_curso`
+--
+
+CREATE TABLE `kardes_curso` (
+  `id_kardex` int(11) NOT NULL,
+  `id_curso` int(11) NOT NULL,
+  `gestion` year(4) NOT NULL,
+  `estado` char(1) COLLATE utf8_spanish2_ci DEFAULT 'a' COMMENT 'se registrara al cambiar la gestion si esta aprobado a si esta reprobado r',
+  `id_asesor` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `kardex`
 --
 
-DROP TABLE IF EXISTS `kardex`;
 CREATE TABLE `kardex` (
   `id_kardex` int(11) NOT NULL,
   `reset` tinyint(1) NOT NULL,
   `gestion` year(4) NOT NULL,
-  `id_rude` int(11) NOT NULL,
-  `id_curso` int(11) NOT NULL,
-  `id_asesor` int(11) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT '1'
+  `id_rude` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -247,7 +246,6 @@ CREATE TABLE `kardex` (
 -- Estructura de tabla para la tabla `modelo_citacion`
 --
 
-DROP TABLE IF EXISTS `modelo_citacion`;
 CREATE TABLE `modelo_citacion` (
   `id_citacion` int(11) NOT NULL,
   `formato` varchar(400) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
@@ -260,7 +258,6 @@ CREATE TABLE `modelo_citacion` (
 -- Estructura de tabla para la tabla `pfaltas`
 --
 
-DROP TABLE IF EXISTS `pfaltas`;
 CREATE TABLE `pfaltas` (
   `id_pfalta` int(11) NOT NULL,
   `max_faltas` int(10) NOT NULL
@@ -279,7 +276,6 @@ INSERT INTO `pfaltas` (`id_pfalta`, `max_faltas`) VALUES
 -- Estructura de tabla para la tabla `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `id_rol` int(11) NOT NULL,
   `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -304,7 +300,6 @@ INSERT INTO `roles` (`id_rol`, `nombre`, `estado`) VALUES
 -- Estructura de tabla para la tabla `tiene`
 --
 
-DROP TABLE IF EXISTS `tiene`;
 CREATE TABLE `tiene` (
   `id_curso` int(11) NOT NULL,
   `id_asignatura` bigint(20) NOT NULL,
@@ -317,7 +312,6 @@ CREATE TABLE `tiene` (
 -- Estructura de tabla para la tabla `tutor`
 --
 
-DROP TABLE IF EXISTS `tutor`;
 CREATE TABLE `tutor` (
   `id_tutor` int(11) NOT NULL,
   `nombres` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
@@ -336,7 +330,6 @@ CREATE TABLE `tutor` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre_usuario` varchar(20) NOT NULL,
@@ -410,12 +403,18 @@ ALTER TABLE `faltas_cometidas`
   ADD KEY `id_kardex` (`id_kardex`);
 
 --
+-- Indices de la tabla `kardes_curso`
+--
+ALTER TABLE `kardes_curso`
+  ADD PRIMARY KEY (`id_kardex`,`id_curso`),
+  ADD KEY `id_curso` (`id_curso`);
+
+--
 -- Indices de la tabla `kardex`
 --
 ALTER TABLE `kardex`
-  ADD PRIMARY KEY (`id_kardex`,`id_curso`),
-  ADD KEY `id_rude` (`id_rude`),
-  ADD KEY `id_curso_fk1` (`id_curso`);
+  ADD PRIMARY KEY (`id_kardex`),
+  ADD KEY `id_rude` (`id_rude`);
 
 --
 -- Indices de la tabla `modelo_citacion`
@@ -545,10 +544,16 @@ ALTER TABLE `faltas_cometidas`
   ADD CONSTRAINT `id_kardex` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`);
 
 --
+-- Filtros para la tabla `kardes_curso`
+--
+ALTER TABLE `kardes_curso`
+  ADD CONSTRAINT `kardes_curso_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kardes_curso_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `kardex`
 --
 ALTER TABLE `kardex`
-  ADD CONSTRAINT `id_curso_fk1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `id_rude` FOREIGN KEY (`id_rude`) REFERENCES `estudiante` (`id_rude`);
 
 --
