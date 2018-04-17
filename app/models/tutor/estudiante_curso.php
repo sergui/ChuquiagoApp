@@ -3,7 +3,8 @@
 	require_once ("../../config/conexion.php");
 	require_once ("../../config/route.php");
 
-	//$id=$_REQUEST["id_curso"];
+	$id=$_REQUEST["id_curso"];
+	//echo "<pre>";	print_r ($variable);	echo "</pre>";
 	//$sql=
 ?>
 <table class="display table table-bordered table-striped" id="tbtutor">
@@ -17,7 +18,7 @@
 	<tbody>
 
 		<tr class="gradeX">
-			<td>nombres</td>
+			<td><?php echo $id; ?></td>
 
 
 			<td>
