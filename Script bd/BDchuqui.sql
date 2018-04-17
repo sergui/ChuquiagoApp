@@ -46,10 +46,10 @@ CREATE TABLE `citacion` (
   `citacion` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` datetime NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
-  `id_kardex` int(11) NOT NULL,
+  `id_kardex` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_citacion`),
-  KEY `id_kar` (`id_kardex`),
-  CONSTRAINT `id_kar` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
+  KEY `id_kardex` (`id_kardex`),
+  CONSTRAINT `citacion_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `citacion` */
@@ -174,11 +174,11 @@ CREATE TABLE `faltas_cometidas` (
   `contador` int(10) NOT NULL,
   `fecha` date NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT '1',
-  `id_kardex` int(11) NOT NULL,
+  `id_kardex` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
   PRIMARY KEY (`id_fal_com`),
   KEY `id_kardex` (`id_kardex`),
-  CONSTRAINT `id_kardex` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
+  CONSTRAINT `faltas_cometidas_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas_cometidas` */
@@ -192,10 +192,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `kardex`;
 
 CREATE TABLE `kardex` (
-  `id_kardex` int(11) NOT NULL,
+  `id_kardex` bigint(20) NOT NULL AUTO_INCREMENT,
   `reset` tinyint(1) NOT NULL,
   `gestion` year(4) NOT NULL,
-  `id_rude` int(11) NOT NULL,
+  `id_rude` int(20) NOT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'a= aprobado r= reprobado',
   `id_curso` int(11) NOT NULL,
   `id_asesor` int(11) DEFAULT NULL,
