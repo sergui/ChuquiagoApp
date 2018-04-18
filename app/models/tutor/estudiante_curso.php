@@ -4,29 +4,35 @@
 	require_once ("../../config/route.php");
 
 	$id=$_REQUEST["id_curso"];
-	//echo "<pre>";	print_r ($variable);	echo "</pre>";
-	//$sql=
+	//echo "<pre>";		echo "</pre>";
+	$sql="call listadelCurso({$id})";
+	$lista = $con->query($sql)
+
 ?>
 <table class="display table table-bordered table-striped" id="tbtutor">
 	<thead>
 		<tr>
 			<th>Nombre</th>
 
-			<th class="text-center col-md-4">ACCIONES</th>
+			<th class="text-center col-md-4">Seleccione</th>
+			
 		</tr>
 	</thead>
 	<tbody>
 
-		<tr class="gradeX">
-			<td><?php echo $id; ?></td>
-
-
-			<td>
-				<a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="">
-                 <span class="fa fa-edit" ></span>
-                 </a>
-			</td>
-		</tr>
+		
+			 <?php foreach ($lista as $estudiante): ?>
+                                <tr class="gradeX">
+                                    <td><?php echo $estudiante['nombre']; ?></td>
+                                    <td>    
+     
+        									<input type="checkbox" id="hijo" value="option1"> 
+  </td>
+                                    
+                                    
+                            </tr>
+               <?php endforeach;?>
+		
 
 	</tbody>
 </table>

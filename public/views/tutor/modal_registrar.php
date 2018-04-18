@@ -54,7 +54,7 @@
 						</form>
 					</div>
 					<div class="col-md-6">
-						
+						<span class="pull-right hidden" id="btlis">
 						<label class="control-label col-lg-4" for="inputSuccess">Seleccione curso</label>
                         <div class="col-lg-8">
                             <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">
@@ -66,10 +66,17 @@
                         </div>
 
 						<div id="tabla_estudiante"> </div>
+							</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
+<script>
+$(document).ready(function(){
+		$('#btnRegistrar').change(function(){
+            $('#btlist').removeClass('hidden');
+           // $('#id_curso').val($(this).val());
+        });
+</script>

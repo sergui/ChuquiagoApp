@@ -82,9 +82,9 @@
         });
 		
 		$("#id_curso").change(function() {            
-            var miid=$("#id_curso").val();
             
-           	$("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid);
+			var miid=$("#id_curso").val();
+            $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid);
         });
 		
         $("#tbtutor").dataTable();
