@@ -25,49 +25,14 @@
                         </span>
                     </div>
                 <!-- </form> -->
-                <div class="adv-table" >
-                    <table  class="display table table-bordered table-striped" id="tbEstudiante"">
-                        <thead>
-                            <tr>
-                                <th>NOMBRES </th>
-                                <th>APELLIDO PATERNO</th>
-                                <th>APELLIDO MATERNO</th>
-                                <th>SEXO</th>
-                                <th>FEC. NACIMIENTO</th>
-                                <th>DOMICILIO</th>
-
-                                <th class="text-center">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($estudiantes as $estudiante): ?>
-                                <tr class="gradeX">
-                                    <td><?php echo $estudiante['nombre']; ?></td>
-                                    <td><?php echo $estudiante['paterno']; ?></td>
-                                    <td><?php echo $estudiante['materno']; ?></td>
-                                    <td><?php echo $estudiante['sexo']; ?></td>
-                                    <td><?php echo $estudiante['fecha_nac']; ?></td>
-                                    <td><?php echo $estudiante['domicilio']; ?></td>
-                                    <td >
-                                       <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $estudiante['id_rude'] ?>)">
-                                        <span class="fa fa-edit" ></span>
-                                    </a>
-                                    <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $estudiante['id_rude'] ?>)">
-                                        <span class="fa fa-trash-o"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach;?>
-
-                    </tbody>
-                </table>
+                <div id="listado">
+                </div>                
             </div>
-        </div>
-        <?php require_once 'modal_registrar.php'; ?>
-        <?php require_once 'modal_eliminar.php'; ?>
-        <?php require_once 'modal_editar.php'; ?>
-    </section>
-</div>
+            <?php require_once 'modal_registrar.php'; ?>
+            <?php require_once 'modal_eliminar.php'; ?>
+            <?php require_once 'modal_editar.php'; ?>
+        </section>
+    </div>
 </div>
 <script>
     function obtener_datos(id){
@@ -98,7 +63,7 @@
 		.on('changeDate', function(ev){
 			$('.cFecha').datepicker('hide');
 		});
-        $("#tbEstudiante").dataTable();
+        
         $("#curso").chosen({
             disable_search_threshold: 10,
             no_results_text: "No se encontro resultados!",
@@ -106,7 +71,20 @@
         });
         $('#curso').change(function(){
             $('#btnr').removeClass('hidden');
-            $('#id_curso').val($(this).val());
+            var id=$(this).val();
+            $('#id_curso').val(id);            
+            $.ajax({
+                url: '../../models/estudiante/listado.php',
+                type: 'post',                
+                data: {id_curso: id},
+                beforeSend: function() {
+                    transicion("Procesando Espere....");
+                },
+                success: function(response) {
+                    transicionSalir();
+                    $('#listado').html(response);
+                }
+            });
         });
         $("#frmRegistrar").validate({
             debug:true,

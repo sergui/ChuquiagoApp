@@ -1,4 +1,3 @@
-
 <?php
 	require_once '../../config/route.php';
 	session_start();
