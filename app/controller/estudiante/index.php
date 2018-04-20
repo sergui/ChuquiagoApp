@@ -13,11 +13,6 @@
 	$subTitulo="Estudiante";
 	$menu_a= $menus['U_LISTA'];
 
-	if (!($estudiantes = $con->query("SELECT * FROM estudiante where estado = 1 "))) {
-    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
-	}
-	$con->close();
-	$con=conectar();
 	if (!($cursos = $con->query("SELECT * FROM curso where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
