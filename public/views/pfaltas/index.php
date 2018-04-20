@@ -4,11 +4,11 @@
             <header class="panel-heading">
                 <div class="row panel-heading">
                     MAXIMO DE FALTAS
-                    <!-- <span class="pull-right">
+                    <span class="pull-right">
                         <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
                             <span class="fa fa-pencil"></span> NUEVO DE MAXIMO DEFALTAS 
                         </a>
-                    </span> -->
+                    </span> 
                 </div>
             </header>
             <div class="panel-body">
@@ -28,6 +28,11 @@
                                     <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $pfalta['id_pfalta'] ?>)">
                                         <span class="fa fa-edit" ></span>
                                     </a>
+
+                                    <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $estudiante['id_rude'] ?>)">
+                                        <span class="fa fa-trash-o"></span>
+                                    </a>
+                                  
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -36,7 +41,7 @@
             </div>
         </div>
         <?php require_once 'modal_registrar.php'; ?>
-        
+        <?php require_once 'modal_eliminar.php'; ?>
         <?php require_once 'modal_editar.php'; ?>
 
     </section>
@@ -44,6 +49,9 @@
 </div>
 <script>
     ///////////////////OBTENER DATOS////////
+      function eliminar_datos(id){
+        $("#id_eliminar").val(id);
+    }
     function obtener_datos(id)
          {
             
@@ -161,7 +169,30 @@
         });
 
         ////////////ELIMINAR DATOS////////////////////////////////////////////////////////////
-      
+        $("#btnEliminar").click(function(event) {
+            $.ajax({
+                url: '../../models/pfaltas/eliminar_model.php',
+                type: 'POST',
+                data: $("#frmEliminar").serialize(),
+                beforeSend: function() {
+                    transicion("Procesando Espere....");
+                },
+                success: function(response){
+                    if(response==1){
+                        $('#modalEliminar').modal('hide');
+                        $('#btnEliminar').attr({disabled: 'true'});
+                        transicionSalir();
+                        mensajes_alerta('DATOS ELIMINADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
+                        setTimeout(function(){
+                            window.location.href='<?php echo ROOT_CONTROLLER ?>pfaltas/index.php';
+                        }, 3000);
+                    }else{
+                        transicionSalir();
+                        mensajes_alerta('ERROR AL ELIMINAR FALTAS verifique los datos!! '+response,'error','EDITAR DATOS');
+                    }
+                }
+            });
+        });
 
 
 
