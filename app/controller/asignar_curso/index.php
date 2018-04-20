@@ -12,7 +12,22 @@
 	$contenido="asignar_curso/index.php";
 	$menu_a= $menus['C_SECCION'];
 	$subTitulo="ASIGNAR CURSO";
-
+	$sql="SELECT * from docente where estado=1 and id_user<>1";
+	if (!($docentes = $con->query($sql))) {
+    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+	}
+	$con->close();
+	$sql="SELECT * from asignatura where estado=1 ";
+	if (!($asignaturas = $con->query($sql))) {
+    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+	}
+	$con->close();
+	$sql="SELECT * from curso where estado=1 ";
+	if (!($cursos = $con->query($sql))) {
+    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+	}
+	$con->close();
+	$con=conectar();
 	if (!($tienes = $con->query("SELECT * FROM tiene"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
