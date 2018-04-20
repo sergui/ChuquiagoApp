@@ -37,6 +37,7 @@
                         <a href="<?php echo ROOT_CONTROLLER; ?>curso/"> Cursos</a>
                     </li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>docente/">Plantel Docente Admininstrativo</a></li>
+                    <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>asignar_curso/">Asignacion de curso plantel docente</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>estudiante/">Estudiantes</a></li>
                     <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>tutor/">Padres de familia</a></li>
                 </ul>

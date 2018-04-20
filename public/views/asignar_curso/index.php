@@ -1,0 +1,1 @@
+aqui logica de asignar curso
