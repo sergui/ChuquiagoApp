@@ -12,12 +12,13 @@
                 </div>
             </header>
             <div class="panel-body">
-             <!--    <div class="adv-table" >
-                    <table  class="display table table-bordered table-striped" id="tbAsignatura">
+                <div class="adv-table" >
+                    <table  class="display table table-bordered table-striped" id="tbAsignados">
                         <thead>
                             <tr>
-                                <th>NOMBRE DE LA ASIGNATURA</th>
-                                <th>SIGLA</th>
+                                <th>DOCENTE</th>
+                                <th>ASIGNATURA</th>
+                                <th>CURSO</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
@@ -39,7 +40,7 @@
 
                     </tbody>
                 </table>
-            </div> -->
+            </div>
         </div>
         <?php require_once 'modal_registrar.php'; ?>
         <?php require_once 'modal_eliminar.php'; ?>
