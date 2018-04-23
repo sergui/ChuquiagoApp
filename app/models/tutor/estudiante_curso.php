@@ -21,9 +21,9 @@
 		<?php foreach ($lista as $estudiante): ?>
             <tr class="gradeX">
                 <td><?php echo $estudiante['nombre_completo']; ?></td>
-                <td><a href="#" class="btn btn-info" >
+                <td><button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)" >
        				 <span class="fa fa-user"></span> Adicionar
-    				</a>
+    				</button>
     			</td>
         	</tr>
         <?php endforeach;?>
@@ -43,5 +43,5 @@
 			"bPaginate":false
 		});
 	});
-
+//registroencargado
 </script>
