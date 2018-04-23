@@ -9,7 +9,7 @@
 	$lista = $con->query($sql)
 
 ?>
-<table class="display table table-bordered table-striped" id="tbtutor">
+<table class="display table table-bordered table-striped" id="tbtutormodal">
 	<thead>
 		<tr>
 			<th class="col-md-7" >Nombre</th>
@@ -27,7 +27,7 @@
 </table>
 <script>
 	$(document).ready(function() {
-		$("#tbtutor").dataTable();
+		$("#tbtutormodal").dataTable();
 	});
 
 </script>
