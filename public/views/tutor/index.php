@@ -74,6 +74,7 @@
     function eliminar_datos(id){
         $("#id_eliminar").val(id);
     }
+    
     $(document).ready(function(){
 		 $("#id_curso").chosen({
             disable_search_threshold: 10,
@@ -138,13 +139,18 @@
                 $.ajax({
                     url: '../../models/tutor/registro_model.php',
                     type: 'post',
+                    dataType:"json",
                     data: $("#frmTutor").serialize(),
                 
                     success: function(response) {
-                        if(response==1){
+                        if(response['estado']=='1' ){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
                             });
+                           
+                            $('#btlis').removeClass('hidden');
+                            // $('#id_curso').val($(this).val());
+                          
                             //$('#modal_Registrar').modal('hide')s;
                             //transicionSalir();
                             

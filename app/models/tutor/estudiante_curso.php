@@ -9,6 +9,7 @@
 	$lista = $con->query($sql)
 
 ?>
+<div class="adv-table" >
 <table class="display table table-bordered table-striped" id="tbtutormodal">
 	<thead>
 		<tr>
@@ -20,14 +21,27 @@
 		<?php foreach ($lista as $estudiante): ?>
             <tr class="gradeX">
                 <td><?php echo $estudiante['nombre_completo']; ?></td>
-                <td><input type="checkbox" id="" name="ids[]" value="<?php echo $estudiante['id_rude']; ?>"></td>
+                <td><button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)" >
+       				 <span class="fa fa-user"></span> Adicionar
+    				</button>
+    			</td>
         	</tr>
         <?php endforeach;?>
 	</tbody>
 </table>
+
+</div>
+<span class="pull-right">
+    <a href="#" class="btn btn-success" >
+        <span class="fa fa-times"></span> Terminar
+    </a>
+</span>
 <script>
 	$(document).ready(function() {
-		$("#tbtutormodal").dataTable();
+		$("#tbtutormodal").dataTable({
+			"sScrollY":"220px",
+			"bPaginate":false
+		});
 	});
-
+//registroencargado
 </script>
