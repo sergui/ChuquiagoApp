@@ -12,16 +12,22 @@
 <table class="display table table-bordered table-striped" id="tbtutor">
 	<thead>
 		<tr>
-			<th>Nombre</th>
+			<th class="col-md-7" >Nombre</th>
 			<th class="text-center col-md-4">Seleccione</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach ($lista as $estudiante): ?>
             <tr class="gradeX">
-                <td><?php echo $estudiante['nombre']; ?></td>
+                <td><?php echo $estudiante['nombre_completo']; ?></td>
                 <td><input type="checkbox" id="" name="ids[]" value="<?php echo $estudiante['id_rude']; ?>"></td>
         	</tr>
         <?php endforeach;?>
 	</tbody>
 </table>
+<script>
+	$(document).ready(function() {
+		$("#tbtutor").dataTable();
+	});
+
+</script>
