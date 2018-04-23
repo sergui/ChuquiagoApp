@@ -13,26 +13,15 @@
 	<thead>
 		<tr>
 			<th>Nombre</th>
-
 			<th class="text-center col-md-4">Seleccione</th>
-			
 		</tr>
 	</thead>
 	<tbody>
-
-		
-			 <?php foreach ($lista as $estudiante): ?>
-                                <tr class="gradeX">
-                                    <td><?php echo $estudiante['nombre']; ?></td>
-                                    <td>    
-     
-        									<input type="checkbox" id="hijo" value="option1"> 
-  </td>
-                                    
-                                    
-                            </tr>
-               <?php endforeach;?>
-		
-
+		<?php foreach ($lista as $estudiante): ?>
+            <tr class="gradeX">
+                <td><?php echo $estudiante['nombre']; ?></td>
+                <td><input type="checkbox" id="" name="ids[]" value="<?php echo $estudiante['id_rude']; ?>"></td>
+        	</tr>
+        <?php endforeach;?>
 	</tbody>
 </table>
