@@ -139,20 +139,17 @@
                     url: '../../models/tutor/registro_model.php',
                     type: 'post',
                     data: $("#frmTutor").serialize(),
-                    beforeSend: function() {
-                        transicion("Procesando Espere....");
-                    },
+                
                     success: function(response) {
                         if(response==1){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
                             });
-                            $('#modal_Registrar').modal('hide');
-                            transicionSalir();
+                            //$('#modal_Registrar').modal('hide')s;
+                            //transicionSalir();
+                            
                             mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
-                            setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>tutor/index.php';
-                            }, 3000);
+                            
                         }else{
                             transicionSalir();
                             mensajes_alerta('ERROR AL REGISTRAR EL TUTOR  verifique los datos!! '+response,'error','GUARDAR DATOS');
