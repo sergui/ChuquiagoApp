@@ -48,21 +48,16 @@
 </div>
 </div>
 <script>
-    
      function obtener_datos(id)
          {
-            
             $.ajax({
                 url: '../../models/asignatura/datos_asignatura.php',
                 type: 'POST',
                 dataType: "json",
                 data: {id_asignatura: id},
                 success: function(datos){ 
-                   
                     $("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
-                    
                     $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
-
                     $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo
                 }
             });

@@ -6,7 +6,7 @@
     $estudiantes = $con->query($sql)
 ?>
 <div class="adv-table" >
-    <table  class="display table table-bordered table-striped" id="tbEstudiante"">
+    <table  class="display table table-bordered table-striped" id="tbEstudiante">
         <thead>
             <tr>
                 <th class="col-md-6">NOMBRE COMPLETO </th>
