@@ -17,11 +17,13 @@
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
+	$con=conectar();
 	$sql="SELECT * from asignatura where estado=1 ";
 	if (!($asignaturas = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
+	$con=conectar();
 	$sql="SELECT * from curso where estado=1 ";
 	if (!($cursos = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
