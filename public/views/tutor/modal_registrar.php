@@ -15,7 +15,7 @@ $(document).ready(function(){
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-5">
 						<form class="cmxform form-horizontal adminex-form" id="frmTutor" name="frmTutor" method="post">
 							<div class="form-group ">
 								<label for="cname" class="control-label col-lg-4">Nombres</label>
@@ -61,7 +61,7 @@ $(document).ready(function(){
 							</div>
 						</form>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-7">
 						<span class="pull-right" id="btlis">
 						<label class="control-label col-lg-4" for="inputSuccess">Seleccione curso</label>
                         <div class="col-lg-8">
@@ -74,7 +74,7 @@ $(document).ready(function(){
                         </div>
 
 						<div id="tabla_estudiante"> </div>
-							</span>
+						</span>
 					</div>
 				</div>
 			</div>
