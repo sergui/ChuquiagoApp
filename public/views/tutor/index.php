@@ -147,14 +147,12 @@
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
                             });
-                           
-                            $('#btlis').removeClass('hidden');
-                            // $('#id_curso').val($(this).val());
-                          
-                            //$('#modal_Registrar').modal('hide')s;
-                            //transicionSalir();
-                            
-                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
+                           // $('#btlis').removeClass('hidden');
+							
+							var id_tu=response['tutor']['id_tutor'];
+							$('#variable').data("midato",id_tu);
+                                               
+                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! '+id_tu ,'success','GUARDAR DATOS');
                             
                         }else{
                             transicionSalir();
