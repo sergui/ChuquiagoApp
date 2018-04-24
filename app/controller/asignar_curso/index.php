@@ -30,7 +30,23 @@
 	}
 	$con->close();
 	$con=conectar();
-	if (!($tienes = $con->query("SELECT * FROM tiene"))) {
+	if (!($tienes = $con->query("SELECT d.nombre
+						, d.paterno
+						, d.materno
+						, a.nombre_asignatura
+						, c.grado
+						, c.paralelo
+						, t.id_curso
+						, t.id_asignatura
+						, t.id_docente
+						FROM
+						 docente d,
+						 asignatura a,
+						 curso c,
+						 tiene t
+						WHERE t.id_curso=c.id_curso 
+							AND t.id_asignatura = a.id_asignatura
+							AND t.id_docente = d.id_docente"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
