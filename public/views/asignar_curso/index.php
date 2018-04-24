@@ -6,14 +6,14 @@
                     asignar curso docente asignatura
                     <span class="pull-right">
                         <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
-                            <span class="fa fa-pencil"></span> nueva asignatura
+                            <span class="fa fa-pencil"></span> ASIGNAR
                         </a>
                     </span>
                 </div>
             </header>
             <div class="panel-body">
                 <div class="adv-table" >
-                    <table  class="display table table-bordered table-striped" id="tbAsignados">
+                <!--     <table  class="display table table-bordered table-striped" id="tbAsignados">
                         <thead>
                             <tr>
                                 <th>DOCENTE</th>
@@ -39,7 +39,7 @@
                         <?php endforeach;?>
 
                     </tbody>
-                </table>
+                </table> -->
             </div>
         </div>
         <?php require_once 'modal_registrar.php'; ?>
