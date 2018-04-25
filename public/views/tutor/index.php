@@ -81,12 +81,19 @@
             no_results_text: "No se encontro resultados!",
             width: "95%"
         });
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> froy2
 		$("#id_curso").change(function() {
 			var miid=$("#id_curso").val();
             $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid);
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> froy2
         $("#tbtutor").dataTable();
         $("#frmRegistrar").validate({
             debug:true,
@@ -94,19 +101,33 @@
                 $.ajax({
                     url: '../../models/asignar_curso/registro_model.php',
                     type: 'post',
+<<<<<<< HEAD
                     data: $("#frmRegistrar").serialize(),
                     beforeSend: function() {
                         transicion("Procesando Espere....");
                     },
+=======
+                    dataType:"json",
+                    data: $("#frmTutor").serialize(),
+>>>>>>> froy2
                     success: function(response) {
                         if(response==1 ){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
                             });
+<<<<<<< HEAD
                             $('#btlis').removeClass('hidden');
 							var id_tu=response['tutor']['id_tutor'];
 							$('#variable').data("midato",id_tu);
                             mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! '+id_tu ,'success','GUARDAR DATOS');
+=======
+                           // $('#btlis').removeClass('hidden');
+							var id_tu=response['tutor']['id_tutor'];
+							//$('#division').data("midato",id_tu);
+							$("#id_tutorV").val(id_tu);
+                            //$('#id_tutorV').html('sss '+ id_tu);
+                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ' ,'success','GUARDAR DATOS');
+>>>>>>> froy2
                         }else{
                             transicionSalir();
                             mensajes_alerta('ERROR AL REGISTRAR EL TUTOR  verifique los datos!! '+response,'error','GUARDAR DATOS');

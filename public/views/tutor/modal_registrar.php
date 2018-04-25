@@ -52,21 +52,24 @@
 									<button class="btn btn-primary" type="submit" id="btnRegistrar">Registrar</button>
 								</div>
 							</div>
+<<<<<<< HEAD
+=======
+							<input type="hidden" name="id_tutorV"  id="id_tutorV" value="">
+>>>>>>> froy2
 						</form>
 					</div>
 					<div class="col-md-6">
 						<span class="pull-right" id="btlis">
-						<label class="control-label col-lg-6" for="inputSuccess">Seleccione curso</label>
-                        <div class="col-lg-6">
-                            <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">
-                                <option value=""></option>
-                                <?php foreach ($cursos as $curso): ?>
-                                    <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['grado'].' '.$curso['paralelo']; ?></option>
-                                <?php endforeach ?>
-                            </select>
-                        </div>
-
-						<div id="tabla_estudiante"> </div>
+							<label class="control-label col-lg-6" for="inputSuccess">Seleccione curso</label>
+		                    <div class="col-lg-6">
+		                        <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">
+		                            <option value=""></option>
+		                            <?php foreach ($cursos as $curso): ?>
+		                                <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['grado'].' '.$curso['paralelo']; ?></option>
+		                            <?php endforeach ?>
+		                        </select>
+		                    </div>
+							<div id="tabla_estudiante"> </div>
 						</span>
 					</div>
 				</div>
@@ -74,4 +77,3 @@
 		</div>
 	</div>
 </div>
-
