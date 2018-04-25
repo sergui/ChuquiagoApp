@@ -36,7 +36,7 @@ $lista = $con->query( $sql );
 
 </div>
 <span class="pull-right">
-    <a href="#" class="btn btn-success" >
+    <a href="#" class="btn btn-success" id="variable">
         <span class="fa fa-times"></span>
 					Terminar
 	</a>
@@ -50,9 +50,8 @@ $lista = $con->query( $sql );
 	} );
 
 	function registro( id ) {
-		var idt=$('#id_tutorV').attr("value");
 		$.ajax( {
-			url: '../../models/tutor/registro_encargado.php',
+			url: '../../models/tutor/registroencargado.php',
 			type: 'POST',
 			dataType: "json",
 			data: {
@@ -65,7 +64,7 @@ $lista = $con->query( $sql );
 						disabled: 'true'
 					} );
 
-					//$( '#btlis' ).removeClass( 'hidden' );
+					$( '#btlis' ).removeClass( 'hidden' );
 
 					mensajes_alerta( 'DATOS GUARDADOS EXITOSAMENTE !! ', 'success', 'GUARDAR DATOS' );
 

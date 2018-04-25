@@ -52,7 +52,6 @@
 									<button class="btn btn-primary" type="submit" id="btnRegistrar">Registrar</button>
 								</div>
 							</div>
-							<button id="id_tutorV" class="hidden" value="2"> id</button>
 						</form>
 					</div>
 					<div class="col-md-6">
