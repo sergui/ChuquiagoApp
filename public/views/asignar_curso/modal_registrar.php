@@ -8,8 +8,8 @@
             <div class="modal-body">
                 <form role="form" id="frmRegistrar" name="frmRegistrar">
                     <label class="col-md-4 control-label" for="inputSuccess"><strong>Seleccione curso</strong></label>
-                    <div class="col-md-8">
-                        <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="">
+                    <div class="form-group col-md-8">
+                        <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="true">
                             <option value=""></option>
                             <?php foreach ($cursos as $curso): ?>
                                 <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['grado'].' '.$curso['paralelo']; ?></option>
@@ -18,8 +18,8 @@
                     </div>
                     <br> <br> <br>
                     <label class="col-md-4 control-label" for="inputSuccess"><strong>Seleccione asignatura</strong></label>
-                    <div class="col-md-8">
-                        <select class="chosen-select" id="asignatura" name="asignatura" data-placeholder="Seleccione una asignatura"  required="">
+                    <div class="form-group col-md-8">
+                        <select class="chosen-select" id="asignatura" name="asignatura" data-placeholder="Seleccione una asignatura"  required="true">
                             <option value=""></option>
                             <?php foreach ($asignaturas as $asignatura): ?>
                                 <option value="<?php echo $asignatura['id_asignatura']; ?>"><?php echo $asignatura['nombre_asignatura'].' '.$asignatura['sigla']; ?></option>
@@ -28,7 +28,7 @@
                     </div>
                     <br> <br> <br>
                     <label class="col-md-4 control-label" for="inputSuccess"><strong>Seleccione docente</strong></label>
-                    <div class="col-md-8">
+                    <div class="form-group col-md-8">
                         <select class="chosen-select" id="docente" name="docente" data-placeholder="Seleccione un  docente"  required="">
                             <option value=""></option>
                             <?php foreach ($docentes as $docente): ?>
