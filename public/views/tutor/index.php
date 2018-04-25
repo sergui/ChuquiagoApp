@@ -150,9 +150,10 @@
                            // $('#btlis').removeClass('hidden');
 							
 							var id_tu=response['tutor']['id_tutor'];
-							$('#variable').data("midato",id_tu);
-                                               
-                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! '+id_tu ,'success','GUARDAR DATOS');
+							//$('#division').data("midato",id_tu);
+							$("#id_tutorV").attr("value",id_tu);
+                            //$('#id_tutorV').html('sss '+ id_tu);                   
+                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ' ,'success','GUARDAR DATOS');
                             
                         }else{
                             transicionSalir();
