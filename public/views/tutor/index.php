@@ -81,13 +81,11 @@
             no_results_text: "No se encontro resultados!",
             width: "95%"
         });
-		
-		$("#id_curso").change(function() {            
-            
+
+		$("#id_curso").change(function() {
 			var miid=$("#id_curso").val();
             $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid);
         });
-		
         $("#tbtutor").dataTable();
         $("#frmTutor").validate({
             debug:true,
@@ -141,20 +139,17 @@
                     type: 'post',
                     dataType:"json",
                     data: $("#frmTutor").serialize(),
-                
                     success: function(response) {
                         if(response['estado']=='1' ){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
                             });
                            // $('#btlis').removeClass('hidden');
-							
 							var id_tu=response['tutor']['id_tutor'];
 							//$('#division').data("midato",id_tu);
-							$("#id_tutorV").attr("value",id_tu);
-                            //$('#id_tutorV').html('sss '+ id_tu);                   
+							$("#id_tutorV").val(id_tu);
+                            //$('#id_tutorV').html('sss '+ id_tu);
                             mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ' ,'success','GUARDAR DATOS');
-                            
                         }else{
                             transicionSalir();
                             mensajes_alerta('ERROR AL REGISTRAR EL TUTOR  verifique los datos!! '+response,'error','GUARDAR DATOS');
