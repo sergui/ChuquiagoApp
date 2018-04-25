@@ -28,7 +28,11 @@
                                     <td><?php echo $tiene['nombre'].' '.$tiene['paterno'].' '.$tiene['materno']; ?></td>
                                     <td><?php echo $tiene['nombre_asignatura']; ?></td>
                                     <td><?php echo $tiene['grado'].' '.$tiene['paralelo']; ?></td>
-                                    <td></td>
+                                    <td class="text-center">
+                                        <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $tiene['id_docente'] ?>,<?php echo $tiene['id_curso'] ?>,<?php echo $tiene['id_asignatura'] ?>)">
+                                            <span class="fa fa-trash-o"></span>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php endforeach;?>
                         </tbody>
@@ -37,30 +41,15 @@
             </div>
             <?php require_once 'modal_registrar.php'; ?>
             <?php require_once 'modal_eliminar.php'; ?>
-            <?php require_once 'modal_editar.php'; ?>
         </section>
     </div>
 </div>
 <script>
-    function obtener_datos(id){
-        $.ajax({
-            url: '../../models/asignatura/datos_asignatura.php',
-            type: 'POST',
-            dataType: "json",
-            data: {id_asignatura: id},
-            success: function(datos){
-                $("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
-                $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
-                $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo
-            }
-        });
+    function eliminar_datos(id_doc,id_cur,id_asig){
+        $("#id_docente").val(id_doc);
+        $("#id_curso").val(id_cur);
+        $("#id_asignatura").val(id_asig);
     }
-
-    ///////////////////ELIMINAR DATOS////////
-    function eliminar_datos(id){
-        $("#id_eliminar").val(id);
-    }
-    ////////////////////JQUERY/////////////////////
     $(document).ready(function(){
         $("#tbAsignados").dataTable();
         $("#asignatura").chosen({
@@ -78,32 +67,32 @@
             no_results_text: "No se encontro resultados!",
             width: "95%"
         });
-        /////////////REGISTRAR DATOS////////////////
-        $("#frmRegistrar").validate({
+        var validado;
+        $(".chosen-select").on("change",function(){
+            if(validado){
+              validado.element($(this));
+            }
+        });
+        validado=$("#frmRegistrar").validate({
             debug:true,
             rules:{
-                nombre_asignatura:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:20
+                curso:{
+                    required:true
                 },
-                sigla:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:5
+                asignatura:{
+                    required:true
+                },
+                docente:{
+                    required:true
                 }
             },
-            messages:{
-               nombre_asignatura:{
-                    required:"Este es Campo Obligatorioooo.",
-                },
-                sigla:{
-                    required:"Este es Campo Obligatorioooo.",
-                },
+            errorPlacement:function(error, element){
+                element.parents('.form-group').append(error);
             },
+            ignore: ":hidden:not(.chosen-select)",
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/asignatura/registro_model.php',
+                    url: '../../models/asignar_curso/registro_model.php',
                     type: 'post',
                     data: $("#frmRegistrar").serialize(),
                     beforeSend: function() {
@@ -118,7 +107,7 @@
                             transicionSalir();
                             mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
                             setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>asignatura/index.php';
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>asignar_curso/index.php';
                             }, 3000);
                         }else{
                             transicionSalir();
@@ -128,61 +117,9 @@
                 });
             }
         });
-        /////////////editar DATOS////////////////
-        $('#frmEditar').validate({
-            debug:true,
-            rules:
-            {
-                nombre_asignatura:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:20,
-                },
-                sigla:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:5,
-                }
-            },
-            messages:{
-               nombre_asignatura:{
-                    required:"Este es Campo Obligatorioooo.",
-                },
-                sigla:{
-                    required:"Este es Campo Obligatorioooo.",
-                },
-            },
-            submitHandler: function (form) {
-                $.ajax({
-                    url: '../../models/asignatura/editar_model.php',
-                    type: 'post',
-                    data: $("#frmEditar").serialize(),
-                    beforeSend: function() {
-                        transicion("Procesando Espere....");
-                    },
-                    success: function(response) {
-                        if(response==1){
-                            $('#modalEditar').modal('hide');
-                            $('#btnEditar').attr({
-                                disabled: 'true'
-                            });
-                            transicionSalir();
-                            mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
-                            setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>asignatura/index.php';
-                            }, 3000);
-                        }else{
-                            transicionSalir();
-                            mensajes_alerta('ERROR AL EDITAR EL USUARIO verifique los datos!! '+response,'error','EDITAR DATOS');
-                        }
-                    }
-                });
-            }
-        });
-        /////////////ELIMINAR DATOS////////////////
         $("#btnEliminar").click(function(event) {
             $.ajax({
-                url: '../../models/asignatura/eliminar_model.php',
+                url: '../../models/asignar_curso/eliminar_model.php',
                 type: 'POST',
                 data: $("#frmEliminar").serialize(),
                 beforeSend: function() {
@@ -195,7 +132,7 @@
                         transicionSalir();
                         mensajes_alerta('DATOS ELIMINADOS ELIMINADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
                         setTimeout(function(){
-                            window.location.href='<?php echo ROOT_CONTROLLER ?>asignatura/index.php';
+                            window.location.href='<?php echo ROOT_CONTROLLER ?>asignar_curso/index.php';
                         }, 3000);
                     }else{
                         transicionSalir();
@@ -204,6 +141,5 @@
                 }
             });
         });
-     
     });
 </script>
