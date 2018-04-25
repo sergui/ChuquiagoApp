@@ -82,78 +82,31 @@
             width: "95%"
         });
 		
-		$("#id_curso").change(function() {            
-            
+		$("#id_curso").change(function() {
 			var miid=$("#id_curso").val();
             $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid);
         });
-		
+
         $("#tbtutor").dataTable();
-        $("#frmTutor").validate({
+        $("#frmRegistrar").validate({
             debug:true,
-            rules:{
-                nombres:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                paterno:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                materno:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                celular:{
-                    required:true,
-                    minlength: 8,
-                    maxlength:8,
-                },
-                domicilio:{
-                    required:true,
-                    minlength: 5,
-                    maxlength:20,
-                }
-            },
-            messages:{
-                nombres:{
-                    required:"Este es Campo es obligatorio escriba su nombre.",
-                },
-                paterno:{
-                    required:"Este es Campo Obligatorio escriba su apellido paterno.",
-                },
-                materno:{
-                    required:"Este es Campo Obligatorio escriba su apellido materno.",
-                },
-                celular:{
-                    required:"Este es Campo Obligatorio escriba su nro. de celular",
-                },
-                domicilio:{
-                    required:"Este es Campo Obligatorio escriba su direccion de domicilio.",
-                },
-            },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/tutor/registro_model.php',
+                    url: '../../models/asignar_curso/registro_model.php',
                     type: 'post',
-                    dataType:"json",
-                    data: $("#frmTutor").serialize(),
-                
+                    data: $("#frmRegistrar").serialize(),
+                    beforeSend: function() {
+                        transicion("Procesando Espere....");
+                    },
                     success: function(response) {
-                        if(response['estado']=='1' ){
+                        if(response==1 ){
                             $('#btnRegistrar').attr({
                                 disabled: 'true'
                             });
-                           // $('#btlis').removeClass('hidden');
-							
+                            $('#btlis').removeClass('hidden');
 							var id_tu=response['tutor']['id_tutor'];
 							$('#variable').data("midato",id_tu);
-                                               
                             mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! '+id_tu ,'success','GUARDAR DATOS');
-                            
                         }else{
                             transicionSalir();
                             mensajes_alerta('ERROR AL REGISTRAR EL TUTOR  verifique los datos!! '+response,'error','GUARDAR DATOS');
