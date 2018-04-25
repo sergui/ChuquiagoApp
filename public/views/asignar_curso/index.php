@@ -63,6 +63,21 @@
     ////////////////////JQUERY/////////////////////
     $(document).ready(function(){
         $("#tbAsignados").dataTable();
+        $("#asignatura").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "No se encontro resultados!",
+            width: "95%"
+        });
+        $("#docente").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "No se encontro resultados!",
+            width: "95%"
+        });
+        $("#curso").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "No se encontro resultados!",
+            width: "95%"
+        });
         /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
             debug:true,
