@@ -3,7 +3,7 @@
     require_once ("../../config/conexion.php");
     $id=$_REQUEST['id_curso'];
     $sql="call listadelCurso({$id})";
-    $estudiantes = $con->query($sql)
+    $estudiantes = $con->query($sql);
 ?>
 <div class="adv-table" >
     <table  class="display table table-bordered table-striped" id="tbEstudiante">

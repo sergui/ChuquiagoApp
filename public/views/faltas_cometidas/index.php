@@ -18,15 +18,14 @@
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        <span class="pull-right hidden" id="btnr">
-                            <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
-                                <span class="fa fa-pencil"></span> REGISTRAR ESTUDIANTE
-                            </a>
-                        </span>
+                        
                     </div>
                 <!-- </form> -->
                 <div id="listado">
-                </div>                
+                </div>   
+            
+            </div>
+                             
             </div>
             <?php //require_once 'modal_registrar.php'; ?>
             <?php //require_once 'modal_eliminar.php'; ?>
@@ -35,27 +34,7 @@
     </div>
 </div>
 <script>
-    function obtener_datos(id){
-        $.ajax({
-            url: '../../models/estudiante/datos_estudiante.php',
-            type: 'POST',
-            dataType: "json",
-            data: {id_rude: id},
-            success: function(datos){
-                console.log(datos);
-                $("#frmEditar [id=nombre]").val(datos['estudiante']['nombre']);
-                $("#frmEditar [id=paterno]").val(datos['estudiante']['paterno']);
-                $("#frmEditar [id=materno]").val(datos['estudiante']['materno']);
-                $("#frmEditar [id=fecha_nac]").val(datos['estudiante']['fecha_nac']);
-                $("#frmEditar [id=sexo]").val(datos['estudiante']['sexo']);
-                $("#frmEditar [id=domicilio]").val(datos['estudiante']['domicilio']);
-                $("#id_rude").val(datos['estudiante']['id_rude']);//enviando id para el modelo
-            }
-        });
-    }
-    function eliminar_datos(id){
-        $("#id_eliminar").val(id);
-    }
+   
     $(document).ready(function(){
     	$('.cFecha').datepicker({
 			format: 'dd/mm/yyyy'
