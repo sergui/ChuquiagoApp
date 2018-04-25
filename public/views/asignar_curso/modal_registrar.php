@@ -24,9 +24,7 @@
                                 <?php endforeach ?>
                             </select>
                     </div>
-                    
                     <br> <br> <br>
-                       
                     <label class="col-sm-3 control-label col-lg-2" for="inputSuccess"><strong>Seleccione asignatura</strong></label>
                     <div class="col-lg-4">
                             <select class="chosen-select" id="asignatura" name="asignatura" data-placeholder="Seleccione una asignatura"  required="">
@@ -48,9 +46,6 @@
                                 <?php endforeach ?>
                             </select>
                     </div>
-
-
-
                     <div class=" modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary" id="btnRegistrar" >Crear</button>

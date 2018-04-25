@@ -13,7 +13,7 @@
             </header>
             <div class="panel-body">
                 <div class="adv-table" >
-                <!--     <table  class="display table table-bordered table-striped" id="tbAsignados">
+                    <table  class="display table table-bordered table-striped" id="tbAsignados">
                         <thead>
                             <tr>
                                 <th>DOCENTE</th>
@@ -23,75 +23,59 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($asignaturas as $asignatura): ?>
+                            <?php foreach ($tienes as $tiene): ?>
                                 <tr class="gradeX">
-                                    <td><?php echo $asignatura['nombre_asignatura']; ?></td>
-                                    <td><?php echo $asignatura['sigla']; ?></td>
-                                    <td >
-                                       <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $asignatura['id_asignatura'] ?>)">
-                                        <span class="fa fa-edit" ></span>
-                                    </a>
-                                    <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $asignatura['id_asignatura'] ?>)">
-                                        <span class="fa fa-trash-o"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach;?>
-
-                    </tbody>
-                </table> -->
+                                    <td><?php echo $tiene['nombre'].' '.$tiene['paterno'].' '.$tiene['materno']; ?></td>
+                                    <td><?php echo $tiene['nombre_asignatura']; ?></td>
+                                    <td><?php echo $tiene['grado'].' '.$tiene['paralelo']; ?></td>
+                                    <td></td>
+                                </tr>
+                            <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <?php require_once 'modal_registrar.php'; ?>
-        <?php require_once 'modal_eliminar.php'; ?>
-        <?php require_once 'modal_editar.php'; ?>
-    </section>
-</div>
+            <?php require_once 'modal_registrar.php'; ?>
+            <?php require_once 'modal_eliminar.php'; ?>
+            <?php require_once 'modal_editar.php'; ?>
+        </section>
+    </div>
 </div>
 <script>
-    
-     function obtener_datos(id)
-         {
-            
-            $.ajax({
-                url: '../../models/asignatura/datos_asignatura.php',
-                type: 'POST',
-                dataType: "json",
-                data: {id_asignatura: id},
-                success: function(datos){ 
-                   
-                    $("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
-                    
-                    $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
-
-                    $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo
-                }
-            });
-        }
+    function obtener_datos(id){
+        $.ajax({
+            url: '../../models/asignatura/datos_asignatura.php',
+            type: 'POST',
+            dataType: "json",
+            data: {id_asignatura: id},
+            success: function(datos){
+                $("#frmEditar [id=nombre_asignatura]").val(datos['asignatura']['nombre_asignatura']);
+                $("#frmEditar [id=sigla]").val(datos['asignatura']['sigla']);
+                $("#id_asignatura").val(datos['asignatura']['id_asignatura']);//enviando id para el modelo
+            }
+        });
+    }
 
     ///////////////////ELIMINAR DATOS////////
-    function eliminar_datos(id)
-    {
+    function eliminar_datos(id){
         $("#id_eliminar").val(id);
-    }    
+    }
     ////////////////////JQUERY/////////////////////
-    $(document).ready(function() 
-    {
-        $("#tbAsignatura").dataTable();
+    $(document).ready(function(){
+        $("#tbAsignados").dataTable();
         /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
             debug:true,
-            rules:
-            {
+            rules:{
                 nombre_asignatura:{
                     required:true,
                     minlength: 3,
-                    maxlength:20,
+                    maxlength:20
                 },
                 sigla:{
                     required:true,
                     minlength: 1,
-                    maxlength:5,
+                    maxlength:5
                 }
             },
             messages:{
@@ -181,7 +165,7 @@
             }
         });
         /////////////ELIMINAR DATOS////////////////
-         $("#btnEliminar").click(function(event) {
+        $("#btnEliminar").click(function(event) {
             $.ajax({
                 url: '../../models/asignatura/eliminar_model.php',
                 type: 'POST',
