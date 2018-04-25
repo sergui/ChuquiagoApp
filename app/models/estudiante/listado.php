@@ -25,9 +25,7 @@
                        <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $estudiante['id_rude'] ?>)">
                             <span class="fa fa-edit" ></span>
                         </a>
-                        <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $estudiante['id_rude'] ?>)">
-                            <span class="fa fa-trash-o"></span>
-                        </a>
+                        
                     </td>
                 </tr>
             <?php endforeach;?>
