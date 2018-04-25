@@ -52,10 +52,7 @@
 									<button class="btn btn-primary" type="submit" id="btnRegistrar">Registrar</button>
 								</div>
 							</div>
-<<<<<<< HEAD
-=======
 							<input type="hidden" name="id_tutorV"  id="id_tutorV" value="">
->>>>>>> froy2
 						</form>
 					</div>
 					<div class="col-md-6">
