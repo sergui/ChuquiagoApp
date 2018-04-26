@@ -26,19 +26,15 @@ $lista = $con->query( $sql );
 				<td><button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)">
        				 <span class="fa fa-user"></span> Adicionar
     				</button>
-				
-
 				</td>
 			</tr>
 			<?php endforeach;?>
 		</tbody>
 	</table>
-
 </div>
 <span class="pull-right">
     <a href="#" class="btn btn-success" id="variable">
-        <span class="fa fa-times"></span>
-					Terminar
+        <span class="fa fa-times"></span>Terminar
 	</a>
 </span>
 <script>
@@ -76,5 +72,4 @@ $lista = $con->query( $sql );
 			}
 		} );
 	}
-	//registroencargado
 </script>
