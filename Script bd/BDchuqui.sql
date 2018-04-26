@@ -1,6 +1,6 @@
 /*
-SQLyog Enterprise v12.09 (64 bit)
-MySQL - 10.1.9-MariaDB : Database - bdchuquiago
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 10.1.8-MariaDB : Database - bdchuquiago
 *********************************************************************
 */
 
@@ -152,9 +152,12 @@ CREATE TABLE `faltas_cometidas` (
   `estado` tinyint(4) NOT NULL DEFAULT '1',
   `id_kardex` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
+  `id_falta` int(11) NOT NULL,
   PRIMARY KEY (`id_fal_com`),
   KEY `id_kardex` (`id_kardex`),
-  CONSTRAINT `faltas_cometidas_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`)
+  KEY `id_falta` (`id_falta`),
+  CONSTRAINT `faltas_cometidas_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`),
+  CONSTRAINT `faltas_cometidas_ibfk_2` FOREIGN KEY (`id_falta`) REFERENCES `faltas` (`id_falta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas_cometidas` */
