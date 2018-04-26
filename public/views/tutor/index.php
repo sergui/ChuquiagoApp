@@ -83,8 +83,9 @@
         });
 
         $("#id_curso").change(function() {
+            var idt=$("#id_tutorV").val();
             var miid=$("#id_curso").val();
-            $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid);
+            $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid+"&id_tutor="+idt);
         });
         $("#tbtutor").dataTable();
         $("#frmTutor").validate({
@@ -96,12 +97,10 @@
                     maxlength:15,
                 },
                 paterno:{
-                    required:true,
                     minlength: 3,
                     maxlength:15,
                 },
                 materno:{
-                    required:true,
                     minlength: 3,
                     maxlength:15,
                 },
@@ -141,14 +140,16 @@
                     data: $("#frmTutor").serialize(),
                     success: function(response) {
                         if(response['estado']=='1' ){
-                            $('#btnRegistrar').attr({
-                                disabled: 'true'
-                            });
-                           // $('#btlis').removeClass('hidden');
+                            $("#nombres").attr('disabled', 'true');
+                            $("#paterno").attr('disabled', 'true');
+                            $("#materno").attr('disabled', 'true');
+                            $("#celular").attr('disabled', 'true');
+                            $("#telefono").attr('disabled', 'true');
+                            $("#domicilio").attr('disabled', 'true');
+                            $('#btnRegistrar').attr( 'disabled', 'true');
+                            $('#btlis').removeClass('hidden');
                             var id_tu=response['tutor']['id_tutor'];
-                            //$('#division').data("midato",id_tu);
                             $("#id_tutorV").val(id_tu);
-                            //$('#id_tutorV').html('sss '+ id_tu);
                             mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ' ,'success','GUARDAR DATOS');
                         }else{
                             transicionSalir();
@@ -190,12 +191,6 @@
             messages:{
                 nombres:{
                     required:"Este es Campo es obligatorio escriba su nombre.",
-                },
-                paterno:{
-                    required:"Este es Campo Obligatorio escriba su apellido paterno.",
-                },
-                materno:{
-                    required:"Este es Campo Obligatorio escriba su apellido materno.",
                 },
                 celular:{
                     required:"Este es Campo Obligatorio escriba su nro. de celular",

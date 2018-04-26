@@ -46,6 +46,7 @@ $lista = $con->query( $sql );
 	} );
 
 	function registro( id ) {
+		var idt=$("#id_tutorV").val();
 		$.ajax( {
 			url: '../../models/tutor/registroencargado.php',
 			type: 'POST',
@@ -56,17 +57,11 @@ $lista = $con->query( $sql );
 			},
 			success: function ( datos ) {
 				if ( response == 1 ) {
-					$( '#btnHijo' ).attr( {
-						disabled: 'true'
-					} );
-
-					$( '#btlis' ).removeClass( 'hidden' );
-
-					mensajes_alerta( 'DATOS GUARDADOS EXITOSAMENTE !! ', 'success', 'GUARDAR DATOS' );
-
+					$(this).attr( 'disabled',: 'true' );
+					mensajes_alerta( 'Se adiciono correctamente !! ', 'success', 'Adición' );
 				} else {
 					transicionSalir();
-					mensajes_alerta( 'ERROR AL REGISTRAR EL TUTOR  verifique los datos!! ' + response, 'error', 'GUARDAR DATOS' );
+					mensajes_alerta( 'Error al adicionar verifique los datos!! ' + response, 'error', 'Adición' );
 				}
 
 			}
