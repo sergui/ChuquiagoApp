@@ -48,7 +48,7 @@ $lista = $con->query( $sql );
 	function registro( id ) {
 		var idt=$("#id_tutorV").val();
 		$.ajax( {
-			url: '../../models/tutor/registroencargado.php',
+			url: '../../models/tutor/registro_encargado.php',
 			type: 'POST',
 			dataType: "json",
 			data: {
@@ -56,12 +56,15 @@ $lista = $con->query( $sql );
 				id_rude: id
 			},
 			success: function ( datos ) {
-				if ( response == 1 ) {
-					$(this).attr( 'disabled',: 'true' );
-					mensajes_alerta( 'Se adiciono correctamente !! ', 'success', 'Adición' );
+				var idt=$("#id_tutorV").val();
+	            var miid=$("#id_curso").val();
+	            $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid+"&id_tutor="+idt);
+				if ( datos == 1 ) {
+					$(this).attr( 'disabled', 'true' );
+					mensajes_alerta_pequeño( 'Se adiciono correctamente !! ', 'success', 'Adición' );
 				} else {
 					transicionSalir();
-					mensajes_alerta( 'Error al adicionar verifique los datos!! ' + response, 'error', 'Adición' );
+					mensajes_alerta_pequeño( 'Error al adicionar verifique los datos!! ' + response, 'error', 'Adición' );
 				}
 
 			}

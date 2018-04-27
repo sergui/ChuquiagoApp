@@ -138,7 +138,11 @@
                     type: 'post',
                     dataType:"json",
                     data: $("#frmTutor").serialize(),
+                    beforeSend: function() {
+                        transicion("Procesando Espere....");
+                    },
                     success: function(response) {
+                        transicionSalir();
                         if(response['estado']=='1' ){
                             $("#nombres").attr('disabled', 'true');
                             $("#paterno").attr('disabled', 'true');

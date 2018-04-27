@@ -56,7 +56,7 @@
 						</form>
 					</div>
 					<div class="col-md-6">
-						<span class="pull-right hide" id="btlis">
+						<span class="pull-right hidden" id="btlis">
 							<label class="control-label col-lg-6" for="inputSuccess">Seleccione curso</label>
 		                    <div class="col-lg-6">
 		                        <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">
