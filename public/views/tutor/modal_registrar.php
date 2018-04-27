@@ -19,13 +19,13 @@
 							<div class="form-group ">
 								<label for="paterno" class="control-label col-lg-4">Ap. Paterno</label>
 								<div class="col-lg-8">
-									<input class="form-control " id="paterno" type="text" name="paterno" required minlength="3"/>
+									<input class="form-control " id="paterno" type="text" name="paterno" minlength="3"/>
 								</div>
 							</div>
 							<div class="form-group ">
 								<label for="materno" class="control-label col-lg-4">Ap. Materno</label>
 								<div class="col-lg-8">
-									<input class="form-control " id="materno" type="text" name="materno" required minlength="3"/>
+									<input class="form-control " id="materno" type="text" name="materno" minlength="3"/>
 								</div>
 							</div>
 							<div class="form-group ">
@@ -37,7 +37,7 @@
 							<div class="form-group ">
 								<label for="telefono" class="control-label col-lg-4">Telefono</label>
 								<div class="col-lg-8">
-									<input class="form-control " id="telefono" type="number" name="telefono" required minlength="8"/>
+									<input class="form-control " id="telefono" type="number" name="telefono"  minlength="8"/>
 								</div>
 							</div>
 							<div class="form-group ">
@@ -56,7 +56,7 @@
 						</form>
 					</div>
 					<div class="col-md-6">
-						<span class="pull-right" id="btlis">
+						<span class="pull-right hidden" id="btlis">
 							<label class="control-label col-lg-6" for="inputSuccess">Seleccione curso</label>
 		                    <div class="col-lg-6">
 		                        <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">

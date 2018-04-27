@@ -8,9 +8,9 @@
 	require_once ("../../config/db.php");
 	require_once ("../../config/conexion.php");
 	//Variables para enviar a la plantilla
-	$titulo="Registro de Faltas Cometidas";
-	$contenido="kardex/index.php";
-    $subTitulo="Registro de faltas cometidas";
+	$titulo="Lista de cursos y asesores";
+	$contenido="curso/asesor.php";
+    $subTitulo="Asignar Asesor";
     $id_user  = $_SESSION['id_user'];
 	$menu_a= $menus['U_LISTA'];
 
