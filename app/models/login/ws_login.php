@@ -21,6 +21,7 @@
                     $json['usuario']['rol'] = $result_row->nombre_rol;
                     $json['usuario']['ap_paterno'] = $result_row->paterno;
                     $json['usuario']['user_login_status'] = 1;
+                   			       
                   } else {
                     //$this->errors[] = "Usuario y/o contraseña no coinciden.";
                     $resultar["error"]='ok';
