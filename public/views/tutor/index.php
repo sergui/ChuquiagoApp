@@ -52,6 +52,29 @@
 </div>
 </div>
 <script>
+    function registro( id ) {
+        var idt=$("#id_tutorV").val();
+        $.ajax( {
+            url: '../../models/tutor/registro_encargado.php',
+            type: 'POST',
+            dataType: "json",
+            data: {
+                id_tutor: idt,
+                id_rude: id
+            },
+            success: function ( datos ) {
+                var idt=$("#id_tutorV").val();
+                var miid=$("#id_curso").val();
+                $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid+"&id_tutor="+idt);
+                if ( datos == 1 ) {
+                    mensajes_alerta_pequeño( 'Se adiciono correctamente !! ', 'success', 'Adición' );
+                } else {
+                    mensajes_alerta_pequeño( 'Error al adicionar verifique los datos!! ' + response, 'error', 'Adición' );
+                }
+
+            }
+        } );
+    }
     function obtener_datos(id){
         $.ajax({
             url: '../../models/tutor/datos_tutor.php',
