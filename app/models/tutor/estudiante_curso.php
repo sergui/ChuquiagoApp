@@ -61,7 +61,7 @@ $lista = $con->query( $sql );
 	</table>
 </div><br>
 <span class="pull-right">
-    <a href="#" class="btn btn-success" id="variable">
+    <a href="#" class="btn btn-success" id="btnTerminar">
         <span class="fa fa-times"></span>Terminar
 	</a>
 </span>
@@ -71,7 +71,11 @@ $lista = $con->query( $sql );
 			"sScrollY": "220px",
 			"bPaginate": false
 		} );
+		$("#btnTerminar").click(function(event) {
+			$('#modal_Registrar').modal('hide');
+			setTimeout(function(){
+                window.location.href='<?php echo ROOT_CONTROLLER ?>tutor/index.php';
+            }, 1000);
+		});
 	} );
-
-	
 </script>
