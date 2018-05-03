@@ -3,9 +3,32 @@ require_once( "../../config/db.php" );
 require_once( "../../config/conexion.php" );
 require_once( "../../config/route.php" );
 
-$id = $_REQUEST[ "id_curso" ];
+$idc = $_REQUEST[ "id_curso" ];
+$idt = $_REQUEST[ "id_tutor" ];
 //echo "<pre>";		echo "</pre>";
-$sql = "call listadelCurso({$id})";
+//$sql = "call listadelCurso({$id})";
+$sql = "SELECT tmpcurso.*,tmpestudiante.*
+		FROM
+			(SELECT 
+			    CONCAT(
+			      e.nombre,
+			      ' ',
+			      e.paterno,
+			      ' ',
+			      e.materno
+			    ) AS nombre_completo,
+			    e.sexo,
+			    e.fecha_nac,
+			    e.id_rude 
+			  FROM
+			    estudiante e,
+			    curso c,
+			    kardex k 
+			  WHERE c.id_curso = k.id_curso 
+			    AND e.id_rude = k.id_rude 
+			    AND c.id_curso = {$idc} )tmpcurso
+			LEFT JOIN (SELECT * FROM encargado WHERE id_tutor={$idt})tmpestudiante
+		ON tmpcurso.id_rude = tmpestudiante.id_rude";
 $lista = $con->query( $sql );
 
 ?>
@@ -23,8 +46,13 @@ $lista = $con->query( $sql );
 				<td>
 					<?php echo $estudiante['nombre_completo']; ?>
 				</td>
-				<td><button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)">
-       				 <span class="fa fa-user"></span> Adicionar
+				<td><?php if (isset($estudiante['id_rude'])): ?>
+					<button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)" disabled="true">
+       					<span class="fa fa-user"></span> Adicionar
+    				</button>
+				<?php endif; ?>
+					<button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)">
+       					<span class="fa fa-user"></span> Adicionar
     				</button>
 				</td>
 			</tr>
