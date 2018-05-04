@@ -14,7 +14,24 @@
     $id_user  = $_SESSION['id_user'];
 	$menu_a= $menus['U_LISTA'];
 
-	if (!($cursos = $con->query("SELECT * FROM  docente as d LEFT JOIN tiene as t on d.id_docente = t.id_docente LEFT JOIN curso as c on c.id_curso = t.id_curso WHERE d.id_user = {$id_user} "))) {
+	if (!($lista = $con->query("call asignar_asesor(); "))) {
+    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+	}
+
+	$con->close();
+$con=conectar();
+	$sql="SELECT d.id_docente,d.ci
+			,d.nombre
+			,d.paterno
+			,d.materno
+			,d.materno
+			,d.celular
+			,u.nombre_usuario,u.id_usuario
+			,r.nombre AS nombre_rol, r.id_rol
+			FROM docente d, usuario u, roles r
+			WHERE d.id_user=u.id_usuario AND u.id_rol=r.id_rol
+			AND d.estado=1 AND d.id_user != {$_SESSION['id_user']};";
+	if (!($docentes = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
