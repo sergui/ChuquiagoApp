@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-				<h4 class="modal-title">Lista de Docentes</h4>
+				<h4 class="modal-title">Lista de Docentes </h4>
 			</div>
 			<div class="modal-body">
 				<div class="adv-table">
@@ -31,9 +31,9 @@
 								</td>
 
 								<td>
-									<a href="#" class="btn btn-success" id="btnAsignar">
-        								<span class="fa fa-pencil"></span>Asignar
-									</a>
+									<button class="btn btn-info" onclick="registro(<?php echo $docente['id_docente']; ?>)" >
+       					<span class="fa fa-user"></span> Asignar
+    				</button>
 									</td>
 							</tr>
 							<?php endforeach ?>
@@ -44,3 +44,42 @@
 		</div>
 	</div>
 </div>
+<script>
+	$( document ).ready( function () {
+		$( "#tbDocente" ).dataTable( {
+			"sScrollY": "620px",
+			"bPaginate": false
+		} );
+		
+		
+		function registro( id ) {
+		var idc=2;
+        $.ajax( {
+            url: '../../models/curso/asignar_asesor_model.php',
+            type: 'POST',
+            dataType: "json",
+            data: {
+                id_curso: idc,
+                id_asesor: id
+            },
+            beforeSend: function() {
+                        transicion("Procesando Espere....");
+                    },
+                    success: function(response) {
+                        if(response==1){
+                            
+                            $('#modal_asesor').modal('hide');
+                            transicionSalir();
+                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
+                            setTimeout(function(){
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>curso/asesores.php';
+                            }, 3000);
+                        }else{
+                            transicionSalir();
+                            mensajes_alerta('ERROR AL REGISTRAR verifique los datos!! '+response,'error','GUARDAR DATOS');
+                        }
+                    }
+        } );
+    }
+	} );
+</script>
