@@ -64,7 +64,7 @@
             </li>
             <?php endif ?>
             <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6 || $_SESSION['id_rol']==2): ?> 
-            <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>kardex/"><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
+            <li class="<?php echo $menu_a['kardex']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>kardex/"><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
             </li>
             <?php endif ?>
             <li><a href="<?php echo ROOT_CONTROLLER; ?>login/index.php?logout"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
