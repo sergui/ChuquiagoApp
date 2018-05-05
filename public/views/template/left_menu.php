@@ -28,6 +28,7 @@
         <ul class="nav nav-pills nav-stacked custom-nav">
             <li class=""><a href="<?php echo ROOT; ?>"><i class="fa fa-home"></i> <span>
             Inicio</span></a></li>
+            <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6): ?>            
             <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
                     <li class="">
@@ -61,8 +62,11 @@
                     </li>
                 </ul>
             </li>
+            <?php endif ?>
+            <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6 || $_SESSION['id_rol']==2): ?> 
             <li class=""><a href="<?php echo ROOT_CONTROLLER; ?>kardex/"><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
             </li>
+            <?php endif ?>
             <li><a href="<?php echo ROOT_CONTROLLER; ?>login/index.php?logout"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
         </ul>
     </div>
