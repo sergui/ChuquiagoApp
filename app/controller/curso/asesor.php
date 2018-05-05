@@ -12,7 +12,7 @@
 	$contenido="curso/asesor.php";
     $subTitulo="Asignar Asesor";
     $id_user  = $_SESSION['id_user'];
-	$menu_a= $menus['U_LISTA'];
+	$menu_a= $menus['UE_CURSO_ASESOR'];
 
 	if (!($lista = $con->query("call asignar_asesor(); "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;

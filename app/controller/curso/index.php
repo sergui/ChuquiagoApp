@@ -11,7 +11,7 @@
 	//Variables para enviar a la plantilla
 	$titulo="Curso";
 	$contenido="curso/index.php";
-	$menu_a= $menus['C_SECCION'];
+	$menu_a= $menus['UE_CURSO'];
 	$subTitulo="CURSO";
 	if (!($cursos = $con->query("SELECT * FROM curso where estado=1"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;

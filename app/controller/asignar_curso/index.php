@@ -10,7 +10,7 @@
 	//Variables para enviar a la plantilla
 	$titulo="Asignar un Curso";
 	$contenido="asignar_curso/index.php";
-	$menu_a= $menus['C_SECCION'];
+	$menu_a= $menus['UE_ASIGNACION_C'];
 	$subTitulo="ASIGNAR CURSO";
 	$sql="SELECT * from docente where estado=1 and id_user<>1";
 	if (!($docentes = $con->query($sql))) {

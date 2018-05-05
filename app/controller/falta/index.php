@@ -11,7 +11,7 @@
 	//Variables para enviar a la plantilla
 	$titulo="Faltas";
 	$contenido="falta/index.php";
-	$menu_a= $menus['C_SECCION'];
+	$menu_a= $menus['C_FALTA'];
 	$subTitulo="FALTAS";
 	
 	if (!($faltas = $con->query("SELECT id_falta,

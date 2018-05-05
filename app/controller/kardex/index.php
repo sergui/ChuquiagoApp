@@ -12,7 +12,7 @@
 	$contenido="kardex/index.php";
     $subTitulo="Registro de faltas cometidas";
     $id_user  = $_SESSION['id_user'];
-	$menu_a= $menus['U_LISTA'];
+	$menu_a= $menus['C_KARDEX'];
 
 	if (!($cursos = $con->query("SELECT * FROM  docente as d LEFT JOIN tiene as t on d.id_docente = t.id_docente LEFT JOIN curso as c on c.id_curso = t.id_curso WHERE d.id_user = {$id_user} "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
