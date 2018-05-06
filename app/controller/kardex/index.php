@@ -21,7 +21,7 @@
 		$sql="SELECT * FROM  docente as d LEFT JOIN tiene as t on d.id_docente = t.id_docente LEFT JOIN curso as c on c.id_curso = t.id_curso WHERE d.id_user = {$id_user}";
 	}
 
-	if (!($cursos = $con->query(""))) {
+	if (!($cursos = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
