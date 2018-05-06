@@ -15,7 +15,7 @@
 	$subTitulo="FALTAS";
 	
 	if (!($faltas = $con->query("SELECT id_falta,
-									CASE tipoFalta WHEN '1' THEN 'Leve' WHEN '2' THEN 'Grave' END AS tipoFalta
+									tipoFalta tipoFalta
 									,descripcion
 									FROM faltas
 									WHERE estado=1"))) {
