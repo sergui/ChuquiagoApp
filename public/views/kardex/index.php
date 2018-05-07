@@ -8,8 +8,8 @@
             </header>
             <div class="panel-body">
                 <!-- <form class="form-horizontal adminex-form"> -->
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label col-lg-2" for="inputSuccess"><strong>Seleccione curso</strong></label>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-5 control-label" for="inputSuccess"><strong>Seleccione curso</strong></label>
                         <div class="col-lg-7">
                             <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="">
                                 <option value=""></option>
@@ -19,6 +19,17 @@
                             </select>
                         </div>
                     </div>
+                    <?php if ($asesora->num_rows>0): ?>
+                        <?php
+                            foreach ($asesora as $cursoasesor) {
+                                $cursoA=$cursoasesor;
+                            }
+                        ?>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-5 control-label" for="inputSuccess"><strong>Curso Asesorado</strong></label>
+                            <button type="button" class="btn btn-primary" onclick="verCurso(<?php echo $cursoA['id_curso']; ?>)"><?php echo $cursoA['curso']; ?></button>
+                        </div>
+                    <?php endif ?>
                 <!-- </form> -->
                 <div id="listado">
                 </div>
@@ -41,7 +52,7 @@
             var id=$(this).val();
             $('#id_curso').val(id);
             $.ajax({
-                url: '../../models/estudiante/listado.php',
+                url: '../../models/kardex/listado.php',
                 type: 'post',
                 data: {id_curso: id},
                 beforeSend: function() {
