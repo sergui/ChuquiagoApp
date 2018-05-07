@@ -15,15 +15,6 @@
         if ($result_of_login_check->num_rows == 1) {
               $result_row = $result_of_login_check->fetch_object();
                  if (password_verify($_GET['password'], $result_row->password)) {
-<<<<<<< HEAD
-                	$json['usuario']['id_user'] = $result_row->id_usuario;
-                    $json['usuario']['user_name'] = $result_row->nombre_usuario;
-                    $json['usuario']['nombre'] = $result_row->nombre;
-                    $json['usuario']['rol'] = $result_row->nombre_rol;
-                    $json['usuario']['ap_paterno'] = $result_row->paterno;
-                    $json['usuario']['user_login_status'] = 1;
-                   			       
-=======
                 	$usuario['id_user'] = $result_row->id_usuario;
                     $usuario['user_name'] = $result_row->nombre_usuario;
                     $usuario['nombre'] = $result_row->nombre;
@@ -33,7 +24,6 @@
                     $usuario['ap_materno'] = $result_row->materno;
                     $usuario['id_docente'] = $result_row->id_docente;
                     $json['usuario'][]=$usuario;
->>>>>>> 629b98496b0619ecfb42ea8c7dcb443378149274
                   } else {
                     //$this->errors[] = "Usuario y/o contraseña no coinciden.";
                     $resultar["error"]='ok';
