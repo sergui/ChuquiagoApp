@@ -42,6 +42,7 @@
                             $_SESSION['rol'] = $result_row->nombre_rol;
                             $_SESSION['id_rol'] = $result_row->id_rol;
                             $_SESSION['ap_paterno'] = $result_row->paterno;
+                            $_SESSION['id_docente'] = $result_row->id_docente;
                             $_SESSION['user_login_status'] = 1;
                         } else {
                             $this->errors[] = "Usuario y/o contraseña no coinciden.";

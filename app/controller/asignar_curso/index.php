@@ -39,14 +39,16 @@
 						, t.id_curso
 						, t.id_asignatura
 						, t.id_docente
+						, u.nombre_usuario
 						FROM
 						 docente d,
 						 asignatura a,
 						 curso c,
-						 tiene t
+						 tiene t,
+						 usuario u
 						WHERE t.id_curso=c.id_curso 
 							AND t.id_asignatura = a.id_asignatura
-							AND t.id_docente = d.id_docente"))) {
+							AND t.id_docente = d.id_docente and u.id_usuario=d.id_user"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
