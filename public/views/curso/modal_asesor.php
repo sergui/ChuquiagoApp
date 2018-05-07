@@ -36,7 +36,9 @@
     				</button>
 									</td>
 							</tr>
+							<input type="hidden" name="cursoid"  id="cursoid" value="">
 							<?php endforeach ?>
+							
 						</tbody>
 					</table>
 				</div>
@@ -45,15 +47,8 @@
 	</div>
 </div>
 <script>
-	$( document ).ready( function () {
-		$( "#tbDocente" ).dataTable( {
-			"sScrollY": "620px",
-			"bPaginate": false
-		} );
-		
-		
-		function registro( id ) {
-		var idc=2;
+	function registro( id ) {
+		var idc=$('#cursoid').val();
         $.ajax( {
             url: '../../models/curso/asignar_asesor_model.php',
             type: 'POST',
@@ -81,5 +76,13 @@
                     }
         } );
     }
+	$( document ).ready( function () {
+		$( "#tbDocente" ).dataTable( {
+			"sScrollY": "620px",
+			"bPaginate": false
+		} );
+		
+		
+		
 	} );
 </script>
