@@ -6,8 +6,7 @@ require_once( "../../config/route.php" );
 $idc = $_REQUEST[ "id_curso" ];
 $idt = $_REQUEST[ "id_tutor" ];
 //echo "<pre>";		echo "</pre>";
-//$sql = "call listadelCurso({$id})";
-$sql = "SELECT tmpcurso.*,tmpestudiante.*
+$sql = "SELECT tmpcurso.*,IFNULL(tmpestudiante.id_tutor,-1) AS id_tutor
 		FROM
 			(SELECT 
 			    CONCAT(
@@ -29,6 +28,7 @@ $sql = "SELECT tmpcurso.*,tmpestudiante.*
 			    AND c.id_curso = {$idc} )tmpcurso
 			LEFT JOIN (SELECT * FROM encargado WHERE id_tutor={$idt})tmpestudiante
 		ON tmpcurso.id_rude = tmpestudiante.id_rude";
+
 $lista = $con->query( $sql );
 
 ?>
@@ -42,26 +42,26 @@ $lista = $con->query( $sql );
 		</thead>
 		<tbody>
 			<?php foreach ($lista as $estudiante): ?>
+				<?php //echo "<pre>";	print_r ($estudiante);	echo "</pre>"; ?>
 			<tr class="gradeX">
 				<td>
 					<?php echo $estudiante['nombre_completo']; ?>
 				</td>
-				<td><?php if (isset($estudiante['id_rude'])): ?>
-					<button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)" disabled="true">
+				<td><?php if ($estudiante['id_tutor']==-1): ?>
+					<button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)" >
        					<span class="fa fa-user"></span> Adicionar
     				</button>
+				<?php else: ?>
+					Asignado
 				<?php endif; ?>
-					<button class="btn btn-info" onclick="registro(<?php echo $estudiante['id_rude']; ?>)">
-       					<span class="fa fa-user"></span> Adicionar
-    				</button>
 				</td>
 			</tr>
 			<?php endforeach;?>
 		</tbody>
 	</table>
-</div>
+</div><br>
 <span class="pull-right">
-    <a href="#" class="btn btn-success" id="variable">
+    <a href="#" class="btn btn-success" id="btnTerminar">
         <span class="fa fa-times"></span>Terminar
 	</a>
 </span>
@@ -71,31 +71,11 @@ $lista = $con->query( $sql );
 			"sScrollY": "220px",
 			"bPaginate": false
 		} );
+		$("#btnTerminar").click(function(event) {
+			$('#modal_Registrar').modal('hide');
+			setTimeout(function(){
+                window.location.href='<?php echo ROOT_CONTROLLER ?>tutor/index.php';
+            }, 1000);
+		});
 	} );
-
-	function registro( id ) {
-		var idt=$("#id_tutorV").val();
-		$.ajax( {
-			url: '../../models/tutor/registro_encargado.php',
-			type: 'POST',
-			dataType: "json",
-			data: {
-				id_tutor: idt,
-				id_rude: id
-			},
-			success: function ( datos ) {
-				var idt=$("#id_tutorV").val();
-	            var miid=$("#id_curso").val();
-	            $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid+"&id_tutor="+idt);
-				if ( datos == 1 ) {
-					$(this).attr( 'disabled', 'true' );
-					mensajes_alerta_pequeño( 'Se adiciono correctamente !! ', 'success', 'Adición' );
-				} else {
-					transicionSalir();
-					mensajes_alerta_pequeño( 'Error al adicionar verifique los datos!! ' + response, 'error', 'Adición' );
-				}
-
-			}
-		} );
-	}
 </script>

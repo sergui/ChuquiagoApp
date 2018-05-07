@@ -11,7 +11,7 @@
 	//Variables para enviar a la plantilla
 	$titulo="Faltas maximas";
 	$contenido="pfaltas/index.php";
-	$menu_a= $menus['C_SECCION'];
+	$menu_a= $menus['C_MAX_FALTA'];
 	$subTitulo="Configuracion de faltas maximas";
 	
 	if (!($pfaltas = $con->query("SELECT * FROM pfaltas"))) {

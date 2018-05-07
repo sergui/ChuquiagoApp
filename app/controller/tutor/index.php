@@ -11,7 +11,7 @@
 	$titulo="Padres de familia";
 	$contenido="tutor/index.php";
 	$subTitulo="Padre de familia";
-	$menu_a= $menus['U_LISTA'];
+	$menu_a= $menus['UE_PADRE'];
 
 	if (!($tutores = $con->query("SELECT * FROM tutor where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;

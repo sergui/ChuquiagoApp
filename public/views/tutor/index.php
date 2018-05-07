@@ -20,7 +20,7 @@
                                 <th>Ap. Paterno</th>
                                 <th>Ap. Materno</th>
                                 <th>Celular</th>
-                                <th class="text-center">ACCIONES</th>
+                                <th class="text-center col-md-4">Hijos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,13 +30,24 @@
                                 <td><?php echo $tutor['paterno']; ?></td>
                                 <td><?php echo $tutor['materno']; ?></td>
                                 <td><?php echo $tutor['celular']; ?></td>
-                                <td >
-                                    <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $tutor['id_tutor'] ?>)">
-                                        <span class="fa fa-edit" ></span>
-                                    </a>
-                                    <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $tutor['id_tutor'] ?>)">
-                                        <span class="fa fa-trash-o"></span>
-                                    </a>
+                                <td>
+                                <?php 
+                                    $con=conectar();
+                                    $sql="SELECT es.*, e.*
+                                            FROM estudiante es
+                                            , encargado e
+                                            WHERE es.`id_rude` = e.`id_rude`
+                                            AND e.`id_tutor`=".$tutor['id_tutor'];
+                                    if (!($hijos = $con->query($sql))) {
+                                        echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+                                    }
+                                    $con->close();
+                                    echo "<ol>";
+                                    foreach ($hijos as $hijo) {
+                                        echo '<li>'.$hijo['nombre'].' '.$hijo['paterno'].' '.$hijo['materno'].'</li>';
+                                    }
+                                    echo "</ol>";
+                                ?>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -47,11 +58,33 @@
         <?php require_once 'modal_registrar.php'; ?>
         <?php require_once 'modal_eliminar.php'; ?>
         <?php require_once 'modal_editar.php'; ?>
-
     </section>
 </div>
 </div>
 <script>
+    function registro( id ) {
+        var idt=$("#id_tutorV").val();
+        $.ajax( {
+            url: '../../models/tutor/registro_encargado.php',
+            type: 'POST',
+            dataType: "json",
+            data: {
+                id_tutor: idt,
+                id_rude: id
+            },
+            success: function ( datos ) {
+                var idt=$("#id_tutorV").val();
+                var miid=$("#id_curso").val();
+                $("#tabla_estudiante").load("../../models/tutor/estudiante_curso.php?id_curso="+miid+"&id_tutor="+idt);
+                if ( datos == 1 ) {
+                    mensajes_alerta_pequeño( 'Se adiciono correctamente !! ', 'success', 'Adición' );
+                } else {
+                    mensajes_alerta_pequeño( 'Error al adicionar verifique los datos!! ' + response, 'error', 'Adición' );
+                }
+
+            }
+        } );
+    }
     function obtener_datos(id){
         $.ajax({
             url: '../../models/tutor/datos_tutor.php',
@@ -112,7 +145,7 @@
                 domicilio:{
                     required:true,
                     minlength: 5,
-                    maxlength:20,
+                    maxlength:200,
                 }
             },
             messages:{
@@ -158,73 +191,6 @@
                         }else{
                             transicionSalir();
                             mensajes_alerta('ERROR AL REGISTRAR EL TUTOR  verifique los datos!! '+response,'error','GUARDAR DATOS');
-                        }
-                    }
-                });
-            }
-        });
-        $('#frmEditar').validate({
-            debug:true,
-            rules:{
-                nombres:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                paterno:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                materno:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                celular:{
-                    required:true,
-                    minlength: 8,
-                    maxlength:8,
-                },
-                domicilio:{
-                    required:true,
-                    minlength: 5,
-                    maxlength:20,
-                }
-            },
-            messages:{
-                nombres:{
-                    required:"Este es Campo es obligatorio escriba su nombre.",
-                },
-                celular:{
-                    required:"Este es Campo Obligatorio escriba su nro. de celular",
-                },
-                domicilio:{
-                    required:"Este es Campo Obligatorio escriba su direccion de domicilio.",
-                },
-            },
-            submitHandler: function (form) {
-                $.ajax({
-                    url: '../../models/tutor/editar_model.php',
-                    type: 'post',
-                    data: $("#frmEditar").serialize(),
-                    beforeSend: function() {
-                        transicion("Procesando Espere....");
-                    },
-                    success: function(response) {
-                        if(response==1){
-                            $('#modalEditar').modal('hide');
-                            $('#btnEditar').attr({
-                                disabled: 'true'
-                            });
-                            transicionSalir();
-                            mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
-                            setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>tutor/index.php';
-                            }, 3000);
-                        }else{
-                            transicionSalir();
-                            mensajes_alerta('ERROR AL EDITAR DATOS DEL TUTOR verifique los datos!! '+response,'error','EDITAR DATOS');
                         }
                     }
                 });

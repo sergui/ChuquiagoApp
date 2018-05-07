@@ -3,29 +3,36 @@
         <section class="panel">
             <header class="panel-heading">
                 <div class="row panel-heading">
-                    Cursos asignados a docente <?php echo $id_user; ?>                    
+                    Cursos asignados a docente <?php echo $id_user; ?>
                 </div>
             </header>
             <div class="panel-body">
                 <!-- <form class="form-horizontal adminex-form"> -->
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label col-lg-2" for="inputSuccess"><strong>Seleccione curso</strong></label>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-5 control-label" for="inputSuccess"><strong>Seleccione curso</strong></label>
                         <div class="col-lg-7">
                             <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="">
                                 <option value=""></option>
                                 <?php foreach ($cursos as $curso): ?>
-                                    <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['grado'].' '.$curso['paralelo']; ?></option>
+                                    <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['curso']; ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        
                     </div>
+                    <?php if ($asesora->num_rows>0): ?>
+                        <?php
+                            foreach ($asesora as $cursoasesor) {
+                                $cursoA=$cursoasesor;
+                            }
+                        ?>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-5 control-label" for="inputSuccess"><strong>Curso Asesorado</strong></label>
+                            <button type="button" class="btn btn-primary" onclick="verCurso(<?php echo $cursoA['id_curso']; ?>)"><?php echo $cursoA['curso']; ?></button>
+                        </div>
+                    <?php endif ?>
                 <!-- </form> -->
                 <div id="listado">
-                </div>   
-            
-            </div>
-                             
+                </div>
             </div>
             <?php //require_once 'modal_registrar.php'; ?>
             <?php //require_once 'modal_eliminar.php'; ?>
@@ -34,15 +41,7 @@
     </div>
 </div>
 <script>
-   
     $(document).ready(function(){
-    	$('.cFecha').datepicker({
-			format: 'dd/mm/yyyy'
-		})
-		.on('changeDate', function(ev){
-			$('.cFecha').datepicker('hide');
-		});
-        
         $("#curso").chosen({
             disable_search_threshold: 10,
             no_results_text: "No se encontro resultados!",
@@ -51,10 +50,10 @@
         $('#curso').change(function(){
             $('#btnr').removeClass('hidden');
             var id=$(this).val();
-            $('#id_curso').val(id);            
+            $('#id_curso').val(id);
             $.ajax({
-                url: '../../models/estudiante/listado.php',
-                type: 'post',                
+                url: '../../models/kardex/listado.php',
+                type: 'post',
                 data: {id_curso: id},
                 beforeSend: function() {
                     transicion("Procesando Espere....");
@@ -143,111 +142,6 @@
                     }
                 });
             }
-        });
-        /////////////editar DATOS////////////////
-        $('#frmEditar').validate({
-           debug:true,
-            rules:{
-                nombre:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                paterno:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:15,
-                },
-                materno:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:15,
-                },
-                domicilio:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:200,
-                },
-                sexo:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:15,
-                },
-                fecha_nac:{
-                    required:true,
-                }
-            },
-            messages:{
-                nombre:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                paterno:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                 materno:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                domicilio:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                 sexo:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                fecha_nac:{
-                    required:"Este es Campo Obligatorio.",
-                }
-            },
-            submitHandler: function (form) {
-                $.ajax({
-                    url: '../../models/estudiante/editar_model.php',
-                    type: 'post',
-                    data: $("#frmEditar").serialize(),
-                    beforeSend: function() {
-                        transicion("Procesando Espere....");
-                    },
-                    success: function(response) {
-                        if(response==1){
-                            $('#modalEditar').modal('hide');
-                            $('#btnEditar').attr({
-                                disabled: 'true'
-                            });
-                            transicionSalir();
-                            mensajes_alerta('DATOS EDITADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
-                            setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>estudiante/index.php';
-                            }, 3000);
-                        }else{
-                            transicionSalir();
-                            mensajes_alerta('ERROR AL EDITAR EL ESTUDIANTE verifique los datos!! '+response,'error','EDITAR DATOS');
-                        }
-                    }
-                });
-            }
-        });
-        /////////////ELIMINAR DATOS////////////////
-        $("#btnEliminar").click(function(event) {
-            $.ajax({
-                url: '../../models/estudiante/eliminar_model.php',
-                type: 'POST',
-                data: $("#frmEliminar").serialize(),
-                beforeSend: function() {
-                    transicion("Procesando Espere....");
-                },
-                success: function(response){
-                    if(response==1){
-                        $('#modalEliminar').modal('hide');
-                        $('#btnEliminar').attr({disabled: 'true'});
-                        transicionSalir();
-                        mensajes_alerta('DATOS ELIMINADOS ELIMINADOS EXITOSAMENTE !! ','success','EDITAR DATOS');
-                        setTimeout(function(){
-                            window.location.href='<?php echo ROOT_CONTROLLER ?>estudiante/index.php';
-                        }, 3000);
-                    }else{
-                        transicionSalir();
-                        mensajes_alerta('ERROR AL ELIMINAR AL ESTUDIANTE verifique los datos!! '+response,'error','EDITAR DATOS');
-                    }
-                }
-            });
         });
     });
 </script>

@@ -12,9 +12,33 @@
 	$contenido="kardex/index.php";
     $subTitulo="Registro de faltas cometidas";
     $id_user  = $_SESSION['id_user'];
-	$menu_a= $menus['U_LISTA'];
+    $id_doc  = $_SESSION['id_docente'];
+    $rol  = $_SESSION['id_rol'];
+	$menu_a= $menus['C_KARDEX'];
+	if($rol==1 || $rol==5 || $rol==6){
+		$sql="select c.id_curso
+				, CONCAT(c.grado,' ',c.paralelo) AS curso from curso c ";
+	}else if($rol==2){
+		$sql="SELECT c.id_curso
+				, CONCAT(c.grado,' ',c.paralelo) AS curso
+				, t.id_asignatura
+			FROM curso c
+			, tiene t
+			WHERE c.id_curso=t.id_curso AND t.id_docente={$id_doc}";
+	}
 
-	if (!($cursos = $con->query("SELECT * FROM  docente as d LEFT JOIN tiene as t on d.id_docente = t.id_docente LEFT JOIN curso as c on c.id_curso = t.id_curso WHERE d.id_user = {$id_user} "))) {
+	if (!($cursos = $con->query($sql))) {
+    	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
+	}
+	$con->close();
+	$con=conectar();
+	$sql="SELECT DISTINCT(c.id_curso) AS id_curso
+			, CONCAT(c.grado,' ' ,c.paralelo)AS curso
+			FROM curso c
+			, kardex k
+			WHERE c.id_curso=k.id_curso AND k.id_asesor = {$id_doc}
+				AND k.gestion=YEAR(NOW())";
+	if (!($asesora = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();

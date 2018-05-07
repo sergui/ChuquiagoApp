@@ -1,5 +1,5 @@
 
-<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_Registrar" class="modal fade">
+<div aria-hidden="true" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1" id="modal_Registrar" class="modal fade">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -57,8 +57,8 @@
 					</div>
 					<div class="col-md-6">
 						<span class="pull-right hidden" id="btlis">
-							<label class="control-label col-lg-6" for="inputSuccess">Seleccione curso</label>
-		                    <div class="col-lg-6">
+							<label class="control-label col-lg-5" for="inputSuccess">Seleccione curso</label>
+		                    <div class="col-lg-7">
 		                        <select class="chosen-select" id="id_curso" name="id_curso" data-placeholder="Seleccione un curso"  required="">
 		                            <option value=""></option>
 		                            <?php foreach ($cursos as $curso): ?>
