@@ -6,27 +6,48 @@
                 <h4 class="modal-title" id="titulo_modal"></h4>
             </div>
             <div class="modal-body">
-                <form role="form" id="frmRegistrar" name="frmRegistrar">
-                    <input type="hidden" name="id_kardex" id="id_kardex" class="form-control" value="">
-                    <div class="form-group">
-                        <label for="Nombre">Nombre(s)</label>
-                        <input class=" form-control" id="nombre" name="nombre" type="text" />
-                    </div>
-                    <div class="form-group">
-                        <label for="Nombre">Apellido Paterno</label>
-                        <input class=" form-control" id="paterno" name="paterno" type="text" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="Nombre">Apellido Materno</label>
-                        <input class=" form-control" id="materno" name="materno" type="text" />
-                    </div>
-                    <div class=" modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" id="btnRegistrar" >Crear</button>
-                    </div>
-                </form>
+                <div class="form">
+                    <form  class="cmxform form-horizontal adminex-form" role="form" id="frmRegistrar" name="frmRegistrar">
+                        <input type="hidden" name="id_kardex" id="id_kardex" class="form-control" value="">
+                        <div class="form-group">
+                            <label class="col-md-5 control-label" for="inputSuccess"><strong>Seleccione tipo falta</strong></label>
+                            <div class="col-lg-7">
+                                <select class="chosen-select" id="tfalta" name="tfalta" data-placeholder="Seleccione un tipo de falta"  required="">
+                                    <option value=""></option>
+                                    <option value="leves">Leves</option>
+                                    <option value="graves">Graves</option>
+                                    <option value="muy graves">Muy graves</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="lista_faltas">
+                        </div><br>
+                        <div class=" modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="btnRegistrar" >Registrar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#tfalta').change(function(){
+            var id=$(this).val();
+            $.ajax({
+                url: '../../models/kardex/listado_falta.php',
+                type: 'post',
+                data: {id_falta: id},
+                beforeSend: function() {
+                    transicion("Procesando Espere....");
+                },
+                success: function(response) {
+                    transicionSalir();
+                    $('#lista_faltas').html(response);
+                }
+            });
+        });
+    });
+</script>

@@ -75,6 +75,11 @@
             no_results_text: "No se encontro resultados!",
             width: "95%"
         });
+        $("#tfalta").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "No se encontro resultados!",
+            width: "95%"
+        });
 
         $('#curso').change(function(){
             var id=$(this).val();
@@ -82,59 +87,9 @@
         });
         $("#frmRegistrar").validate({
             debug:true,
-            rules:{
-                nombre:{
-                    required:true,
-                    minlength: 3,
-                    maxlength:15,
-                },
-                paterno:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:15,
-                },
-                materno:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:15,
-                },
-                domicilio:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:200,
-                },
-                sexo:{
-                    required:true,
-                    minlength: 1,
-                    maxlength:15,
-                },
-                fecha_nac:{
-                    required:true,
-                }
-            },
-            messages:{
-                nombre:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                paterno:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                 materno:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                domicilio:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                 sexo:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                fecha_nac:{
-                    required:"Este es Campo Obligatorio.",
-                }
-            },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/estudiante/registro_model.php',
+                    url: '../../models/kardex/registro_model.php',
                     type: 'post',
                     data: $("#frmRegistrar").serialize(),
                     beforeSend: function() {
@@ -147,13 +102,13 @@
                             });
                             $('#modal_Registrar').modal('hide');
                             transicionSalir();
-                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
+                            mensajes_alerta('DATOS REGISTRADOS EXITOSAMENTE !! ','success','REGISTRO DE DATOS');
                             setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>estudiante/index.php';
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>kardex/index.php';
                             }, 3000);
                         }else{
                             transicionSalir();
-                            mensajes_alerta('ERROR AL REGISTRAR AL ESTUDIANTE  verifique los datos!! '+response,'error','GUARDAR DATOS');
+                            mensajes_alerta('ERROR AL REGISTRAR LAS FALTAS  verifique los datos!! '+response,'error','REGISTRO DE DATOS');
                         }
                     }
                 });
