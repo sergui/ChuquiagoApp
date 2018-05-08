@@ -28,7 +28,7 @@
 									<?php if ($lista_asesor['id_asesor']==-1): ?>
 									
 								
-       					<a href="#modal_asesor" class="btn btn-xs btn-success" data-toggle="modal">
+       					<a href="#modal_asesor" class="btn btn-xs btn-success" onClick="curso(<?php echo $lista_asesor['id_curso']; ?>)" data-toggle="modal">
                             <span class="fa fa-user"></span> Adicionar
                         </a>
     										
@@ -60,6 +60,9 @@
 	</div>
 </div>
 <script>
+	function curso(idcurso){
+		$('#cursoid').val(idcurso);
+	}
 	
 	$( document ).ready( function () {
 		$( "#tbDocente" ).dataTable();
