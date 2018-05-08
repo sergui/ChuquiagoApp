@@ -25,7 +25,7 @@
                     <td><?php echo $estudiante['nombre'].' '.$estudiante['paterno'].' '.$estudiante['materno']; ?></td>
                     <td></td>
                     <td class="text-center">
-                       <a class="btn btn-success" href="#modal_Registrar" role="button" data-placement="top" title="Faltas" data-toggle="modal" onclick="">
+                       <a class="btn btn-success" href="#modal_Registrar" role="button" data-placement="top" title="Faltas" data-toggle="modal" onclick="verFalta(<?php echo $estudiante['id_rude'] ?>,<?php echo $estudiante['id_kardex'] ?>);">
                             <span class="fa fa-edit" > Registrar falta</span>
                         </a>
                     </td>
