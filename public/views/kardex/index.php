@@ -34,35 +34,38 @@
                 <div id="listado">
                 </div>
             </div>
-            <?php //require_once 'modal_registrar.php'; ?>
+            <?php require_once 'modal_registrar.php'; ?>
             <?php //require_once 'modal_eliminar.php'; ?>
             <?php //require_once 'modal_editar.php'; ?>
         </section>
     </div>
 </div>
 <script>
+    function verCurso(id){
+        $('#id_curso').val(id);
+        $.ajax({
+            url: '../../models/kardex/listado.php',
+            type: 'post',
+            data: {id_curso: id},
+            beforeSend: function() {
+                transicion("Procesando Espere....");
+            },
+            success: function(response) {
+                transicionSalir();
+                $('#listado').html(response);
+            }
+        });
+    }
     $(document).ready(function(){
         $("#curso").chosen({
             disable_search_threshold: 10,
             no_results_text: "No se encontro resultados!",
             width: "95%"
         });
+
         $('#curso').change(function(){
-            $('#btnr').removeClass('hidden');
             var id=$(this).val();
-            $('#id_curso').val(id);
-            $.ajax({
-                url: '../../models/kardex/listado.php',
-                type: 'post',
-                data: {id_curso: id},
-                beforeSend: function() {
-                    transicion("Procesando Espere....");
-                },
-                success: function(response) {
-                    transicionSalir();
-                    $('#listado').html(response);
-                }
-            });
+            verCurso(id);
         });
         $("#frmRegistrar").validate({
             debug:true,

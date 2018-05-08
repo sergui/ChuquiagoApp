@@ -23,10 +23,10 @@
             <?php foreach ($estudiantes as $estudiante): ?>
                 <tr class="gradeX">
                     <td><?php echo $estudiante['nombre'].' '.$estudiante['paterno'].' '.$estudiante['materno']; ?></td>
-                    <td><?php echo $estudiante['fecha_nac']; ?></td>
-                    <td >
-                       <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $estudiante['id_rude'] ?>)">
-                            <span class="fa fa-edit" ></span>
+                    <td></td>
+                    <td class="text-center">
+                       <a class="btn btn-success" href="#modal_Registrar" role="button" data-placement="top" title="Faltas" data-toggle="modal" onclick="">
+                            <span class="fa fa-edit" > Registrar falta</span>
                         </a>
                     </td>
                 </tr>
