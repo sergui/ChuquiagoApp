@@ -6,6 +6,7 @@
 				<h4 class="modal-title">Lista de Docentes </h4>
 			</div>
 			<div class="modal-body">
+				<input type="hidden" name="cursoid"  id="cursoid" value="">
 				<div class="adv-table">
 					<table class="display table table-bordered table-striped" id="tbDocente">
 						<thead>
@@ -36,9 +37,7 @@
     				</button>
 									</td>
 							</tr>
-							<input type="hidden" name="cursoid"  id="cursoid" value="">
 							<?php endforeach ?>
-							
 						</tbody>
 					</table>
 				</div>
@@ -52,28 +51,26 @@
         $.ajax( {
             url: '../../models/curso/asignar_asesor_model.php',
             type: 'POST',
-            dataType: "json",
             data: {
                 id_curso: idc,
-                id_asesor: id
+                id_docente: id
             },
             beforeSend: function() {
-                        transicion("Procesando Espere....");
-                    },
-                    success: function(response) {
-                        if(response==1){
-                            
-                            $('#modal_asesor').modal('hide');
-                            transicionSalir();
-                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
-                            setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>curso/asesores.php';
-                            }, 3000);
-                        }else{
-                            transicionSalir();
-                            mensajes_alerta('ERROR AL REGISTRAR verifique los datos!! '+response,'error','GUARDAR DATOS');
-                        }
-                    }
+                transicion("Procesando Espere....");
+            },
+            success: function(response) {
+	            if(response==1){
+	                $('#modal_asesor').modal('hide');
+	                transicionSalir();
+	                mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
+	                setTimeout(function(){
+	                    window.location.href='<?php echo ROOT_CONTROLLER ?>curso/asesor.php';
+	                }, 3000);
+	            }else{
+	                transicionSalir();
+	                mensajes_alerta('ERROR AL REGISTRAR verifique los datos!! '+response,'error','GUARDAR DATOS');
+	            }
+            }
         } );
     }
 	$( document ).ready( function () {
@@ -81,8 +78,5 @@
 			"sScrollY": "620px",
 			"bPaginate": false
 		} );
-		
-		
-		
 	} );
 </script>

@@ -66,7 +66,7 @@
 	
 	$( document ).ready( function () {
 		$( "#tbDocente" ).dataTable();
-		$( "#frmRegistrar" ).validate( {
+		/*$( "#frmRegistrar" ).validate( {
 			debug: true,
 			rules: {
 				nombre_usuario: {
@@ -130,7 +130,7 @@
 					}
 				} );
 			}
-		} );
+		} );*/
 	
 		
 	} );
