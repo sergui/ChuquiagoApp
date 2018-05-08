@@ -3,7 +3,7 @@
         <section class="panel">
             <header class="panel-heading">
                 <div class="row panel-heading">
-                    Lista de estudiantes                    
+                    Lista de estudiantes
                 </div>
             </header>
             <div class="panel-body">

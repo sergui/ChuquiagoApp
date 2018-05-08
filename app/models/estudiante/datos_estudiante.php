@@ -7,7 +7,7 @@
 		if($result->num_rows > 0){
 			$jsondata['estado']="correcto";
 			while ($row = $result->fetch_array() ) {
-				$jsondata['estudiante'] = $row[0];
+				$jsondata['estudiante'] = $row;
 			}
 		}
 	}else{

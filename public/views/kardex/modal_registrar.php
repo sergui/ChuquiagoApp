@@ -3,11 +3,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                <h4 class="modal-title">REGISTRO DE FALTA</h4>
+                <h4 class="modal-title" id="titulo_modal"></h4>
             </div>
             <div class="modal-body">
                 <form role="form" id="frmRegistrar" name="frmRegistrar">
-                    <input type="hidden" name="id_curso" id="id_curso" class="form-control" value="">
+                    <input type="hidden" name="id_kardex" id="id_kardex" class="form-control" value="">
                     <div class="form-group">
                         <label for="Nombre">Nombre(s)</label>
                         <input class=" form-control" id="nombre" name="nombre" type="text" />

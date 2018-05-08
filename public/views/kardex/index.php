@@ -56,6 +56,19 @@
             }
         });
     }
+    function verFalta(id_rude,id_kardex){
+        $.ajax({
+            url: '../../models/estudiante/datos_estudiante.php',
+            type: 'POST',
+            dataType: "json",
+            data: {id_rude: id_rude},
+            success: function(datos){
+                console.log(datos);
+                $('#titulo_modal').html(datos['estudiante']['nombre']+' '+datos['estudiante']['paterno']+' '+datos['estudiante']['materno']);
+                $('#id_kardex').val(id_kardex);
+            }
+        });
+    }
     $(document).ready(function(){
         $("#curso").chosen({
             disable_search_threshold: 10,
