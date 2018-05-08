@@ -11,7 +11,7 @@
 	$titulo="Estudiantes";
 	$contenido="estudiante/index.php";
 	$subTitulo="Estudiante";
-	$menu_a= $menus['U_LISTA'];
+	$menu_a= $menus['UE_ESTUDIANTE'];
 
 	if (!($cursos = $con->query("SELECT * FROM curso where estado = 1 "))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;

@@ -6,7 +6,6 @@ require_once( "../../config/route.php" );
 $idc = $_REQUEST[ "id_curso" ];
 $idt = $_REQUEST[ "id_tutor" ];
 //echo "<pre>";		echo "</pre>";
-//$sql = "call listadelCurso({$id})";
 $sql = "SELECT tmpcurso.*,IFNULL(tmpestudiante.id_tutor,-1) AS id_tutor
 		FROM
 			(SELECT 
@@ -29,6 +28,7 @@ $sql = "SELECT tmpcurso.*,IFNULL(tmpestudiante.id_tutor,-1) AS id_tutor
 			    AND c.id_curso = {$idc} )tmpcurso
 			LEFT JOIN (SELECT * FROM encargado WHERE id_tutor={$idt})tmpestudiante
 		ON tmpcurso.id_rude = tmpestudiante.id_rude";
+
 $lista = $con->query( $sql );
 
 ?>

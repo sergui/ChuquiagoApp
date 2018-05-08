@@ -4,11 +4,13 @@
             <header class="panel-heading">
                 <div class="row panel-heading">
                     MAXIMO DE FALTAS
+                    <?php if ($pfaltas->num_rows==0): ?>
                     <span class="pull-right">
                         <a href="#modal_Registrar" class="btn btn-xs btn-success" data-toggle="modal">
                             <span class="fa fa-pencil"></span> NUEVO DE MAXIMO DEFALTAS 
                         </a>
-                    </span> 
+                    </span>     
+                    <?php endif ?>
                 </div>
             </header>
             <div class="panel-body">
@@ -22,57 +24,46 @@
                         </thead>
                         <tbody>
                             <?php foreach ($pfaltas as $pfalta): ?>
-                            <tr class="gradeX">
-                                <td><?php echo $pfalta['max_faltas']; ?></td>
-                                <td >
-                                    <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $pfalta['id_pfalta'] ?>)">
-                                        <span class="fa fa-edit" ></span>
-                                    </a>
-
-                                    <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $estudiante['id_rude'] ?>)">
-                                        <span class="fa fa-trash-o"></span>
-                                    </a>
-                                  
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                                <tr class="gradeX">
+                                    <td class="text-center"><?php echo $pfalta['max_faltas']; ?></td>
+                                    <td class="text-center">
+                                        <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $pfalta['id_pfalta'] ?>)">
+                                            <span class="fa fa-edit" ></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <?php require_once 'modal_registrar.php'; ?>
-        <?php require_once 'modal_eliminar.php'; ?>
-        <?php require_once 'modal_editar.php'; ?>
+            <?php require_once 'modal_registrar.php'; ?>
+            <?php require_once 'modal_eliminar.php'; ?>
+            <?php require_once 'modal_editar.php'; ?>
 
-    </section>
-</div>
+        </section>
+    </div>
 </div>
 <script>
-    ///////////////////OBTENER DATOS////////
-      function eliminar_datos(id){
+    function eliminar_datos(id){
         $("#id_eliminar").val(id);
     }
-    function obtener_datos(id)
-         {
-            
-            $.ajax({
-                url: '../../models/pfaltas/datos_pfalta.php',
-                type: 'POST',
-                dataType: "json",
-                data: {id_pfalta: id},
-                success: function(datos){
-                    console.log(datos);
-                   
-                    $("#frmEditar [id=max_faltas]").val(datos['pfaltas']['max_faltas']);
-                    $("#id_pfalta").val(datos['pfaltas']['id_pfalta']);//enviando id para el modelo
-                }
-            });
-        }
-    ///////////////////ELIMINAR DATOS////////
+    function obtener_datos(id){
+        $.ajax({
+            url: '../../models/pfaltas/datos_pfalta.php',
+            type: 'POST',
+            dataType: "json",
+            data: {id_pfalta: id},
+            success: function(datos){
+                console.log(datos);
+               
+                $("#frmEditar [id=max_faltas]").val(datos['pfaltas']['max_faltas']);
+                $("#id_pfalta").val(datos['pfaltas']['id_pfalta']);//enviando id para el modelo
+            }
+        });
+    }
      
-     ////////////////////////JQUERYYYYYYYYY//////////////////////////////////////
-    $(document).ready(function() 
-    {
+    $(document).ready(function(){
         $("#tbpfaltas").dataTable();
         /////////////REGISTRAR DATOS////////////////
         $("#frmRegistrar").validate({
@@ -119,10 +110,6 @@
                 });
             }
         });
-
-        
-       
-       //////////////EDITAR DATOS////////////////////////////////////////////
         $('#frmEditar').validate({
              debug:true,
             rules:

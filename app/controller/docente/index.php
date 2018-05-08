@@ -11,7 +11,7 @@
 	$titulo="Docentes";
 	$contenido="docente/index.php";
 	$subTitulo="Docente";
-	$menu_a= $menus['U_LISTA'];
+	$menu_a= $menus['UE_DOCENTE'];
 	$sql="SELECT d.id_docente,d.ci
 			,d.nombre
 			,d.paterno

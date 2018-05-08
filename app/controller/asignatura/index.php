@@ -10,7 +10,7 @@
 	//Variables para enviar a la plantilla
 	$titulo="Asignatura";
 	$contenido="asignatura/index.php";
-	$menu_a= $menus['C_SECCION'];
+	$menu_a= $menus['UE_ASIGNATURA'];
 	$subTitulo="ASIGNATURA";
 
 	if (!($asignaturas = $con->query("SELECT * FROM ASIGNATURA where estado=1"))) {

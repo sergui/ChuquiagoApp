@@ -5,7 +5,7 @@
 
     if(isset($_GET["id_user"])){
         $id_user = $_GET["id_user"];
-        $sql="SELECT c.id_curso, c.grado, c.paralelo FROM  docente as d RIGHT JOIN tiene as t on d.id_docente = t.id_docente RIGHT JOIN curso as c on c.id_curso = t.id_curso WHERE d.id_user = {$id_user}";
+        $sql="SELECT c.id_curso, c.grado, c.paralelo, a.nombre_asignatura FROM  docente as d RIGHT JOIN tiene as t on d.id_docente = t.id_docente RIGHT JOIN curso as c on c.id_curso = t.id_curso RIGHT JOIN asignatura as a on a.id_asignatura = t.id_asignatura WHERE d.id_user = {$id_user}";
         //echo $sql;
         if($result = $con->query($sql)){
             if($result->num_rows > 0){
@@ -13,7 +13,6 @@
                 while ($row = $result->fetch_array() ) {
                     $json['curso'][]=$row;                   
                 }
-              
             }else{
                 $curso['estado']="0";//No existe registros en la consulta
                 $json['curso'][]=$curso;

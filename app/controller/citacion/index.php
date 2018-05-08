@@ -11,7 +11,7 @@
 	$titulo="Modelo citaciones";
 	$contenido="citacion/index.php";
 	$subTitulo="MODELO CITACION";
-	$menu_a= $menus['U_LISTA'];
+	$menu_a= $menus['C_MODELO_CARTA'];
 
 	if (!($modelo_citaciones = $con->query("SELECT * FROM modelo_citacion where estado = 1" ))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
