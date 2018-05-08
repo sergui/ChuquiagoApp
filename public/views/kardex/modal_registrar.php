@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                <h4 class="modal-title">REGISTRO DE NUEVO ESTUDIANTE</h4>
+                <h4 class="modal-title">REGISTRO DE FALTA</h4>
             </div>
             <div class="modal-body">
                 <form role="form" id="frmRegistrar" name="frmRegistrar">
