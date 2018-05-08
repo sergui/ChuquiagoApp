@@ -13,5 +13,11 @@
         <div class="col-md-2">
             <input type="checkbox" style="width: 20px" class="checkbox form-control" id="<?php echo $falta['id_falta']; ?>" name="id_falta[]" value="<?php echo $falta['id_falta']; ?>" required minlength='1'/>
         </div>
-    </div>    
+    </div>
 <?php endforeach ?>
+<div class="form-group">
+    <label class="col-sm-3 control-label">OBSERVACION</label>
+    <div class="col-sm-9">
+        <textarea rows="5" class="form-control" id="observacion" name="observacion"></textarea>
+    </div>
+</div>

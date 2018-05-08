@@ -87,26 +87,6 @@
         });
         $("#frmRegistrar").validate({
             debug:true,
-            messages:{
-                nombre:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                paterno:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                 materno:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                domicilio:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                 sexo:{
-                    required:"Este es Campo Obligatorio.",
-                },
-                fecha_nac:{
-                    required:"Este es Campo Obligatorio.",
-                }
-            },
             submitHandler: function (form) {
                 $.ajax({
                     url: '../../models/kardex/registro_model.php',
