@@ -6,6 +6,7 @@
             FROM faltas
             WHERE tipoFalta='{$id}'";
     $faltas = $con->query($sql);
+    $con->close();
 ?>
 <?php foreach ($faltas as $falta): ?>
     <div class="form-group">

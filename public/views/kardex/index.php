@@ -35,8 +35,7 @@
                 </div>
             </div>
             <?php require_once 'modal_registrar.php'; ?>
-            <?php //require_once 'modal_eliminar.php'; ?>
-            <?php //require_once 'modal_editar.php'; ?>
+            <?php require_once 'modal_citacion.php'; ?>
         </section>
     </div>
 </div>
@@ -68,6 +67,22 @@
                 $('#id_kardex').val(id_kardex);
             }
         });
+    }
+    function citacion(id_rude,id_kardex){
+        $.ajax({
+            url: '../../models/estudiante/datos_estudiante.php',
+            type: 'POST',
+            dataType: "json",
+            data: {id_rude: id_rude},
+            success: function(datos){
+                console.log(datos);
+                $('#hijo_nom').html(datos['estudiante']['nombre']+' '+datos['estudiante']['paterno']+' '+datos['estudiante']['materno']);                
+                $('#id_kardex_c').val(id_kardex);
+                $('#aula').val($('#curso option:selected').text());
+                $('#aula').html($('#curso option:selected').text());
+            }
+        });
+        
     }
     $(document).ready(function(){
         $("#curso").chosen({
@@ -101,6 +116,37 @@
                                 disabled: 'true'
                             });
                             $('#modal_Registrar').modal('hide');
+                            transicionSalir();
+                            mensajes_alerta('DATOS REGISTRADOS EXITOSAMENTE !! ','success','REGISTRO DE DATOS');
+                            setTimeout(function(){
+                                window.location.href='<?php echo ROOT_CONTROLLER ?>kardex/index.php';
+                            }, 3000);
+                        }else{
+                            transicionSalir();
+                            mensajes_alerta('ERROR AL REGISTRAR LAS FALTAS  verifique los datos!! '+response,'error','REGISTRO DE DATOS');
+                        }
+                    }
+                });
+            }
+        });
+        $("#frmCitacion").validate({
+            debug:true,
+            submitHandler: function (form) {
+                //console.log($('#ncitacion').text());
+                var citacion=$('#ncitacion').text();
+                $.ajax({
+                    url: '../../models/kardex/registro_citacion_model.php',
+                    type: 'post',
+                    data: {citacion:citacion,id_kardex:function(){return $('#id_kardex_c').val();}},
+                    beforeSend: function() {
+                        transicion("Procesando Espere....");
+                    },
+                    success: function(response) {
+                        if(response==1){
+                            $('#btnEnviar').attr({
+                                disabled: 'true'
+                            });
+                            $('#modal_citacion').modal('hide');
                             transicionSalir();
                             mensajes_alerta('DATOS REGISTRADOS EXITOSAMENTE !! ','success','REGISTRO DE DATOS');
                             setTimeout(function(){
