@@ -31,6 +31,7 @@
                     $sql = "SELECT u.id_usuario,u.nombre_usuario, u.password, r.nombre as nombre_rol, d.nombre,d.id_docente, d.paterno,d.materno,d.celular, r.id_rol
                             FROM usuario u, roles r, docente d
                             WHERE nombre_usuario = '{$user_name}' AND u.estado=1  AND u.id_rol= r.id_rol and d.id_user= u.id_usuario";
+                            //echo $sql;
                     $result_of_login_check = $this->db_connection->query($sql);
 
                     if ($result_of_login_check->num_rows == 1) {
