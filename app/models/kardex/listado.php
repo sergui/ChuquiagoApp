@@ -31,13 +31,13 @@
                             <?php
                                 $con=conectar();
                                 if($_SESSION['id_rol']==1 || $_SESSION['id_rol']==5 || $_SESSION['id_rol']==6){
-                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, FC.`obseracion`
+                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`
                                         FROM faltas_cometidas fc
                                       , faltas f
                                         WHERE fc.`id_falta`=f.`id_falta`
                                         AND fc.id_kardex={$estudiante['id_kardex']}";
                                 }else{
-                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, FC.`obseracion`
+                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`
                                         FROM faltas_cometidas fc
                                       , faltas f
                                         WHERE fc.`id_falta`=f.`id_falta`
