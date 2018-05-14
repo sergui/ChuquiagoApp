@@ -14,7 +14,7 @@
                             <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="">
                                 <option value=""></option>
                                 <?php foreach ($cursos as $curso): ?>
-                                    <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['curso']; ?></option>
+                                    <option value="<?php echo $curso['id_curso']; ?>" atr_asignatua="<?php echo $curso['id_asignatura']; ?>"><?php echo $curso['curso'].' '.$curso['nombre_asignatura']; ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
