@@ -157,16 +157,15 @@ CREATE TABLE `faltas_cometidas` (
   `id_kardex` bigint(20) NOT NULL,
   `id_user` bigint(20) NOT NULL,
   `id_falta` int(11) NOT NULL,
+  `id_asignatura` bigint(20) NOT NULL,
   PRIMARY KEY (`id_fal_com`),
   KEY `id_kardex` (`id_kardex`),
   KEY `id_falta` (`id_falta`),
   CONSTRAINT `faltas_cometidas_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`),
   CONSTRAINT `faltas_cometidas_ibfk_2` FOREIGN KEY (`id_falta`) REFERENCES `faltas` (`id_falta`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas_cometidas` */
-
-insert  into `faltas_cometidas`(`id_fal_com`,`obseracion`,`contador`,`fecha`,`estado`,`id_kardex`,`id_user`,`id_falta`) values (1,'indisiciplinado',0,'2018-05-09',1,44,1,3),(2,'',0,'2018-05-09',1,313,1,13),(3,'',0,'2018-05-09',1,313,1,14),(4,'rrompio venta aula 2',0,'2018-05-09',1,137,1,12),(5,'',0,'2018-05-11',1,498,76,2),(6,'',0,'2018-05-11',1,498,76,5),(7,'',0,'2018-05-11',1,498,76,6);
 
 /*Table structure for table `kardex` */
 
