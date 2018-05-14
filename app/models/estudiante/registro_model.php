@@ -39,9 +39,9 @@
 							$sqlIdEstudiante = "SELECT id_rude FROM estudiante ORDER BY id_rude DESC LIMIT 1";
 							$resIdEstudiante = $con->query($sqlIdEstudiante);
 							$filaEst = $resIdEstudiante->fetch_array();
-							echo "<pre>";print_r ($filaEst);echo "</pre>";
+							//echo "<pre>";print_r ($filaEst);echo "</pre>";
 
-							echo $sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso, id_asesor) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso},0)";
+							 $sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso, id_asesor) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso},0)";
 							
 								if (!$con->query($sqlKardex)) {
 									echo "Falló la insercion a kardex: (" . $con->errno . ") " . $con->error;
@@ -79,7 +79,7 @@
 							$sqlIdEstudiante = "SELECT id_rude FROM estudiante ORDER BY id_rude DESC LIMIT 1";
 							$resIdEstudiante = $con->query($sqlIdEstudiante);
 							$filaEst = $resIdEstudiante->fetch_array();
-							echo "<pre>";print_r ($filaEst);echo "</pre>";
+							//echo "<pre>";print_r ($filaEst);echo "</pre>";
 							$sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso, id_asesor, estado) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso},0,1)";
 														
 								if (!$con->query($sqlKardex)) {
