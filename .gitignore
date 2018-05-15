@@ -1,5 +1,0 @@
-#Ignorando cache y log
-plantillaBase/
-log/
-app/config/db.php
-Script bd/2017-DOCENTES.xlsx

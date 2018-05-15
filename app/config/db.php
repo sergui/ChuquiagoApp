@@ -13,8 +13,8 @@
 	
 	
 	// para la base de datos remota de desarrollo
-/*	define('DB_HOST', '192.168.1.8');
-	define('DB_USER', 'hakiari');
-	define('DB_PASS', 'vVKcJwqGHnMIVTCI');
-	define('DB_NAME', 'bdchuquiago');*/
+	/*define('DB_HOST', '208.91.199.124');
+	define('DB_USER', 'hakiajfa_app');
+	define('DB_PASS', 'app123456');
+	define('DB_NAME', 'hakiajfa_app');*/
 ?>
