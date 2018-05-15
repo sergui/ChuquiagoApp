@@ -17,18 +17,19 @@
 	$menu_a= $menus['C_KARDEX'];
 	if($rol==1 || $rol==5 || $rol==6){
 		$sql="SELECT c.id_curso
-				, CONCAT(c.grado,' ',c.paralelo) AS curso from curso c and c.estado=1";
+				, CONCAT(c.grado,' ',c.paralelo) AS curso
+				, asignatura from curso c and c.estado=1";
 	}else if($rol==2){
-		echo $sql="SELECT c.id_curso
-	, CONCAT(c.grado,' ',c.paralelo) AS curso
-	, t.id_asignatura
-	, a.`nombre_asignatura`
-	, a.`sigla`
-FROM curso c
-, asignatura a
-, tiene t
-WHERE c.id_curso=t.id_curso AND t.id_docente={$id_doc} AND c.estado=1
-AND a.`id_asignatura`=t.`id_asignatura`";
+		$sql="SELECT c.id_curso
+			, CONCAT(c.grado,' ',c.paralelo) AS curso
+			, t.id_asignatura
+			, a.`nombre_asignatura`
+			, a.`sigla`
+			FROM curso c
+			, asignatura a
+			, tiene t
+			WHERE c.id_curso=t.id_curso AND t.id_docente={$id_doc} AND c.estado=1
+				AND a.`id_asignatura`=t.`id_asignatura`";
 	}
 
 	if (!($cursos = $con->query($sql))) {

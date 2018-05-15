@@ -2,6 +2,7 @@
     require_once ("../../config/db.php");
     require_once ("../../config/conexion.php");
     $id=$_REQUEST['id_curso'];
+    $idasig=$_REQUEST['id_asig'];
     $sql="SELECT e.*,k.`id_kardex`
             FROM estudiante e
             , kardex k
@@ -41,7 +42,7 @@
                                         FROM faltas_cometidas fc
                                       , faltas f
                                         WHERE fc.`id_falta`=f.`id_falta`
-                                        AND fc.id_kardex={$estudiante['id_kardex']} and id_user={$_SESSION['id_user']}";
+                                        AND fc.id_kardex={$estudiante['id_kardex']} and id_user={$_SESSION['id_user']} and fc.id_asignatura={$idasig}";
                                 }
                                 if (!($faltas_estudiante=$con->query($sql))) {
                                     echo "Falló obtencion de datos: (" . $con->errno . ") " . $con->error;
