@@ -32,11 +32,13 @@
                             <?php
                                 $con=conectar();
                                 if($_SESSION['id_rol']==1 || $_SESSION['id_rol']==5 || $_SESSION['id_rol']==6){
-                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`
+                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`,a.nombre_asignatura
                                         FROM faltas_cometidas fc
                                       , faltas f
+                                      ,asignatura a
                                         WHERE fc.`id_falta`=f.`id_falta`
-                                        AND fc.id_kardex={$estudiante['id_kardex']}";
+                                        AND fc.id_kardex={$estudiante['id_kardex']}
+                                        AND a.id_asignatura= fc.id_asignatura";
                                 }else{
                                     $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`
                                         FROM faltas_cometidas fc
@@ -52,6 +54,7 @@
                                 <tr>
                                     <td class="col-md-1 text-center"><?php echo $nfalta['tipoFalta'] ; ?></td>
                                     <td class="col-md-5 "><?php echo $nfalta['descripcion'] ; ?></td>
+                                    <td class="col-md-5 "><?php echo $nfalta['nombre_asignatura'] ; ?></td>
                                     <td class="col-md-4 "><?php echo $nfalta['obseracion'] ; ?></td>
                                     <td class="col-md-2 text-center"><?php echo $nfalta['fecha'] ; ?></td>
                                 </tr>
