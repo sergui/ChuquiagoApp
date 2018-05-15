@@ -20,7 +20,7 @@
 	$sqlSearchNomUser = "SELECT id_usuario FROM usuario WHERE nombre_usuario = '".$nombreUser."'";
 	$resSearchNomUser = $con->query($sqlSearchNomUser);
 
-	if($resSearchNomUser->num_rows == 0){		
+	if($resSearchNomUser->num_rows == 0){
 		    $sqlInsertUser = "INSERT INTO usuario (nombre_usuario, password, estado, id_rol) VALUES ('{$nombreUser}', '{$contraseniaUser}', 1, 2)";
 			if(!$con->query($sqlInsertUser)){
 				echo ("<h3>ERROR AL INSERTAR EL USUARIO : ".$sqlInsertUser."</h3>");
@@ -41,7 +41,7 @@
 							$filaEst = $resIdEstudiante->fetch_array();
 							//echo "<pre>";print_r ($filaEst);echo "</pre>";
 
-							 $sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso, id_asesor) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso},0)";
+							 $sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso})";
 							
 								if (!$con->query($sqlKardex)) {
 									echo "Falló la insercion a kardex: (" . $con->errno . ") " . $con->error;
@@ -80,8 +80,7 @@
 							$resIdEstudiante = $con->query($sqlIdEstudiante);
 							$filaEst = $resIdEstudiante->fetch_array();
 							//echo "<pre>";print_r ($filaEst);echo "</pre>";
-							$sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso, id_asesor, estado) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso},0,1)";
-														
+							$sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso})";
 								if (!$con->query($sqlKardex)) {
 									echo "Falló la insercion a kardex ELSE: (" . $con->errno . ") " . $con->error;
 									echo "SQL :".$sqlKardex;
