@@ -15,9 +15,7 @@
 <body class="login-body">
     <div class="container">
         <form class="form-signin" action="" name="frmlogin" id="frmlogin" method="post">
-            <div class="form-signin-heading text-center">
-                <img src="<?php echo ROOT; ?>resources/assets/images/logopas.png" alt=""/>
-            </div>
+            
             <div class="login-wrap">
                 <div class="form-group ">
                     <input type="text" class="form-control" placeholder="Usuario" autofocus required="" minlength="3" name="usuario" id="usuario">
@@ -51,7 +49,7 @@
                           </div>
                         <?php endif;?>
                 <?php } ?>
-                <button class="btn btn-lg btn-login btn-block" type="submit" id="btnlogin" name="btnlogin">
+                <button class=" colorcafe btn btn-lg btn-login btn-block " type="submit" id="btnlogin" name="btnlogin">
                     <i class="fa fa-check"></i> Ingresar
                 </button>
             </div>

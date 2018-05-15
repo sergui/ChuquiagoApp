@@ -51,8 +51,9 @@ hr {
             LOGIN STYLES
 -------------------------------*/
 
+
 .login-body {
-    background: #65cea7 url("../images/fondo_login.png") no-repeat fixed;
+    background: url("../images/fondo.jpg") no-repeat fixed;
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -60,7 +61,7 @@ hr {
 
 .form-signin {
     max-width: 330px;
-    margin: 100px auto;
+    margin: 270px auto;
     background: #fff;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -71,7 +72,7 @@ hr {
     padding: 25px 15px;
     text-align: center;
     color: #fff;
-    position: relative;
+    position: 50vh;
 }
 
 .sign-title {
@@ -130,7 +131,7 @@ hr {
 }
 
 .form-signin .btn-login {
-    background: #6bc5a4;
+    background: #9d8011;
     color: #fff;
     text-transform: uppercase;
     font-weight: normal;
@@ -144,7 +145,7 @@ hr {
 }
 
 .form-signin .btn-login:hover {
-    background: #688ac2;
+    background: #bd680d;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
