@@ -40,11 +40,13 @@
                                         AND fc.id_kardex={$estudiante['id_kardex']}
                                         AND a.id_asignatura= fc.id_asignatura";
                                 }else{
-                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`
+                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`, a.nombre_asignatura
                                         FROM faltas_cometidas fc
                                       , faltas f
+                                      ,asignatura a
                                         WHERE fc.`id_falta`=f.`id_falta`
-                                        AND fc.id_kardex={$estudiante['id_kardex']} and id_user={$_SESSION['id_user']} and fc.id_asignatura={$idasig}";
+                                        AND fc.id_kardex={$estudiante['id_kardex']} and id_user={$_SESSION['id_user']} and fc.id_asignatura={$idasig}
+                                        AND a.id_asignatura= fc.id_asignatura";
                                 }
                                 if (!($faltas_estudiante=$con->query($sql))) {
                                     echo "Falló obtencion de datos: (" . $con->errno . ") " . $con->error;
