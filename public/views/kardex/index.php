@@ -11,12 +11,22 @@
                     <div class="form-group col-md-6">
                         <label class="col-md-5 control-label" for="inputSuccess"><strong>Seleccione curso</strong></label>
                         <div class="col-lg-7">
+                            <?php if ($rol==2): ?>
                             <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="">
                                 <option value=""></option>
                                 <?php foreach ($cursos as $curso): ?>
-                                    <option value="<?php echo $curso['id_curso']; ?>"><?php echo $curso['curso']; ?></option>
+                                    <option value="<?php echo $curso['id_curso']; ?>" atr_asignatura="<?php echo $curso['id_asignatura']; ?>"><?php echo $curso['curso'].' '.$curso['nombre_asignatura']; ?></option>
                                 <?php endforeach ?>
                             </select>
+                            <?php else: ?>
+                            <select class="chosen-select" id="curso" name="curso" data-placeholder="Seleccione un curso"  required="">
+                                <option value=""></option>
+                                <?php foreach ($cursos as $curso): ?>
+                                    <option value="<?php echo $curso['id_curso']; ?>" atr_asignatura="0"><?php echo $curso['curso']; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            <?php endif ?>
+                            
                         </div>
                     </div>
                     <?php if ($asesora->num_rows>0): ?>
@@ -42,20 +52,23 @@
 <script>
     function verCurso(id){
         $('#id_curso').val(id);
+        var ida=$('#curso option:selected').attr('atr_asignatura');
         $.ajax({
             url: '../../models/kardex/listado.php',
             type: 'post',
-            data: {id_curso: id},
+            data: {id_curso: id, id_asig: ida},
             beforeSend: function() {
                 transicion("Procesando Espere....");
             },
             success: function(response) {
                 transicionSalir();
                 $('#listado').html(response);
+                $('#id_asignatura').val(ida);
             }
         });
     }
     function verFalta(id_rude,id_kardex){
+        $('#id_kardex').val(id_kardex);
         $.ajax({
             url: '../../models/estudiante/datos_estudiante.php',
             type: 'POST',
@@ -64,7 +77,6 @@
             success: function(datos){
                 console.log(datos);
                 $('#titulo_modal').html(datos['estudiante']['nombre']+' '+datos['estudiante']['paterno']+' '+datos['estudiante']['materno']);
-                $('#id_kardex').val(id_kardex);
             }
         });
     }

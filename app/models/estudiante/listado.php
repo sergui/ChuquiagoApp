@@ -19,13 +19,12 @@
             <?php foreach ($estudiantes as $estudiante): ?>
                 <tr class="gradeX">
                     <td><?php echo $estudiante['nombre_completo']; ?></td>
-                    <td class="text-center"><?php echo $estudiante['sexo']; ?></td>                    
+                    <td class="text-center"><?php echo $estudiante['sexo']; ?></td>
                     <td><?php echo $estudiante['fecha_nac']; ?></td>
                     <td >
                        <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $estudiante['id_rude'] ?>)">
                             <span class="fa fa-edit" ></span>
                         </a>
-                        
                     </td>
                 </tr>
             <?php endforeach;?>

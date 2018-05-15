@@ -1,5 +1,6 @@
 <?php 
 	//Ruta principal
+	/*define('ROOT', 'http://chuquiago.hakiari.com/');*/
 	define('ROOT', 'http://localhost/ChuquiagoApp/');
 	define('ROOT_CONTROLLER', ROOT.'app/controller/');
 	$menus = array(
