@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="description" content="Sistema de ventas">
 	<meta name="Haki-Ari" content="Desarrollo de software">
-	<link rel="shortcut icon" href="<?php echo ROOT; ?>resources/assets/images/logo_icon.png" type="image/png">
+	<link rel="shortcut icon" href="<?php echo ROOT; ?>resources/assets/images/simbolo.png" type="image/png">
 
     <title><?php echo $titulo; ?></title>
 
