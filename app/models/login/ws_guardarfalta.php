@@ -12,8 +12,9 @@
     $id_kardex   = trim($_GET["id_kardex"]);
     $id_user     = trim($_GET["id_user"]);
     $id_falta    = trim($_GET["id_falta"]);
-	
-	$sql = "INSERT INTO `faltas_cometidas` (`id_fal_com`, `obseracion`, `contador`, `fecha`, `estado`, `id_kardex`, `id_user`, `id_falta`) VALUES  (null,'{$observacion}','{$contador}','{$fecha}','{$estado}','{$id_kardex}','{$id_user}','{$id_falta}')";
+    $id_asignatura    = trim($_GET["id_asignatura"]);
+    
+	$sql = "INSERT INTO `faltas_cometidas` (`id_fal_com`, `obseracion`, `contador`, `fecha`, `estado`, `id_kardex`, `id_user`, `id_falta`,`id_asignatura`) VALUES  (null,'{$observacion}','{$contador}','{$fecha}','{$estado}','{$id_kardex}','{$id_user}','{$id_falta}','{$id_asignatura}')";
     //echo $sql;
 	if (!$con->query($sql)) {
         //echo "Falló la insercion falta cometidas: (" . $con->errno . ") " . $con->error;
