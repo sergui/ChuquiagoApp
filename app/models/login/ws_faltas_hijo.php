@@ -11,7 +11,7 @@
         RIGHT JOIN faltas f ON f.id_falta = fc.id_falta
         RIGHT JOIN asignatura a ON a.id_asignatura = fc.id_asignatura
         WHERE k.id_rude = {$id_rude}";
-              
+        //echo $sql;
         if($result = $con->query($sql)){
             if($result->num_rows > 0){
                 //$jsondata['estado']="correcto";                
