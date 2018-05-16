@@ -21,7 +21,7 @@
 	$resSearchNomUser = $con->query($sqlSearchNomUser);
 
 	if($resSearchNomUser->num_rows == 0){
-		    $sqlInsertUser = "INSERT INTO usuario (nombre_usuario, password, estado, id_rol) VALUES ('{$nombreUser}', '{$contraseniaUser}', 1, 2)";
+		    $sqlInsertUser = "INSERT INTO usuario (nombre_usuario, password, estado, id_rol) VALUES ('{$nombreUser}', '{$contraseniaUser}', 1, 4)";
 			if(!$con->query($sqlInsertUser)){
 				echo ("<h3>ERROR AL INSERTAR EL USUARIO : ".$sqlInsertUser."</h3>");
 			}else{
@@ -61,7 +61,7 @@
 			$fila = $resIdUserLast->fetch_array();
 			$nombreUser = $nombreUser."".($fila[0]+1);
 			$contraseniaUser = password_hash($nombreUser, PASSWORD_DEFAULT);
-			$sqlInsertUser = "INSERT INTO usuario (nombre_usuario, password, estado, id_rol) VALUES ('{$nombreUser}', '{$contraseniaUser}', '1', '3')";
+			$sqlInsertUser = "INSERT INTO usuario (nombre_usuario, password, estado, id_rol) VALUES ('{$nombreUser}', '{$contraseniaUser}', '1', 4)";
 			if(!$con->query($sqlInsertUser)){
 				echo ("<h3>ERROR AL INSERTAR EL USUARIO Else".$sqlInsertUser."</h3>");
 			}else{
