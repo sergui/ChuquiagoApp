@@ -5,12 +5,13 @@
     $json=array();
     if(isset($_GET["id_rude"])){
         $id_rude = $_GET["id_rude"];
-        $sql="SELECT k.gestion, f.tipoFalta, f.descripcion, fc.obseracion, fc.fecha
+        $sql="SELECT k.gestion, f.tipoFalta, f.descripcion, fc.obseracion, fc.fecha, a.nombre_asignatura
         FROM kardex as k  
         RIGHT JOIN faltas_cometidas fc ON fc.id_kardex=k.id_kardex
         RIGHT JOIN faltas f ON f.id_falta = fc.id_falta
+        RIGHT JOIN asignatura a ON a.id_asignatura = fc.id_asignatura
         WHERE k.id_rude = {$id_rude}";
-              
+        //echo $sql;
         if($result = $con->query($sql)){
             if($result->num_rows > 0){
                 //$jsondata['estado']="correcto";                
