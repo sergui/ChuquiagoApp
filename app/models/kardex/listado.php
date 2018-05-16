@@ -71,7 +71,7 @@
                         </a>
                         <a class="btn btn-warning btn-block" href="#modal_citacion" role="button" data-placement="top" title="Faltas" data-toggle="modal" onclick="citacion(<?php echo $estudiante['id_rude'] ?>,<?php echo $estudiante['id_kardex'] ?>)">
                             <span class="fa fa-envelope" > enviar citacion</span>
-                        </a>    
+                        </a>
                         <?php endif ?>
                     </td>
                 </tr>
