@@ -10,7 +10,7 @@ Author: ThemeBucket
 @import url('../fonts/css/font-awesome.min.css');
 
 body {
-    background: #424f63;
+    background: #ba8343;
     font-family: 'Open Sans', sans-serif;
     color: #7a7676;
     line-height: 20px;
@@ -32,7 +32,7 @@ a:focus, a:active, a:hover {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
-    color: #353F4F;
+    color: #875923;
 }
 
 h1, h2, h3, h4, h5 {
@@ -145,7 +145,7 @@ hr {
 }
 
 .form-signin .btn-login:hover {
-    background: #bd680d;
+    background: #959267;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
@@ -299,7 +299,7 @@ hr {
 
 .custom-nav > li > a:hover,
 .custom-nav > li > a:active {
-    background-color: #353f4f;
+    background-color: #875923;
     color: #65cea7;
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -310,12 +310,12 @@ hr {
 }
 
 .custom-nav > li.menu-list > a:hover {
-    background-color: #353f4f;
+    background-color: #875923;
     background-image: url(../images/plus.png);
 }
 
 .custom-nav > li.nav-active > a {
-    background-color: #353f4f;
+    background-color: #875923;
     background-image: url(../images/minus.png);
     color: #65cea7;
 }
@@ -331,7 +331,7 @@ hr {
 .custom-nav > li.active > a,
 .custom-nav > li.active > a:hover,
 .custom-nav > li.active > a:focus {
-    background-color: #353f4f;
+    background-color: #875923;
     color: #65cea7;
 }
 
@@ -360,7 +360,7 @@ hr {
     display: none;
     margin: 0;
     padding: 0;
-    background: #353f4f;
+    background: #875923;
 }
 
 .custom-nav .sub-menu-list > li > a {
@@ -509,7 +509,7 @@ h5.left-nav-title {
     left: 53px;
     margin: 0;
     min-width: 172px;
-    background: #353F4F;
+    background: #875923;
     z-index: 100;
     -moz-border-radius: 0 0 2px 0;
     -webkit-border-radius: 0 0 2px 0;
@@ -544,7 +544,7 @@ h5.left-nav-title {
 -----------------------------*/
 
 .header-section {
-    background: #fff;
+    background: #ae8151;
     border-bottom: 1px solid #eff0f4;
 }
 
@@ -613,7 +613,7 @@ h5.left-nav-title {
 .notification-menu .dropdown-toggle {
     padding: 12px 10px;
     border-color: #fff;
-    background: #fff;
+    background: #925d25;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
@@ -625,7 +625,7 @@ h5.left-nav-title {
 .notification-menu .dropdown-toggle:active,
 .notification-menu .dropdown-toggle.active,
 .notification-menu .open .dropdown-toggle.dropdown-toggle {
-    background: #424f63;
+    background: #ba8343;
     color: #65cea7;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -720,7 +720,7 @@ h5.left-nav-title {
 }
 
 .notification-menu .dropdown-menu-usermenu {
-    background: #65cea7;
+    background: #744b20;
     min-width: 200px;
 }
 
@@ -846,7 +846,7 @@ h5.left-nav-title {
     left: 0;
     width: 240px;
     z-index: 100;
-    background: #424f63;
+    background: #ba8343;
 
 }
 
@@ -901,7 +901,7 @@ h5.left-nav-title {
 
 .main-content {
     margin-left: 240px;
-    background: #eff0f4;
+    background: #925d25;
     min-height: 700px;
 }
 
@@ -987,7 +987,7 @@ h5.left-nav-title {
 .horizontal-menu-page .navbar-default .navbar-nav > .open > a:focus,
 .horizontal-menu-page .navbar-default .navbar-nav > li > a:hover,
 .horizontal-menu-page .navbar-default .navbar-nav > li > a:focus {
-    background-color: #353F4F;
+    background-color: #875923;
     color: #FFFFFF;
 }
 
@@ -1002,7 +1002,7 @@ h5.left-nav-title {
 }
 
 .horizontal-menu-page .dropdown-menu {
-    background-color: #353F4F;
+    background-color: #875923;
     color: #fff;
     box-shadow: none;
     border: none;
@@ -1082,9 +1082,9 @@ h5.left-nav-title {
 ---------------------------------*/
 
 footer {
-    background: #fff;
+    background: #ae8151;
     padding: 15px;
-    color: #7A7676;
+    color: #361e04;
     font-size: 12px;
     position: static;
     bottom: 0;
@@ -1989,7 +1989,7 @@ ul.user-states li {
 }
 
 .panel-heading.dark {
-    background: #353F4F;
+    background: #875923;
     color: #fff;
 }
 
