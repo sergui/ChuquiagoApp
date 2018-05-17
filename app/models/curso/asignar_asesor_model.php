@@ -5,7 +5,7 @@
 	$id_doc=$_REQUEST['id_docente'];
 	$sql="UPDATE kardex set id_asesor={$id_doc} where id_curso={$id_cur}";
 	if (!$con->query($sql)) {
-		echo "Falló la edicion: (" . $con->errno . ") " . $con->error;
+		echo "Falló la REGISTRO DE ASESOR: (" . $con->errno . ") " . $con->error;
 	}else
 		echo 1;
 	$con->close();

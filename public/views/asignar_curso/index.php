@@ -19,6 +19,7 @@
                                 <th>DOCENTE</th>
                                 <th>ASIGNATURA</th>
                                 <th>CURSO</th>
+                                <th>USUARIO</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
@@ -28,6 +29,7 @@
                                     <td><?php echo $tiene['nombre'].' '.$tiene['paterno'].' '.$tiene['materno']; ?></td>
                                     <td><?php echo $tiene['nombre_asignatura']; ?></td>
                                     <td><?php echo $tiene['grado'].' '.$tiene['paralelo']; ?></td>
+                                    <td><?php echo $tiene['nombre_usuario']; ?></td>
                                     <td class="text-center">
                                         <a class="btn btn-danger" href="#modalEliminar" role="button" data-toggle="modal" data-placement="top" title="Eliminar" onclick="eliminar_datos(<?php echo $tiene['id_docente'] ?>,<?php echo $tiene['id_curso'] ?>,<?php echo $tiene['id_asignatura'] ?>)">
                                             <span class="fa fa-trash-o"></span>

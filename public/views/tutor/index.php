@@ -21,6 +21,7 @@
                                 <th>Ap. Materno</th>
                                 <th>Celular</th>
                                 <th class="text-center col-md-4">Hijos</th>
+                                <th class="center"> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,7 @@
                                     echo "</ol>";
                                 ?>
                                 </td>
+                                <td></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -145,7 +147,7 @@
                 domicilio:{
                     required:true,
                     minlength: 5,
-                    maxlength:20,
+                    maxlength:200,
                 }
             },
             messages:{

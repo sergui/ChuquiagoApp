@@ -28,9 +28,10 @@
                 }
                 if (!$this->db_connection->connect_errno) {
                     $user_name = $this->db_connection->real_escape_string($_POST['usuario']);
-                    $sql = "SELECT u.id_usuario,u.nombre_usuario, u.password, r.nombre as nombre_rol, d.nombre,d.id_docente, d.paterno,d.materno,d.celular
+                    $sql = "SELECT u.id_usuario,u.nombre_usuario, u.password, r.nombre as nombre_rol, d.nombre,d.id_docente, d.paterno,d.materno,d.celular, r.id_rol
                             FROM usuario u, roles r, docente d
                             WHERE nombre_usuario = '{$user_name}' AND u.estado=1  AND u.id_rol= r.id_rol and d.id_user= u.id_usuario";
+                            //echo $sql;
                     $result_of_login_check = $this->db_connection->query($sql);
 
                     if ($result_of_login_check->num_rows == 1) {
@@ -40,7 +41,9 @@
                             $_SESSION['user_name'] = $result_row->nombre_usuario;
                             $_SESSION['nombre'] = $result_row->nombre;
                             $_SESSION['rol'] = $result_row->nombre_rol;
+                            $_SESSION['id_rol'] = $result_row->id_rol;
                             $_SESSION['ap_paterno'] = $result_row->paterno;
+                            $_SESSION['id_docente'] = $result_row->id_docente;
                             $_SESSION['user_login_status'] = 1;
                         } else {
                             $this->errors[] = "Usuario y/o contraseña no coinciden.";

@@ -25,7 +25,6 @@
                             <?php foreach ($faltas as $falta): ?>
                             <tr class="gradeX">
                                 <td><?php echo $falta['tipoFalta']; ?></td>
-                               
 								<td><?php echo $falta['descripcion']; ?></td>
                                 <td >
                                     <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $falta['id_falta'] ?>)">
