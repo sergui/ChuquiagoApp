@@ -64,36 +64,6 @@
 		$('#cursoid').val(idcurso);
 	}
 	
-	function registro( id ) {
-		var idc=$('#cursoid').val();
-        $.ajax( {
-            url: '../../models/curso/asignar_asesor_model.php',
-            type: 'POST',
-            dataType: "json",
-            data: {
-                id_curso: idc,
-                id_docente: id,
-            },
-            beforeSend: function(  ) {
-                        transicion("Procesando  Espere....");
-                    },
-                    success: function(response) {
-                        if(response==1){
-                            
-                            $('#modal_asesor').modal('hide');
-                            transicionSalir();
-                            mensajes_alerta('DATOS GUARDADOS EXITOSAMENTE !! ','success','GUARDAR DATOS');
-                            setTimeout(function(){
-                                window.location.href='<?php echo ROOT_CONTROLLER ?>curso/asesor.php';
-                            }, 3000);
-                        }else{
-                            transicionSalir();
-                            mensajes_alerta('ERROR AL REGISTRAR verifique los datos!! '+response,'error','GUARDAR DATOS');
-                        }
-                    }
-        } );
-    }
-	
 	$( document ).ready( function () {
 		$( "#tbDocente" ).dataTable();
 		$( "#frmRegistrar" ).validate( {

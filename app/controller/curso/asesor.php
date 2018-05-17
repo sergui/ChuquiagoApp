@@ -19,7 +19,7 @@
 	}
 
 	$con->close();
-	$con=conectar();
+$con=conectar();
 	$sql="SELECT d.id_docente,d.ci
 			,d.nombre
 			,d.paterno
