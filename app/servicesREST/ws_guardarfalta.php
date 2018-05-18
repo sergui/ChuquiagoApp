@@ -1,6 +1,6 @@
 <?php 
-	require_once ("../../config/db.php");
-	require_once ("../../config/conexion.php");
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php"); 
 
 
     //$observacion = $trim($_GET["observacion"]);

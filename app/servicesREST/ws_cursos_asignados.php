@@ -1,6 +1,6 @@
 <?php
-	require_once ("../../config/db.php");
-    require_once ("../../config/conexion.php");
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php"); 
     
 
     if(isset($_GET["id_user"])){
@@ -14,11 +14,11 @@
                     $json['curso'][]=$row;                   
                 }
             }else{
-                $curso['estado']="";//No existe registros en la consulta
+                $curso="";//No existe registros en la consulta
                 $json['curso'][]=$curso;
             }
         }else{
-            $curso['estado']="";
+            $curso="";
             $json['curso'][]=$curso;
         }
         echo json_encode($json);

@@ -1,6 +1,6 @@
 <?php
-	require_once ("../../config/db.php");
-    require_once ("../../config/conexion.php");
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php"); 
     
     $json=array();
     $sql="SELECT * FROM faltas as f WHERE f.estado = 1";
