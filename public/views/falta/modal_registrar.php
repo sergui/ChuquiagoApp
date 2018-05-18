@@ -9,15 +9,16 @@
                 <form role="form" id="frmRegistrar" name="frmRegistrar">
                     <div class="form-group">
                         <label for="Nombre">TIPO FALTA:</label>
-						<select class="form-control" id="tipoFalta" name="tipoFalta" required="required">
-  							<option value="">--Seleccione uno--</option>
-							<option value="1">Leves</option>
-  							<option value="2">Graves</option>
-  							
-						</select>
+                        <select class="form-control" id="tipoFalta" name="tipoFalta" required="required">
+                            <option value="">--Seleccione uno--</option>
+                            <option value="leves">Leves</option>
+                            <option value="graves">Graves</option>
+                            <option value="muy graves">Muy Graves</option>
+                            
+                        </select>
                     </div>
                      
-					<div class="form-group">
+                    <div class="form-group">
                         <label for="Nombre">Descripcion:</label>
                         <input class=" form-control" id="descripcion" name="descripcion" type="text" />
                     </div>
