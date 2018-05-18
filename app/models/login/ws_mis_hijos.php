@@ -19,12 +19,12 @@
                     $json['estudiantes'][]=$row;                                                    
                 }
             }else{
-                $estudiantes['estado']="0";//No existe registros en la consulta
+                $estudiantes['estado']="";//No existe registros en la consulta
                 $json['estudiantes'][]=$estudiantes;
                 
             }
         }else{
-            $estudiantes['estado']="Error en la consulta";
+            $estudiantes['estado']="";
             $json['estudiantes'][]=$estudiantes;
              
         }

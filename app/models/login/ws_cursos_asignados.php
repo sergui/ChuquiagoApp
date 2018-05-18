@@ -14,11 +14,11 @@
                     $json['curso'][]=$row;                   
                 }
             }else{
-                $curso['estado']="0";//No existe registros en la consulta
+                $curso['estado']="";//No existe registros en la consulta
                 $json['curso'][]=$curso;
             }
         }else{
-            $curso['estado']="Error en la consulta";
+            $curso['estado']="";
             $json['curso'][]=$curso;
         }
         echo json_encode($json);
