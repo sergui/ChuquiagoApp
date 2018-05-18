@@ -1,6 +1,6 @@
 /*
-SQLyog Enterprise v12.09 (64 bit)
-MySQL - 10.1.9-MariaDB : Database - bdchuquiago
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 10.1.8-MariaDB : Database - bdchuquiago
 *********************************************************************
 */
 
@@ -161,11 +161,9 @@ CREATE TABLE `faltas_cometidas` (
   KEY `id_falta` (`id_falta`),
   CONSTRAINT `faltas_cometidas_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`),
   CONSTRAINT `faltas_cometidas_ibfk_2` FOREIGN KEY (`id_falta`) REFERENCES `faltas` (`id_falta`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas_cometidas` */
-
-insert  into `faltas_cometidas`(`id_fal_com`,`obseracion`,`contador`,`fecha`,`estado`,`id_kardex`,`id_user`,`id_falta`,`id_asignatura`) values (1,'se hallo consumiendo mota',0,'2018-05-18',1,332,9,19,1),(2,'ni vino por 2 semanas',0,'2018-05-18',1,332,9,21,1);
 
 /*Table structure for table `kardex` */
 
