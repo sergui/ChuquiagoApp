@@ -25,7 +25,7 @@
                             <?php foreach ($faltas as $falta): ?>
                             <tr class="gradeX">
                                 <td><?php echo $falta['tipoFalta']; ?></td>
-								<td><?php echo $falta['descripcion']; ?></td>
+                                <td><?php echo $falta['descripcion']; ?></td>
                                 <td >
                                     <a class="btn btn-success" href="#modalEditar" role="button" data-placement="top" title="Editar" data-toggle="modal" onclick="obtener_datos(<?php echo $falta['id_falta'] ?>)">
                                         <span class="fa fa-edit" ></span>
@@ -47,7 +47,7 @@
 </div>
 </div>
 <script>
-	function obtener_datos(id)
+    function obtener_datos(id)
          {
             
             $.ajax({
@@ -56,8 +56,8 @@
             dataType: "json",
             data: {id_falta: id},
             success: function(datos){ 
-				
-				if(datos['falta']['tipoFalta']==1){
+                
+                if(datos['falta']['tipoFalta']==1){
                     $("#frmEditar [id=tipoFalta]").html('<option value=1 selected>Leves</option><option value=2>Graves</option>');
                 }else{
                     $("#frmEditar [id=tipoFalta]").html('<option value=1>Leves</option><option value=2 selected>Graves</option>');
@@ -70,8 +70,8 @@
             }
             });
         }
-	
-	function eliminar_datos(id)
+    
+    function eliminar_datos(id)
     {
         $("#id_eliminar").val(id);
     } 
@@ -102,17 +102,17 @@
     $(document).ready(function() {
         $('#tbFalta').dataTable();
 
-		$('#frmEditar').validate({
+        $('#frmEditar').validate({
             debug:true,
           rules:
             {
-              	tipoFalta:{
+                tipoFalta:{
                     required:true,
                 },
-				descripcion:{
+                descripcion:{
                     required:true,
                     minlength: 1,
-                    maxlength:25,
+                    maxlength:200,
                 },
             },
             messages:{
@@ -120,12 +120,12 @@
                     required:' <div class="alert alert-danger" role="alert">campo obligatorio</div>',
                 },
                
-				descripcion:{
-                    maxlength:"debe tener un maximo de 25 caracteres.",
+                descripcion:{
+                    maxlength:"debe tener un maximo de 200 caracteres.",
                 },
             },
             submitHandler: function (form) {
-				
+                
                 $.ajax({
                     url: '../../models/falta/editar_model.php',
                     type: 'post',
@@ -156,21 +156,21 @@
             debug:true,
             rules:
             {
-              	tipoFalta:{
+                tipoFalta:{
                     required:true,
                 },
-				descripcion:{
+                descripcion:{
                     required:true,
                     minlength: 1,
-                    maxlength:25,
+                    maxlength:200,
                 },
             },
             messages:{
                 tipoFalta:{
                     required:' <div class="alert alert-danger" role="alert">campo obligatorio</div>',
                 },
-				descripcion:{
-                    maxlength:"debe tener un maximo de 25 caracteres.",
+                descripcion:{
+                    maxlength:"debe tener un maximo de 200 caracteres.",
                 },
             },
             submitHandler: function (form) {
