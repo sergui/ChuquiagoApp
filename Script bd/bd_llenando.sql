@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.09 (64 bit)
-MySQL - 10.1.8-MariaDB : Database - bdchuquiago
+SQLyog Enterprise v12.09 (64 bit)
+MySQL - 10.1.9-MariaDB : Database - bdchuquiago
 *********************************************************************
 */
 
@@ -136,11 +136,11 @@ CREATE TABLE `faltas` (
   `descripcion` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_falta`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas` */
 
-insert  into `faltas`(`id_falta`,`tipoFalta`,`descripcion`,`estado`) values (1,'leves','Falto a clases.',1),(2,'leves','Llega tarde a clases (atrasado).',1),(3,'leves','No trae material de estudio.',1),(4,'leves','No presenta  tareas, trabajos de investigación y trabajos prácticos.',1),(5,'leves','No dio examen de la asignatura',1),(6,'leves','Indisciplina en clases',1),(7,'leves','Incumple con normas de limpieza',1),(8,'leves','Falta de respeto a sus compañeros',1),(9,'leves','Falta de respeto a sus docentes y otros',1),(10,'leves','Asistir a la unidad educativa sin el uniforme correspondiente',1),(11,'leves','Uso de celular sin autorización del docente en horario de clases',1),(12,'graves','Daños ocasionados al mobiliario o infraestructura',1),(13,'graves','Inasistencia a citaciones convocadas por la unidad educativa',1),(14,'graves','Inasistencia a clases por tres días o mas',1),(15,'graves','Inasistencia a desfiles cívicos, actos cívicos',1),(16,'graves','La participación o encubrimiento de actos delictivos',1),(17,'graves','La reincidencia voluntaria a faltas leves',1),(18,'graves','Portar objetos: cortantes, punzantes, armas de cualquier clase',1),(19,'muy graves','Daños ocasionados al mobiliario o infraestructura',1),(20,'muy graves','Inasistencia a citaciones convocadas por la unidad educativa',1),(21,'muy graves','Inasistencia a clases por tres días o mas',1),(22,'muy graves','Inasistencia a desfiles cívicos, actos cívicos',1),(23,'muy graves','La participación o encubrimiento de actos delictivos',1),(24,'muy graves','La reincidencia voluntaria a faltas leves',1),(25,'muy graves','Portar objetos: cortantes, punzantes, armas de cualquier clase',1);
+insert  into `faltas`(`id_falta`,`tipoFalta`,`descripcion`,`estado`) values (1,'leves','Falto a clases.',1),(2,'leves','Llega tarde a clases (atrasado).',1),(3,'leves','No trae material de estudio.',1),(4,'leves','No presenta  tareas, trabajos de investigación y trabajos prácticos.',1),(5,'leves','No dio examen de la asignatura',1),(6,'leves','Indisciplina en clases',1),(7,'leves','Incumple con normas de limpieza',1),(8,'leves','Falta de respeto a sus compañeros',1),(9,'leves','Falta de respeto a sus docentes y otros',1),(10,'leves','Asistir a la unidad educativa sin el uniforme correspondiente',1),(11,'leves','Uso de celular sin autorización del docente en horario de clases',1),(12,'graves','Daños ocasionados al mobiliario o infraestructura',1),(13,'graves','Inasistencia a citaciones convocadas por la unidad educativa',1),(14,'graves','Inasistencia a clases por tres días o mas',1),(15,'graves','Inasistencia a desfiles cívicos, actos cívicos',1),(16,'graves','La participación o encubrimiento de actos delictivos',1),(17,'graves','La reincidencia voluntaria a faltas leves',1),(18,'graves','Portar objetos: cortantes, punzantes, armas de cualquier clase',1),(19,'muy graves','Consumo de tabaco, alcohol, u otros estimulantes, en la unidad educativa y/o  alrededores',1),(20,'muy graves','El manejo de consumo de drogas u otras sustancias',1),(21,'muy graves','La inasistencia injustificada a clases por 6 o más días',1),(22,'muy graves','La participación en riñas y peleas dentro y fuera de la unidad educativa',1),(23,'muy graves','La reincidencia  voluntaria de las faltas graves.',1),(24,'muy graves','Participación en robos, hurtos, engaños',1);
 
 /*Table structure for table `faltas_cometidas` */
 
@@ -161,9 +161,11 @@ CREATE TABLE `faltas_cometidas` (
   KEY `id_falta` (`id_falta`),
   CONSTRAINT `faltas_cometidas_ibfk_1` FOREIGN KEY (`id_kardex`) REFERENCES `kardex` (`id_kardex`),
   CONSTRAINT `faltas_cometidas_ibfk_2` FOREIGN KEY (`id_falta`) REFERENCES `faltas` (`id_falta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `faltas_cometidas` */
+
+insert  into `faltas_cometidas`(`id_fal_com`,`obseracion`,`contador`,`fecha`,`estado`,`id_kardex`,`id_user`,`id_falta`,`id_asignatura`) values (1,'se hallo consumiendo mota',0,'2018-05-18',1,332,9,19,1),(2,'ni vino por 2 semanas',0,'2018-05-18',1,332,9,21,1);
 
 /*Table structure for table `kardex` */
 
