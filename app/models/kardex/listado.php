@@ -39,7 +39,15 @@
                                         WHERE fc.`id_falta`=f.`id_falta`
                                         AND fc.id_kardex={$estudiante['id_kardex']}
                                         AND a.id_asignatura= fc.id_asignatura";
-                                }else{
+                                }elseif(isset($_REQUEST['asesor'])){
+                                    $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`,a.nombre_asignatura
+                                        FROM faltas_cometidas fc
+                                      , faltas f
+                                      ,asignatura a
+                                        WHERE fc.`id_falta`=f.`id_falta`
+                                        AND fc.id_kardex={$estudiante['id_kardex']}
+                                        AND a.id_asignatura= fc.id_asignatura";
+                                }elseif($_SESSION['id_rol']==2){
                                     $sql="SELECT f.`descripcion`,f.`tipoFalta`,DATE_FORMAT(fc.fecha, '%d/%m/%y') AS fecha, fc.`obseracion`, a.nombre_asignatura
                                         FROM faltas_cometidas fc
                                       , faltas f
@@ -65,7 +73,9 @@
                         </table>
                     </td>
                     <td class="text-center">
-                        <?php if($_SESSION['id_rol']==2): ?>
+                        <?php if(isset($_REQUEST['asesor'])): ?>
+
+                        <?php elseif($_SESSION['id_rol']==2): ?>
                         <a class="btn btn-success btn-block" href="#modal_Registrar" role="button" data-placement="top" title="Faltas" data-toggle="modal" onclick="verFalta(<?php echo $estudiante['id_rude'] ?>,<?php echo $estudiante['id_kardex'] ?>);">
                             <span class="fa fa-edit" > Registrar falta</span>
                         </a>

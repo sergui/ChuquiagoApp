@@ -26,7 +26,6 @@
                                 <?php endforeach ?>
                             </select>
                             <?php endif ?>
-                            
                         </div>
                     </div>
                     <?php if ($asesora->num_rows>0): ?>
@@ -37,7 +36,7 @@
                         ?>
                         <div class="form-group col-md-6">
                             <label class="col-md-5 control-label" for="inputSuccess"><strong>Curso Asesorado</strong></label>
-                            <button type="button" class="btn btn-primary" onclick="verCurso(<?php echo $cursoA['id_curso']; ?>)"><?php echo $cursoA['curso']; ?></button>
+                            <button type="button" class="btn btn-primary" onclick="verCursoA(<?php echo $cursoA['id_curso']; ?>)"><?php echo $cursoA['curso']; ?></button>
                         </div>
                     <?php endif ?>
                 <!-- </form> -->
@@ -57,6 +56,23 @@
             url: '../../models/kardex/listado.php',
             type: 'post',
             data: {id_curso: id, id_asig: ida},
+            beforeSend: function() {
+                transicion("Procesando Espere....");
+            },
+            success: function(response) {
+                transicionSalir();
+                $('#listado').html(response);
+                $('#id_asignatura').val(ida);
+            }
+        });
+    }
+    function verCursoA(id){
+        $('#id_curso').val(id);
+        var ida=0;
+        $.ajax({
+            url: '../../models/kardex/listado.php',
+            type: 'post',
+            data: {id_curso: id, id_asig: 0, asesor:'si'},
             beforeSend: function() {
                 transicion("Procesando Espere....");
             },
