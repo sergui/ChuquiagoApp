@@ -15,7 +15,7 @@
 	$subTitulo="FALTAS";
 	
 	if (!($faltas = $con->query("SELECT id_falta,
-									tipoFalta 
+									tipoFalta tipoFalta
 									,descripcion
 									FROM faltas
 									WHERE estado=1"))) {

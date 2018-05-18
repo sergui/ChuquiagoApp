@@ -112,7 +112,7 @@
 				descripcion:{
                     required:true,
                     minlength: 1,
-                    maxlength:200,
+                    maxlength:25,
                 },
             },
             messages:{
@@ -121,7 +121,7 @@
                 },
                
 				descripcion:{
-                    maxlength:"debe tener un maximo de 200 caracteres.",
+                    maxlength:"debe tener un maximo de 25 caracteres.",
                 },
             },
             submitHandler: function (form) {
@@ -162,7 +162,7 @@
 				descripcion:{
                     required:true,
                     minlength: 1,
-                    maxlength:200,
+                    maxlength:25,
                 },
             },
             messages:{
@@ -170,7 +170,7 @@
                     required:' <div class="alert alert-danger" role="alert">campo obligatorio</div>',
                 },
 				descripcion:{
-                    maxlength:"debe tener un maximo de 200 caracteres.",
+                    maxlength:"debe tener un maximo de 25 caracteres.",
                 },
             },
             submitHandler: function (form) {

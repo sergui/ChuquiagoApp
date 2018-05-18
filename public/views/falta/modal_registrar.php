@@ -11,9 +11,8 @@
                         <label for="Nombre">TIPO FALTA:</label>
 						<select class="form-control" id="tipoFalta" name="tipoFalta" required="required">
   							<option value="">--Seleccione uno--</option>
-							<option value="leves">Leves</option>
-  							<option value="graves">Graves</option>
-                            <option value="muy graves">Muy Graves</option>
+							<option value="1">Leves</option>
+  							<option value="2">Graves</option>
   							
 						</select>
                     </div>
