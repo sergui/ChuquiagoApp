@@ -16,7 +16,7 @@
                         <ul class="p-info">
                             <li>
                                 <div class="title">Nombre</div>
-                                <div class="desk"><?php echo $_SESSION['nombre']; ?></div>
+                                <div class="desk"><?php echo $_SESSION['nombre'].' '.$_SESSION['ap_paterno']; ?></div>
                             </li>
                             <li>
                                 <div class="title">Usuario</div>
@@ -82,7 +82,7 @@
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/user/editar_model_user.php',
+                    url: '../../models/usuario/editar_model_user.php',
                     type: 'post',
                     data: $("#frmEditarUser").serialize(),
                     beforeSend: function() {
@@ -127,7 +127,7 @@
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: '../../models/user/editar_model_pass.php',
+                    url: '../../models/usuario/editar_model_pass.php',
                     type: 'post',
                     data: $("#frmEditarPassword").serialize(),
                     beforeSend: function() {
