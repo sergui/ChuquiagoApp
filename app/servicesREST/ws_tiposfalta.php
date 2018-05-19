@@ -1,9 +1,14 @@
 <?php
 	require_once ("../config/db.php");
-	require_once ("../config/conexion.php"); 
+    require_once ("../config/conexion.php"); 
+    
+
     
     $json=array();
-    $sql="SELECT * FROM faltas as f WHERE f.estado = 1";
+    if(isset($_GET["tf"])){
+
+        $tf = $_GET["tf"];
+        $sql="SELECT * FROM faltas as f WHERE f.estado = 1 AND tipoFalta='{$tf}'";
        
         if($result = $con->query($sql)){
             if($result->num_rows > 0){
@@ -22,7 +27,11 @@
              
         }
         echo json_encode($json);
+    }else{
+        $faltas['estado']="1";//Error de usuario no encuentra
+        $json['faltas'][]=$faltas;
+        echo json_encode($json);
+    }
     
-      
     $con->close();
 ?>

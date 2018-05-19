@@ -4,7 +4,7 @@
 
 
     //$observacion = $trim($_GET["observacion"]);
-    $observacion = "Registardo desde la app";
+    $observacion = trim($_GET["obs"]);
     //$contador    = $trim($_GET["contador"]);
     $contador    = 0;
     $estado      = 1;
