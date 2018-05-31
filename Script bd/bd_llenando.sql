@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `citacion`;
 CREATE TABLE `citacion` (
   `id_citacion` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
-  `citacion` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `citacion` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` datetime NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   `id_kardex` bigint(20) DEFAULT NULL,

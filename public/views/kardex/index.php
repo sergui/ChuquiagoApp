@@ -161,7 +161,9 @@
             debug:true,
             submitHandler: function (form) {
                 //console.log($('#ncitacion').text());
-                var citacion=$('#ncitacion').text();
+                var profe='<?php echo $_SESSION['nombre'].' '.$_SESSION['ap_paterno']; ?>';
+                var citacion='Señor padre de familia. el/la maestro/a '+profe+' de aula'+$('#aula').val()+' le cita a Ud.(s) el dia '+$('#fecha_reunion').val()+' a horas '+$('#hora').val()+' para conversar sobre su hijo(a) '+ $('#hijo_nom').val();
+                //citacion=$('#ncitacion').text();
                 $.ajax({
                     url: '../../models/kardex/registro_citacion_model.php',
                     type: 'post',
