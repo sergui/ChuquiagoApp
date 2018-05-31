@@ -1,7 +1,7 @@
 <?php
 	require_once '../../config/route.php';
 	session_start();
-	if (!isset($_SESSION['<us></us>er_login_status']) AND $_SESSION['user_login_status'] != 1) {
+	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: ".ROOT_CONTROLLER.'login/');
 		exit;
 	}
@@ -19,7 +19,7 @@
 	}
 
 	$con->close();
-$con=conectar();
+	$con=conectar();
 	$sql="SELECT d.id_docente,d.ci
 			,d.nombre
 			,d.paterno
@@ -31,7 +31,7 @@ $con=conectar();
 			FROM docente d, usuario u, roles r
 			WHERE d.id_user=u.id_usuario AND u.id_rol=r.id_rol
 			AND d.estado=1 AND d.id_user != {$_SESSION['id_user']};";
-			echo $sql;
+			//echo $sql;
 	if (!($docentes = $con->query($sql))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
