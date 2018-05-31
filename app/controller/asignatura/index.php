@@ -13,7 +13,7 @@
 	$menu_a= $menus['UE_ASIGNATURA'];
 	$subTitulo="ASIGNATURA";
 
-	if (!($asignaturas = $con->query("SELECT * FROM ASIGNATURA where estado=1"))) {
+	if (!($asignaturas = $con->query("SELECT * FROM asignatura where estado=1"))) {
     	echo "Falló SELECT: (" . $con->errno . ") " . $con->error;
 	}
 	$con->close();
