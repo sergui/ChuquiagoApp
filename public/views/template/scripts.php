@@ -28,6 +28,3 @@
 
 <!--pickers plugins-->
 <script type="text/javascript" src="<?php echo ROOT; ?>resources/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-
-<!--char js para graficos estadisdicos-->
-<script src="<?php echo ROOT; ?>resources/assets/js/charjs/Chart.bundle.min.js"></script>

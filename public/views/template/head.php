@@ -28,3 +28,5 @@
 <!--pickers css-->
 <link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>resources/assets/js/bootstrap-datepicker/css/datepicker-custom.css" />
 <script src="<?php echo ROOT; ?>resources/assets/js/jquery-1.10.2.min.js"></script>
+<!--char js para graficos estadisdicos-->
+<script src="<?php echo ROOT; ?>resources/assets/js/chartjs/Chart.bundle.min.js"></script>
