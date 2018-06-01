@@ -17,7 +17,7 @@
 	$menu_a= $menus['C_KARDEX'];
 	if($rol==1 || $rol==5 || $rol==6){
 		$sql="SELECT c.id_curso
-				, CONCAT(c.grado,' ',c.paralelo) AS curso				
+				, CONCAT(c.grado,' ',c.paralelo) AS curso
 				from curso c 
 				WHERE c.estado=1 ";
 	}else if($rol==2){
