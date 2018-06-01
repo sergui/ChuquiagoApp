@@ -65,10 +65,10 @@
             <li class="menu-list <?php echo $menu_a['reporte']; ?>"><a href=""><i class="fa  fa-print"></i> <span>Reportes</span></a>
                 <ul class="sub-menu-list">
                     <li class="<?php echo $menu_a['curso_r']; ?>">
-                        <a href="<?php echo ROOT_CONTROLLER; ?>user/roles_usuario.php">Reporte por curso</a>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>reporte/">Reporte por curso</a>
                     </li>
                     <li class="<?php echo $menu_a['faltas_r']; ?>">
-                        <a href="<?php echo ROOT_CONTROLLER; ?>falta/"> Faltas mas cometidas</a>
+                        <a href="<?php echo ROOT_CONTROLLER; ?>reporte/faltas.php"> Faltas mas cometidas</a>
                     </li>
                 </ul>
             </li>

@@ -6,9 +6,9 @@
 		exit;
 	}
 	$titulo="Reportes";
-	$contenido="reporte/index.php";
-	$subTitulo="Reporte por curso";
-	$menu_a= $menus['R_CURSO'];
-	$pie_class="si";
+	$contenido="reporte/faltas.php";
+	$subTitulo="Reporte de faltas";
+	$menu_a= $menus['R_FALTA'];
+	//$pie_class="si";
 	require_once ('../../../public/views/plantilla.php');
 ?>
