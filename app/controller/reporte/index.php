@@ -10,6 +10,9 @@
 	$subTitulo="Reporte por curso";
 	$menu_a= $menus['R_CURSO'];
 	$pie_class="si";
+	$rol  = $_SESSION['id_rol'];
+	$id_user  = $_SESSION['id_user'];
+    $id_doc  = $_SESSION['id_docente'];
 	if($rol==1 || $rol==5 || $rol==6){
 		$sql="SELECT c.id_curso
 				, CONCAT(c.grado,' ',c.paralelo) AS curso
