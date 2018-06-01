@@ -5,6 +5,8 @@
         header("location: ".ROOT_CONTROLLER.'login/');
 		exit;
 	}
+	require_once ("../../config/db.php");
+	require_once ("../../config/conexion.php");
 	$titulo="Reportes";
 	$contenido="reporte/index.php";
 	$subTitulo="Reporte por curso";
