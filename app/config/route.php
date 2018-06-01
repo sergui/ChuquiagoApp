@@ -19,7 +19,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'UE_ASIGNATURA'=>array(
 					'inicio'=>'',
@@ -36,7 +39,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'UE_CURSO'=>array(
 					'inicio'=>'',
@@ -53,7 +59,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'UE_CURSO_ASESOR'=>array(
 					'inicio'=>'',
@@ -70,7 +79,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'UE_DOCENTE'=>array(
 					'inicio'=>'',
@@ -87,7 +99,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'UE_ASIGNACION_C'=>array(
 					'inicio'=>'',
@@ -104,7 +119,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'UE_ESTUDIANTE'=>array(
 					'inicio'=>'',
@@ -121,7 +139,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'UE_PADRE'=>array(
 					'inicio'=>'',
@@ -138,7 +159,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'C_ROL'=>array(
 					'inicio'=>'',
@@ -155,7 +179,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'C_FALTA'=>array(
 					'inicio'=>'',
@@ -172,7 +199,10 @@
 					'faltas_c'=>'active',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'C_MAX_FALTA'=>array(
 					'inicio'=>'',
@@ -189,7 +219,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'active',
 					'modelo_cit_c'=>'',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'C_MODELO_CARTA'=>array(
 					'inicio'=>'',
@@ -206,7 +239,10 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'active',
-					'kardex'=>''
+					'kardex'=>'',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
 				),
 		'C_KARDEX'=>array(
 					'inicio'=>'',
@@ -223,7 +259,50 @@
 					'faltas_c'=>'',
 					'max_faltas_c'=>'',
 					'modelo_cit_c'=>'',
-					'kardex'=>'active'
+					'kardex'=>'active',
+					'reporte'=>'',
+					'curso_r'=>'',
+					'faltas_r'=>''
+				),
+		'R_CURSO'=>array(
+					'inicio'=>'',
+					'ueducativa'=>'',
+					'asignatura_u'=>'',
+					'curso_u'=>'',
+					'curso_asesor_u'=>'',
+					'pdocente_u'=>'',
+					'asignacion_curso_u'=>'',
+					'estudiantes_u'=>'',
+					'padres_u'=>'',
+					'configuracion'=>'',
+					'roles_c'=>'',
+					'faltas_c'=>'',
+					'max_faltas_c'=>'',
+					'modelo_cit_c'=>'',
+					'kardex'=>'',
+					'reporte'=>'nav-active',
+					'curso_r'=>'active',
+					'faltas_r'=>''
+				),
+		'R_FALTA'=>array(
+					'inicio'=>'',
+					'ueducativa'=>'',
+					'asignatura_u'=>'',
+					'curso_u'=>'',
+					'curso_asesor_u'=>'',
+					'pdocente_u'=>'',
+					'asignacion_curso_u'=>'',
+					'estudiantes_u'=>'',
+					'padres_u'=>'',
+					'configuracion'=>'',
+					'roles_c'=>'',
+					'faltas_c'=>'',
+					'max_faltas_c'=>'',
+					'modelo_cit_c'=>'',
+					'kardex'=>'',
+					'reporte'=>'nav-active',
+					'curso_r'=>'',
+					'faltas_r'=>'active'
 				),
 	);
 ?>

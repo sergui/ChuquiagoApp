@@ -62,8 +62,18 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu-list <?php echo $menu_a['reporte']; ?>"><a href=""><i class="fa  fa-print"></i> <span>Reportes</span></a>
+                <ul class="sub-menu-list">
+                    <li class="<?php echo $menu_a['curso_r']; ?>">
+                        <a href="<?php echo ROOT_CONTROLLER; ?>user/roles_usuario.php">Reporte por curso</a>
+                    </li>
+                    <li class="<?php echo $menu_a['faltas_r']; ?>">
+                        <a href="<?php echo ROOT_CONTROLLER; ?>falta/"> Faltas mas cometidas</a>
+                    </li>
+                </ul>
+            </li>
             <?php endif ?>
-            <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6 || $_SESSION['id_rol']==2): ?> 
+            <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6 || $_SESSION['id_rol']==2): ?>
             <li class="<?php echo $menu_a['kardex']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>kardex/"><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
             </li>
             <?php endif ?>
