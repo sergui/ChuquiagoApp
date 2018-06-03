@@ -11,7 +11,7 @@
 	$contenido="reporte/index.php";
 	$subTitulo="Reporte por curso";
 	$menu_a= $menus['R_CURSO'];
-	$pie_class="si";
+	//$pie_class="si";
 	$rol  = $_SESSION['id_rol'];
 	$id_user  = $_SESSION['id_user'];
     $id_doc  = $_SESSION['id_docente'];
