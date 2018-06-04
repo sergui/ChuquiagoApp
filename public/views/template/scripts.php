@@ -28,3 +28,5 @@
 
 <!--pickers plugins-->
 <script type="text/javascript" src="<?php echo ROOT; ?>resources/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<script src="<?php echo ROOT; ?>resources/assets/js/canvas/canvasjs.min.js"></script>
