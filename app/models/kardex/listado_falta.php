@@ -4,7 +4,7 @@
     $id=$_REQUEST['id_falta'];
     $sql="SELECT *
             FROM faltas
-            WHERE tipoFalta='{$id}'";
+            WHERE tipoFalta='{$id}' AND estado=1";
     $faltas = $con->query($sql);
     $con->close();
 ?>
