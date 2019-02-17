@@ -28,7 +28,7 @@
         <ul class="nav nav-pills nav-stacked custom-nav">
             <li class="<?php echo $menu_a['inicio']; ?>"><a href="<?php echo ROOT; ?>"><i class="fa fa-home"></i> <span>
             Inicio</span></a></li>
-            <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6): ?>            
+            <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6): ?>
             <li class="menu-list <?php echo $menu_a['ueducativa']; ?>"><a href=""><i class="fa fa-book"></i> <span>Datos Unidad Educativa</span></a>
                 <ul class="sub-menu-list">
                     <li class="<?php echo $menu_a['asignatura_u']; ?>">
@@ -62,7 +62,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-list <?php echo $menu_a['reporte']; ?>"><a href=""><i class="fa  fa-print"></i> <span>Reportes</span></a>
+            <!-- <li class="menu-list <?php echo $menu_a['reporte']; ?>"><a href=""><i class="fa  fa-print"></i> <span>Reportes</span></a>
                 <ul class="sub-menu-list">
                     <li class="<?php echo $menu_a['curso_r']; ?>">
                         <a href="<?php echo ROOT_CONTROLLER; ?>reporte/">Reporte por curso</a>
@@ -71,7 +71,7 @@
                         <a href="<?php echo ROOT_CONTROLLER; ?>reporte/faltas.php"> Faltas mas cometidas</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <?php endif ?>
             <?php if ($_SESSION['id_rol']==1 || $_SESSION['id_rol']== 5 || $_SESSION['id_rol']==6 || $_SESSION['id_rol']==2): ?>
             <li class="<?php echo $menu_a['kardex']; ?>"><a href="<?php echo ROOT_CONTROLLER; ?>kardex/"><i class="fa fa-bookmark"></i> <span>Kardex diciplinario</span></a>
