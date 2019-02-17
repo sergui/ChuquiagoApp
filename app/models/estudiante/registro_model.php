@@ -7,20 +7,43 @@
     $paterno   = trim($_POST["paterno"]);
     $materno   = trim($_POST["materno"]);
     $sexo      = trim($_POST["sexo"]);
-    $fn        = trim($_POST["fecha_nac"]);
+    // $fn        = trim($_POST["fecha_nac"]);
     $domicilio = trim($_POST["domicilio"]);
-    $fecha_nac_aux = explode("/", $fn);
-	$fecha_nac = $fecha_nac_aux[2].'-'.$fecha_nac_aux[1].'-'.$fecha_nac_aux[0];
+    // $fecha_nac_aux = explode("/", $fn);
+	// $fecha_nac = $fecha_nac_aux[2].'-'.$fecha_nac_aux[1].'-'.$fecha_nac_aux[0];
 	$id_curso  = trim($_POST["id_curso"]);
 
+	$sql = "INSERT INTO estudiante(nombre, paterno, materno, sexo, domicilio, estado) VALUES('{$nombre}', '{$paterno}', '{$materno}', '{$sexo}', '{$domicilio}', 1)";
 	
+	if (!$con->query($sql)) {
+		echo "Falló la insercion estudiante: (" . $con->errno . ") " . $con->error;
+	}
+	else{
+
+		$sqlIdEstudiante = "SELECT id_rude FROM estudiante ORDER BY id_rude DESC LIMIT 1";
+		$resIdEstudiante = $con->query($sqlIdEstudiante);
+		$filaEst = $resIdEstudiante->fetch_array();
+		//echo "<pre>";print_r ($filaEst);echo "</pre>";
+
+		 $sqlKardex = "INSERT INTO kardex(reset, gestion, id_rude, id_curso) VALUES(0, ".date('Y').",{$filaEst[0]},{$id_curso})";
+
+		if (!$con->query($sqlKardex)) {
+			echo "Falló la insercion a kardex: (" . $con->errno . ") " . $con->error;
+		}
+		else{
+			echo 1;
+		}
+	}
+
+
+
 	//Creamos y Buscamos el nombre de usuario si existe
-	$nombreUser       = substr($nombre,0,1)."".substr($paterno,0,1)."".substr($materno,0,1)."".substr($fecha_nac_aux[2],2,3)."".$fecha_nac_aux[1]."".$fecha_nac_aux[0];
+	/*$nombreUser       = substr($nombre,0,1)."".substr($paterno,0,1)."".substr($materno,0,1)."".substr($fecha_nac_aux[2],2,3)."".$fecha_nac_aux[1]."".$fecha_nac_aux[0];
 	$contraseniaUser  = password_hash($nombreUser, PASSWORD_DEFAULT);
 	$sqlSearchNomUser = "SELECT id_usuario FROM usuario WHERE nombre_usuario = '".$nombreUser."'";
-	$resSearchNomUser = $con->query($sqlSearchNomUser);
+	$resSearchNomUser = $con->query($sqlSearchNomUser);*/
 
-	if($resSearchNomUser->num_rows == 0){
+/*	if($resSearchNomUser->num_rows == 0){
 		    $sqlInsertUser = "INSERT INTO usuario (nombre_usuario, password, estado, id_rol) VALUES ('{$nombreUser}', '{$contraseniaUser}', 1, 4)";
 			if(!$con->query($sqlInsertUser)){
 				echo ("<h3>ERROR AL INSERTAR EL USUARIO : ".$sqlInsertUser."</h3>");
@@ -49,7 +72,7 @@
 								else{
 									echo 1;		
 								}
-					}							
+					}
 				}
 			}			
 	}else{
@@ -92,7 +115,7 @@
 				}			
 			}
 		}
-	}
-	
-	$con->close();	
+	}*/
+
+	$con->close();
 ?>

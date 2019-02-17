@@ -24,7 +24,7 @@
                         <input class=" form-control" id="materno" name="materno" minlength="7 " type="text" required autofocus="true" />
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label">editar Fecha  de nacimiento:</label>
                         <div data-date-viewmode="date" data-date="<?php echo date('d/m/Y'); ?>"  class="input-append date cFecha">
                             <input type="text" readonly="" value="" size="16" class="form-control" name="fecha_nac" id="fecha_nac">
@@ -32,7 +32,7 @@
                                 <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
                             </span>
                         </div>
-                    </div>
+                    </div> -->
 
                      <div class="form-group">
                         <label for="Nombre">editar sexo</label>
