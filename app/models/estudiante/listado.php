@@ -2,8 +2,23 @@
     require_once ("../../config/db.php");
     require_once ("../../config/conexion.php");
     $id=$_REQUEST['id_curso'];
-    $sql="call listadelCurso({$id})";
+
+    // $sql="call listadelCurso({$id})";
+    $sql="SELECT CONCAT(e.nombre, ' ', e.paterno, ' ', e.materno ) AS nombre_completo,
+                    e.sexo,
+                    e.fecha_nac,
+                    e.id_rude
+            FROM
+                estudiante e,
+                curso c,
+                kardex k
+            WHERE c.id_curso = k.id_curso
+                AND e.id_rude = k.id_rude
+                AND c.id_curso = {$id}
+                AND e.estado=1 ;";
+
     $estudiantes = $con->query($sql);
+    $con->close();
 ?>
 <div class="adv-table" >
     <table  class="display table table-bordered table-striped" id="tbEstudiante">
