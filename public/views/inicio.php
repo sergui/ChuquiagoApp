@@ -30,7 +30,7 @@
                         <i class="fa fa-money"></i>
                     </div>
                     <div class="state-value">
-                        <div class="title"><H3>REPORTES</H3></div>
+                        <div class="title"><H3>REPORT</H3></div>
                     </div>
                 </div>
             </div>
